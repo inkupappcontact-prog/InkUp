@@ -1,0 +1,63 @@
+name: inkup_mvp
+description: "Application de lecture de BD indépendante"
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
+  cloud_firestore: ^6.1.0
+  firebase_storage: ^13.0.4
+  google_sign_in: ^6.1.0
+  google_fonts: ^4.0.3
+
+  # UI
+  cupertino_icons: ^1.0.8
+  provider: ^6.0.5
+  flutter_svg: ^2.0.7
+
+  # Images
+  image_picker: ^1.0.4
+  cached_network_image: ^3.3.0
+
+  # Navigation
+  go_router: ^17.0.0
+
+  # Utils
+  intl: ^0.20.2
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.4
+  share_plus: ^10.1.4
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  http: ^1.2.2
+  flutter_stripe: ^11.4.0
+  uuid: ^4.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Assets (à compléter quand vous ajouterez des images)
+  # assets:
+  #   - assets/images/
+
+  # Fonts
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InkUp</title>
+  <!-- Ajoutez cette balise meta -->
+  <meta name="google-signin-client_id" content="962346468274-ein29tataf4mlna3dete8troiubne5th.apps.googleusercontent.com">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD9lc7X8q4wtOj4GBFOdX_hnsTjlv9wv2U",
+      authDomain: "inkup-c930e.firebaseapp.com",
+      projectId: "inkup-c930e",
+      storageBucket: "inkup-c930e.firebasestorage.app",
+      messagingSenderId: "962346468274",
+      appId: "1:962346468274:web:fd6f19dcf68d9133e41aab"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Google API -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    // Initialiser Google API
+    function initializeGoogle() {
+      gapi.load('client:auth2', function() {
+        gapi.client.init({
+          apiKey: "AIzaSyD9lc7X8q4wtOj4GBFOdX_hnsTjlv9wv2U",
+          clientId: "962346468274-ein29tataf4mlna3dete8troiubne5th.apps.googleusercontent.com",
+          scope: "profile email openid"
+        }).then(function () {
+          console.log('Google API client initialized and ready');
+        });
+      });
+    }
+    initializeGoogle();
+  </script>
+</head>
+<body>
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

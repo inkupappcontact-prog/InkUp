@@ -1,0 +1,11 @@
+Règles de développement pour InkUp :
+
+Architecture Next.js : Nous utilisons l'App Router. Tout composant utilisant des hooks (useState, useEffect) ou des événements (onClick) DOIT impérativement commencer par la directive 'use client'; à la ligne 1.
+
+Standard d'importation : Interdiction d'utiliser des chemins relatifs complexes (ex: ../../..). Utilise exclusivement les alias @/ définis dans le tsconfig.json (ex: @/shared/components/...).
+
+Vérification systématique : Avant de modifier ou de créer un fichier, utilise toujours la commande ls ou dir pour confirmer l'emplacement exact des dossiers dans src/web/src/.
+
+Langue : Commentaires dans le code et messages de commit doivent être en français.
+
+Documentation BMAD : Après chaque étape majeure, mets à jour le fichier docs/bmad/4_journal.md.

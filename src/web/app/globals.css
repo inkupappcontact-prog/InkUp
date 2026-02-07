@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body { background-color: white; color: black; }
+.parallelogram {
+  transform: skewX(-10deg);
+}
+.parallelogram span {
+  transform: skewX(10deg);
+  display: inline-block;
+}

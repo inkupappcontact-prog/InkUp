@@ -1,0 +1,57 @@
+Votre nouveau site web est-il VRAIMENT prêt pour le lancement ?
+
+Un bug d'affichage sur mobile = 70% de vos visiteurs qui partent.
+
+Ne laissez pas des bugs de dernière minute ruiner votre lancement.
+
+En tant que développeur web et Créateur d'InkUp, je sais qu'un bug n'est pas un "détail technique" : c'est un coût commercial.
+
+
+
+
+
+C'est pourquoi je propose mes services en freelance (via mon entreprise InkUp) en tant que Testeur QA.
+
+Je ne suis pas un simple "cliqueur". 
+
+Mon approche de "Pilote"  combine ma formation de développeur (Stack Next.js/React ,...) avec une méthodologie de test rigoureuse.
+
+
+
+
+
+Je ne me contente pas de vous dire que votre application est bugger.
+
+Je vous fournis un rapport clair qui explique où, comment, et le pourquoi du bug, pour que vos développeurs puissent le corriger rapidement.
+
+Je propose également des propositions d'améliorations pour l'expérience l'utilisateur (UX).
+
+
+
+Pour les TPE, PME et agences web qui veulent une garantie de qualité avant un lancement, j'ai créé un service "packagé" sur ComeUp.
+
+Je m'occupe de tout : 
+
+
+
+✅ Tests "Responsive" (Mobile, Tablette) 
+
+✅ Tests multi-navigateurs (Chrome, Firefox, Safari) 
+
+✅ Vérification de tous les liens et formulaires 
+
+✅ Rapport de bugs détaillé (avec captures d'écran et vidéos)
+
+✅ Propositions d'améliorations UX
+
+
+
+Ne lancez pas un site buggé. Assurons nous qu'il soit parfait.
+
+➡️ Retrouvez mon service Testeur QA complet ici :
+
+
+
+
+
+#Freelance #TesteurQA #QualitéWeb #DeveloppeurWeb #Startup #FreelanceFrance #ComeUp
