@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.local
+.env.*
+*.pem
+*.key
+
+# Dépendances
+node_modules/
+.expo/
+.next/
+dist/
+build/
+.dart_tool/
+
+# Supabase & Backend
+supabase/.temp/
+supabase/storage/
+
+# Fichiers système
+.DS_Store
+*.log

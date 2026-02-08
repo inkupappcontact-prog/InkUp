@@ -1,8 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; Active les chemins longs (> 260 caractères) sous Windows 10/11
-; Exécuter en tant qu'administrateur : clic droit > Fusionner
-; Redémarrer l'ordinateur après fusion.
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
-"LongPathsEnabled"=dword:00000001

@@ -1,4 +1,0 @@
-# Règles de sécurité pour l'IA
-- Ne jamais lire, analyser ou mémoriser les fichiers contenant des secrets (ex: .env, secrets.dart).
-- Ne jamais suggérer d'inclure des mots de passe en clair dans le code.
-- Si une clé API est nécessaire, demander à l'utilisateur de l'ajouter dans un fichier .env.

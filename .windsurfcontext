@@ -1,0 +1,30 @@
+# Contexte Projet : InkUp (Micro-entreprise)
+
+## Stack Technique
+- **Web :** Next.js (App Router), Tailwind CSS, TypeScript.
+- **Mobile :** React Native (Expo), TypeScript.
+- **Backend :** Supabase (Postgres, Auth, Edge Functions).
+- **Domaine :** OVH (DNS vers Vercel).
+- **State Management :** Zustand.
+
+## Architecture & Sécurité
+- Monorepo : `/apps/web` et `/apps/mobile`.
+- Sécurité : Utiliser exclusivement le Row Level Security (RLS) de Supabase.
+- Partage : Seuls les types TS dans `/packages/shared` sont partagés.
+
+## Instructions pour Cascade
+1. Toujours vérifier le fichier `docs/PRD.md` avant de proposer une nouvelle feature.
+2. Ne jamais suggérer de bibliothèques Firebase (on utilise Supabase).
+3. Utiliser des placeholders (ex: YOUR_KEY) pour les secrets.
+
+/inkup-project
+├── apps/
+│   ├── mobile/          # React Native (Expo)
+│   └── web/             # Next.js (App Router)
+├── supabase/            # Dossier racine Supabase
+│   ├── migrations/      # Fichiers .sql de structure (RLS inclus)
+│   └── functions/       # Edge Functions (Stripe, Analytics)
+├── packages/
+│   └── shared/          # Types générés via `supabase gen types typescript`
+├── .codeiumignore
+└── .windsurfcontext

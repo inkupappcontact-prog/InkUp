@@ -1,0 +1,12 @@
+{
+  "name": "inkup-monorepo",
+  "private": true,
+  "scripts": {
+    "web:dev": "npm run dev --workspace=apps/web",
+    "mobile:start": "npm run start --workspace=apps/mobile"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

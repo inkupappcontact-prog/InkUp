@@ -37,8 +37,10 @@ Le projet utilise un schéma relationnel PostgreSQL robuste géré par Supabase 
 * [cite_start]`works` : Catalogue des œuvres liées aux dossiers Cloudinary[cite: 49, 53].
 * [cite_start]`transactions` : Historique immuable des achats pour audit[cite: 58, 64].
 
-## 🛠️ Installation
+## 🛠️ Installation et Configuration
 
-1. Cloner le dépôt :
-   ```bash
-   git clone [https://github.com/inkupappcontact-prog/InkUp.git](https://github.com/inkupappcontact-prog/InkUp.git)
+### 1. Clonage et Dépendances
+```bash
+git clone [https://github.com/inkupappcontact-prog/InkUp.git](https://github.com/inkupappcontact-prog/InkUp.git)
+cd InkUp
+npm install
