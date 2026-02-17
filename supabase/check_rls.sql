@@ -2,8 +2,7 @@
 SELECT 
     schemaname,
     tablename,
-    rowsecurity,
-    forcerlspolicy
+    rowsecurity
 FROM pg_tables 
 WHERE tablename = 'profiles' AND schemaname = 'public';
 

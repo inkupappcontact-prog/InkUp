@@ -44,7 +44,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
   // Test data for Flavian Blouin
   const fillTestData = () => {
-    setEmail('flavian.test.bdouin@gmail.com');
+    setEmail('flavian.bouin@gmail.com');
     setPassword('test123456');
     setSiret('99307611600017');
     setAddress('49120 Chemillé-en-Anjou');
