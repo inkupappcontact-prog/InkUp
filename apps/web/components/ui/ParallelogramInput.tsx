@@ -74,8 +74,8 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
             >
               {/* Le bouton lui-même est un petit parallélogramme bleu/noir */}
               <div className={`
-                absolute inset-0 transform bg-black border border-white/20 transition-colors
-                group-hover/btn:bg-[#2563EB]
+                absolute inset-0 transform bg-[#2563EB] border border-white/30 transition-colors
+                group-hover/btn:bg-[#1d4ed8]
               `}></div>
               <div className="relative transform skew-x-12 text-white">
                 {showPassword ? (

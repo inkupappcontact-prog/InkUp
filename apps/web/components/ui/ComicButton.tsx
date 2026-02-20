@@ -6,6 +6,7 @@ interface ComicButtonProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 const ComicButton: React.FC<ComicButtonProps> = ({ 
@@ -13,7 +14,8 @@ const ComicButton: React.FC<ComicButtonProps> = ({
   variant = 'primary', 
   onClick, 
   className = '',
-  type = 'button'
+  type = 'button',
+  disabled = false
 }) => {
   const baseStyles = "px-6 py-3 font-bold transition-all active:translate-y-1 active:translate-x-1 uppercase tracking-wider text-sm lg:text-base flex items-center justify-center gap-2";
   
@@ -28,6 +30,7 @@ const ComicButton: React.FC<ComicButtonProps> = ({
     <button 
       type={type}
       onClick={onClick}
+      disabled={disabled}
       className={`${baseStyles} ${variants[variant]} ${className}`}
     >
       {children}

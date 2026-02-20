@@ -171,6 +171,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
                 <li><strong>Données d'identification :</strong> email, nom, pseudonyme</li>
+                <li><strong>Données professionnelles :</strong> numéro SIRET et adresse (pour les auteurs, base légale : exécution contractuelle et obligation légale de vérification d'identité professionnelle)</li>
                 <li><strong>Données de connexion :</strong> historique des connexions, préférences</li>
                 <li><strong>Données de transaction :</strong> achats, paiements, adresses de livraison</li>
                 <li><strong>Données techniques :</strong> adresse IP, type de navigateur, données d'utilisation</li>
@@ -227,9 +228,10 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
                 Nous utilisons les sous-traitants suivants, tous conformes au RGPD :
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
-                <li><strong>Supabase Inc.</strong> - Hébergement de base de données (États-Unis - Privacy Shield)</li>
-                <li><strong>Stripe Inc.</strong> - Traitement des paiements (États-Unis - Privacy Shield)</li>
-                <li><strong>Google Analytics</strong> - Analyse d'audience (anonymisée)</li>
+                <li><strong>Supabase Inc.</strong> - Hébergement de base de données (États-Unis - Clauses Contractuelles Types, Décision 2021/914)</li>
+                <li><strong>Stripe Inc.</strong> - Traitement des paiements (États-Unis - Clauses Contractuelles Types, Décision 2021/914)</li>
+                <li><strong>Cloudinary Inc.</strong> - Hébergement des médias (États-Unis - Clauses Contractuelles Types, Décision 2021/914)</li>
+                <li><strong>Google Analytics</strong> - Analyse d'audience (anonymisée, consentement requis)</li>
               </ul>
             </section>
 
@@ -262,24 +264,38 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             </section>
 
             <section>
-              <h3 className="font-bold text-lg mb-3">8. Contact et plaintes</h3>
+              <h3 className="font-bold text-lg mb-3">8. Violation de données (Article 33 RGPD)</h3>
+              <p>
+                En cas de violation de données à caractère personnel susceptible d'engendrer un risque pour vos droits et libertés, InkUp s'engage à :
+              </p>
+              <ul className="list-disc list-inside mt-2 space-y-1">
+                <li>Notifier la CNIL dans un délai de <strong>72 heures</strong> après en avoir pris connaissance</li>
+                <li>Vous informer directement si la violation est susceptible d'engendrer un risque élevé</li>
+                <li>Documenter toute violation dans notre registre interne</li>
+              </ul>
+              <p className="mt-2">
+                Pour signaler une violation ou un incident de sécurité : <strong>privacy@inkup.com</strong>
+              </p>
+            </section>
+
+            <section>
+              <h3 className="font-bold text-lg mb-3">9. Contact et plaintes</h3>
               <p>
                 Pour toute question concernant vos données personnelles :
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
                 <li><strong>Email :</strong> privacy@inkup.com</li>
                 <li><strong>Adresse :</strong> 1 RUE du Bois Joly, 49120 Chemillé-en-Anjou</li>
-                <li><strong>Téléphone :</strong> +33 1 XX XX XX XX</li>
               </ul>
               <p className="mt-2">
                 Vous avez également le droit d'introduire une plainte auprès de la CNIL :
                 <br />
-                <strong>CNIL - 3 Place de Fontenoy - 75007 Paris</strong>
+                <strong>CNIL - 3 Place de Fontenoy - 75007 Paris - www.cnil.fr</strong>
               </p>
             </section>
 
             <section>
-              <h3 className="font-bold text-lg mb-3">9. Mise à jour de cette politique</h3>
+              <h3 className="font-bold text-lg mb-3">10. Mise à jour de cette politique</h3>
               <p>
                 Cette politique peut être modifiée pour tenir compte des évolutions légales et techniques. 
                 Toute modification sera notifiée aux utilisateurs par email et publiée sur cette page.
@@ -311,9 +327,9 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               <h3 className="font-bold text-lg mb-3">Hébergement</h3>
               <div className="space-y-2">
                 <p><strong>Fournisseur :</strong> Supabase Inc.</p>
-                <p><strong>Adresse :</strong> 620 Dory Street, San Francisco, CA 94107, USA</p>
-                <p><strong>Téléphone :</strong> +1 (415) 555-0123</p>
+                <p><strong>Adresse :</strong> 970 Toa Payoh North, #07-04, Singapore 318992</p>
                 <p><strong>Email :</strong> support@supabase.io</p>
+                <p><strong>Transfert hors UE :</strong> Encadré par les Clauses Contractuelles Types (Décision 2021/914)</p>
               </div>
             </section>
 
@@ -322,7 +338,6 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
               <div className="space-y-2">
                 <p><strong>Nom :</strong> {LEGAL_INFO.entrepreneur}</p>
                 <p><strong>Email :</strong> contact@inkup.com</p>
-                <p><strong>Téléphone :</strong> +33 1 XX XX XX XX</p>
               </div>
             </section>
 

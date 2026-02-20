@@ -329,3 +329,20 @@ input:focus, textarea:focus, select:focus {
     display: none !important;
   }
 }
+
+/* =============================================
+   RÈGLES DE LISIBILITÉ - TEXTE NOIR SUR FOND BLANC UNIQUEMENT
+   ============================================= */
+
+/* Supprimer les ombres des titres */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: none !important;
+}
+
+.bg-white {
+  color: #111111;
+}
+
+.bg-white * {
+  color: #111111;
+}

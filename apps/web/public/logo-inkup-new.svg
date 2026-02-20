@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" width="490" height="490">
+  <!-- White background -->
+  <rect width="490" height="490" fill="#FFFFFF"/>
+
+  <!-- Shadow parallelogram (offset bottom-right) -->
+  <polygon points="45,145 430,145 400,215 15,215" fill="#cccccc" opacity="0.7" transform="translate(12,12)"/>
+  <!-- Black parallelogram (horizontal band, skewed) -->
+  <polygon points="45,145 430,145 400,215 15,215" fill="#111111"/>
+
+  <!-- Shadow pen/pencil (diagonal, offset) -->
+  <polygon points="232,30 258,30 278,300 252,300" fill="#cccccc" opacity="0.7" transform="translate(10,10)"/>
+  <!-- Blue pen body (diagonal rectangle) -->
+  <polygon points="232,30 258,30 278,300 252,300" fill="#3B82F6"/>
+  <!-- Pen tip triangle -->
+  <polygon points="252,300 278,300 265,330" fill="#1d4ed8"/>
+  <!-- Pen cap (dark top) -->
+  <polygon points="230,28 260,28 256,8 234,8" fill="#1a1a2e"/>
+
+  <!-- Text "Ink" bold italic black -->
+  <text x="38" y="415" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="118" fill="#111111" font-style="italic">Ink</text>
+  <!-- Text "Up" bold italic blue -->
+  <text x="222" y="415" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="118" fill="#3B82F6" font-style="italic">Up</text>
+</svg>

@@ -35,12 +35,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
       {/* Logo */}
       <div className="flex items-center gap-3 mb-8 pb-4 border-b-4 border-black">
         <InkUpLogo className="w-10 h-10" />
-        <div>
-          <h1 className="font-['Bangers'] text-2xl">InkUp</h1>
-          <p className="text-sm text-gray-600 font-['Comic Neue']">
-            {user.role === 'author' ? 'Espace Auteur' : 'Espace Lecteur'}
-          </p>
-        </div>
+        <p className="text-sm text-gray-600 font-['Comic Neue']">
+          {user.role === 'author' ? 'Espace Auteur' : 'Espace Lecteur'}
+        </p>
       </div>
 
       {/* Navigation */}

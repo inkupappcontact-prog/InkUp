@@ -28,7 +28,7 @@ const Settings: React.FC = () => {
   const renderGeneral = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Informations du compte</h3>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Informations du compte</h3>
         <div className="space-y-4">
           <div>
             <ParallelogramInput
@@ -39,8 +39,8 @@ const Settings: React.FC = () => {
             />
           </div>
           <div>
-            <label className="font-bold block mb-2">Email</label>
-            <div className="border-2 border-black p-3 bg-gray-50">
+            <label className="font-bold block mb-2 text-black">Email</label>
+            <div className="border-2 border-black p-3 bg-gray-50 text-black">
               flavian.bouin@gmail.com
             </div>
           </div>
@@ -52,11 +52,11 @@ const Settings: React.FC = () => {
   const renderNotifications = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Préférences de notification</h3>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Préférences de notification</h3>
         <div className="space-y-4">
           {Object.entries(notifications).map(([key, value]) => (
             <div key={key} className="flex items-center justify-between">
-              <span className="font-bold">{key}</span>
+              <span className="font-bold text-black">{key}</span>
               <input
                 type="checkbox"
                 checked={value}
@@ -73,8 +73,8 @@ const Settings: React.FC = () => {
   const renderPrivacy = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Paramètres de confidentialité</h3>
-        <p>Vos paramètres de confidentialité sont configurés pour protéger vos données.</p>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Paramètres de confidentialité</h3>
+        <p className="text-black">Vos paramètres de confidentialité sont configurés pour protéger vos données.</p>
       </div>
     </div>
   );
@@ -82,8 +82,8 @@ const Settings: React.FC = () => {
   const renderAppearance = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Apparence</h3>
-        <p>Personnalisez l'apparence de l'application.</p>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Apparence</h3>
+        <p className="text-black">Personnalisez l'apparence de l'application.</p>
       </div>
     </div>
   );
@@ -91,8 +91,8 @@ const Settings: React.FC = () => {
   const renderBilling = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Facturation</h3>
-        <p>Aucune information de facturation pour le moment.</p>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Facturation</h3>
+        <p className="text-black">Aucune information de facturation pour le moment.</p>
       </div>
     </div>
   );
@@ -100,8 +100,8 @@ const Settings: React.FC = () => {
   const renderHelp = () => (
     <div className="space-y-6">
       <div>
-        <h3 className="font-['Bangers'] text-xl mb-4">Aide</h3>
-        <p>Contactez-nous à support@inkup.com pour toute question.</p>
+        <h3 className="font-['Bangers'] text-xl mb-4 text-black">Aide</h3>
+        <p className="text-black">Contactez-nous à support@inkup.com pour toute question.</p>
       </div>
     </div>
   );
@@ -119,9 +119,9 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-8 text-black">
       <div className="max-w-6xl mx-auto">
-        <h1 className="font-['Bangers'] text-4xl mb-8">PARAMÈTRES</h1>
+        <h1 className="font-['Bangers'] text-4xl mb-8 text-black">PARAMÈTRES</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <div className="lg:col-span-1">

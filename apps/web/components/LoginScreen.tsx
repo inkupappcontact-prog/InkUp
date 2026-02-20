@@ -15,24 +15,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [userType, setUserType] = useState<'reader' | 'author'>('reader');
   
-  // Vérifier la configuration Supabase au démarrage
-  React.useEffect(() => {
-    console.log('🔍 Vérification configuration Supabase:', {
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL ? '✅ Défini' : '❌ Manquant',
-      supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? '✅ Défini' : '❌ Manquant',
-      keyLength: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.length || 0
-    });
-    
-    // Test direct du client Supabase
-    console.log('🔍 Client Supabase:', supabase);
-    
-    // Test simple d'authentification
-    supabase.auth.getSession().then(result => {
-      console.log('📊 Test getSession:', result);
-    }).catch(err => {
-      console.error('❌ Erreur getSession:', err);
-    });
-  }, []);
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,16 +23,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const [address, setAddress] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string; artistName?: string; siret?: string; address?: string }>({});
   const [loading, setLoading] = useState(false);
-
-  // Test data for Flavian Blouin
-  const fillTestData = () => {
-    setEmail('flavian.bouin@gmail.com');
-    setPassword('test123456');
-    setSiret('99307611600017');
-    setAddress('49120 Chemillé-en-Anjou');
-    setUserType('author');
-    setArtistName('Flavian BD');
-  };
 
   const sendWelcomeEmail = async (userEmail: string, userName: string, userRole: string, artistName?: string) => {
     try {
@@ -63,35 +35,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         },
       });
 
-      if (error) {
-        console.error('Erreur envoi email bienvenue:', error);
-      } else {
-        console.log('Email de bienvenue envoyé avec succès');
-      }
-    } catch (error) {
-      console.error('Erreur service email bienvenue:', error);
+    } catch {
+      // Erreur silencieuse - ne pas exposer les détails en production
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Test de connexion Supabase avant tout
-    try {
-      console.log('🔍 Test connexion Supabase...');
-      const { data: testData, error: testError } = await supabase.from('profiles').select('count');
-      console.log('📊 Test connexion résultat:', { testData, testError });
-      
-      if (testError && !testError.message?.includes('relation "profiles" does not exist')) {
-        console.error('❌ Erreur connexion Supabase:', testError);
-        setErrors({ email: 'Erreur de connexion à la base de données' });
-        return;
-      }
-    } catch (testErr) {
-      console.error('❌ Erreur test connexion:', testErr);
-      setErrors({ email: 'Erreur de connexion au serveur' });
-      return;
-    }
     
     const newErrors: { email?: string; password?: string; artistName?: string; siret?: string; address?: string } = {};
     
@@ -117,60 +68,18 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
     try {
       if (isLogin) {
-        console.log('🔍 Tentative de connexion avec:', {
-          email,
-          passwordLength: password.length,
-          passwordProvided: !!password
-        });
-
         const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
 
-        console.log('📊 Réponse login Supabase:', { data, error });
-
-        if (error) {
-          console.error('❌ Erreur login détaillée:', {
-            message: error.message,
-            status: error.status,
-            code: error.code,
-            details: error
-          });
-          throw error;
-        }
+        if (error) throw error;
 
         if (data.user) {
-          console.log('User data:', data.user);
-          console.log('User metadata:', data.user.user_metadata);
           const userRole = data.user.user_metadata?.role || 'reader';
-          console.log('User role:', userRole);
-          
-          if (userRole === 'author') {
-            console.log('Redirecting to dashboard');
-            window.location.href = '/dashboard';
-          } else {
-            console.log('Redirecting to reader');
-            window.location.href = '/reader';
-          }
+          window.location.href = userRole === 'author' ? '/dashboard' : '/reader';
         }
       } else {
-        console.log('🔍 Tentative d\'inscription avec les données:', {
-          email,
-          passwordLength: password.length,
-          userType,
-          artistName: userType === 'author' ? artistName : null,
-          siret,
-          address,
-          metadata: {
-            full_name: email.split('@')[0],
-            role: userType,
-            artist_name: userType === 'author' ? artistName : null,
-            siret,
-            address,
-          }
-        });
-
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
@@ -185,39 +94,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           }
         });
 
-        console.log('📊 Réponse Supabase complète:', JSON.stringify({ data, error }, null, 2));
-
-        if (error) {
-          console.error('❌ Erreur Supabase détaillée:', {
-            message: error.message || 'Pas de message',
-            status: error.status || 'Pas de status',
-            code: error.code || 'Pas de code',
-            details: error || 'Pas de details'
-          });
-          throw error;
-        }
+        if (error) throw error;
 
         if (data.user) {
-          console.log('✅ Signup successful - User created:', data.user);
-          console.log('📋 User metadata:', data.user.user_metadata);
-          console.log('🎯 User role from metadata:', data.user.user_metadata?.role);
-          console.log('🎨 Artist name from metadata:', data.user.user_metadata?.artist_name);
-          
-          try {
-            const { data: profileData, error: profileError } = await supabase
-              .from('profiles')
-              .select('*')
-              .eq('id', data.user.id)
-              .single();
-            
-            if (profileError) {
-              console.error('❌ Profile creation error:', profileError);
-            } else {
-              console.log('✅ Profile created successfully:', profileData);
-            }
-          } catch (err) {
-            console.error('❌ Profile check error:', err);
-          }
 
           await sendWelcomeEmail(
             email,
@@ -227,59 +106,23 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           );
 
           const userRole = data.user.user_metadata?.role || 'reader';
-          
-          if (userRole === 'author') {
-            console.log('Redirecting to dashboard');
-            window.location.href = '/dashboard';
-          } else {
-            console.log('Redirecting to reader');
-            window.location.href = '/reader';
-          }
+          window.location.href = userRole === 'author' ? '/dashboard' : '/reader';
           setErrors({});
         }
       }
     } catch (err: any) {
-      console.error('Erreur auth:', err);
       if (err.message?.includes('Invalid login credentials')) {
         setErrors({ email: 'Email ou mot de passe incorrect' });
       } else if (err.message?.includes('User already registered')) {
-          console.log('🔄 Utilisateur déjà existant, tentative de connexion automatique');
           try {
-            console.log('🔍 Tentative de connexion auto pour:', {
-              email,
-              passwordLength: password.length
-            });
-
-            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-              email,
-              password,
-            });
-
-            console.log('📊 Réponse connexion auto:', { loginData, loginError });
-
-            if (loginError) {
-              console.error('❌ Erreur connexion auto:', {
-                message: loginError.message,
-                status: loginError.status,
-                code: loginError.code
-              });
-              throw loginError;
-            }
-
+            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+            if (loginError) throw loginError;
             if (loginData.user) {
               const userRole = loginData.user.user_metadata?.role || 'reader';
-              
-              if (userRole === 'author') {
-                console.log('Redirecting to dashboard');
-                window.location.href = '/dashboard';
-              } else {
-                console.log('Redirecting to reader');
-                window.location.href = '/reader';
-              }
+              window.location.href = userRole === 'author' ? '/dashboard' : '/reader';
               setErrors({});
             }
           } catch (autoErr: any) {
-            console.error('Erreur connexion auto:', autoErr);
             setErrors({ email: 'Erreur lors de la connexion automatique' });
           }
       } else {
@@ -312,7 +155,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         <div className="bg-gradient-to-br from-gray-900 to-black border-4 border-[#FFD700] rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
             <InkUpLogo className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="font-bangers text-4xl mb-2 text-[#FFD700]">
+            <h1 className="font-bangers text-4xl mb-2" style={{color: '#FFD700'}}>
               {isLogin ? 'Connexion' : 'Inscription'}
             </h1>
             <p className="text-white font-comic-neue">
@@ -431,33 +274,27 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             dark
           />
 
-          <div className="flex items-center justify-between py-2">
-             <label className="flex items-center space-x-3 cursor-pointer group">
-                <div className="w-5 h-5 border-2 border-white bg-transparent flex items-center justify-center transition-all group-hover:border-[#2563EB]">
-                   <input type="checkbox" className="peer appearance-none w-full h-full cursor-pointer" />
-                   <div className="hidden peer-checked:block w-2.5 h-2.5 bg-[#2563EB]"></div>
-                </div>
-                <span className="font-bold text-[10px] uppercase tracking-wider text-white/60 group-hover:text-white">Rester connecté</span>
+          <div className="flex items-center justify-between py-3">
+             <label style={{display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer'}}>
+                <input
+                  type="checkbox"
+                  style={{
+                    width: 20,
+                    height: 20,
+                    accentColor: '#FFD700',
+                    cursor: 'pointer',
+                    flexShrink: 0,
+                  }}
+                />
+                <span style={{color: '#FFFFFF', fontWeight: 700, fontSize: '0.875rem'}}>Rester connecté</span>
              </label>
              
              {isLogin && (
-               <a href="#" className="font-bold text-[10px] uppercase tracking-wider text-[#2563EB] hover:text-[#2563EB]/80 transition-colors italic">
+               <a href="#" className="font-bold text-sm transition-colors underline underline-offset-2" style={{color: '#FFD700'}}>
                  Mot de passe oublié ?
                </a>
              )}
           </div>
-
-          {!isLogin && (
-            <div className="mb-4">
-              <button
-                type="button"
-                onClick={fillTestData}
-                className="text-xs text-gray-400 hover:text-[#FFD700] transition-colors"
-              >
-                🧪 Remplir avec données de test (Flavian Blouin)
-              </button>
-            </div>
-          )}
 
           <form onSubmit={handleSubmit}>
             <ComicButton 
@@ -472,7 +309,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm" style={{color: '#FFFFFF'}}>
             {isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?'}
             <button
               onClick={() => setIsLogin(!isLogin)}
