@@ -40,7 +40,7 @@ CREATE TRIGGER on_auth_user_created
 
 -- Create works table
 CREATE TABLE works (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   author_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
   title TEXT NOT NULL,
   pages_urls TEXT[] DEFAULT '{}',
@@ -58,9 +58,18 @@ CREATE POLICY "Authors can manage own works" ON works
 CREATE POLICY "Readers can view works" ON works
   FOR SELECT USING (true);
 
+-- Create transactions table
+CREATE TABLE transactions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
+  work_id UUID REFERENCES works(id) ON DELETE CASCADE,
+  amount INTEGER NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW())
+);
+
 -- Create purchases table
 CREATE TABLE purchases (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
   work_id UUID REFERENCES works(id) ON DELETE CASCADE,
   amount INTEGER NOT NULL,

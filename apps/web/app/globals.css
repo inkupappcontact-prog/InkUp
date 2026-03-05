@@ -1,10 +1,331 @@
 @import "tailwindcss";
 
-body { background-color: white; color: black; }
+/* Variables CSS pour design BD franco-belge */
+:root {
+  --color-primary: #2563EB; /* Bleu charte graphique */
+  --color-secondary: #FFFFFF; /* Texte blanc sur fond noir */
+  --color-accent: #FF6B35; /* Orange vif */
+  --color-success: #00FF00; /* Vert BD */
+  --color-error: #FF0000; /* Rouge BD */
+  --color-warning: #2563EB; /* Bleu charte graphique */
+  
+  --font-primary: 'Comic Neue', cursive;
+  --font-display: 'Bangers', cursive;
+  --font-comic: 'Comic Neue', cursive;
+  
+  --border-width: 4px;
+  --border-radius: 0.5rem;
+  --shadow: 0 8px 0 0 rgba(37, 99, 235, 0.3); /* Ombre bleue BD */
+}
+
+/* Design BD franco-belge : fond noir, texte blanc */
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Styles pour les polices personnalisées */
+.font-roboto {
+  font-family: var(--font-primary);
+}
+
+.font-bangers {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+}
+
+.font-comic-neue {
+  font-family: var(--font-comic);
+}
+
+/* Amélioration de la lisibilité du texte sur fond noir */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  color: var(--color-secondary);
+  text-shadow: 2px 2px 0px rgba(37, 99, 235, 0.2); /* Ombre bleue subtile */
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+  max-width: 65ch;
+  color: var(--color-secondary);
+}
+
+/* Styles pour les liens */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Styles pour les boutons */
+button {
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border: var(--border-width) solid var(--color-secondary);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+button:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+button:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Styles pour les inputs */
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: var(--border-width) solid var(--color-secondary);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-secondary);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Styles pour les erreurs */
+.error {
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Styles pour les succès */
+.success {
+  color: var(--color-success);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Styles pour les avertissements */
+.warning {
+  color: var(--color-warning);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Styles pour les cartes BD */
+.card {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--border-radius);
+  z-index: -1;
+}
+
+.card:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 0 12px 0 0 rgba(37, 99, 235, 0.4);
+}
+
+/* Styles pour les badges BD */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: 2px solid var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-primary {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.badge-accent {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+/* Styles pour les parallélogrammes BD */
 .parallelogram {
   transform: skewX(-10deg);
+  border: var(--border-width) solid var(--color-secondary);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: var(--color-secondary);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  display: inline-block;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
 }
+
+.parallelogram::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+  pointer-events: none;
+}
+
+.parallelogram:hover {
+  transform: skewX(-10deg) translateY(-2px);
+  box-shadow: 0 8px 0 0 rgba(37, 99, 235, 0.3);
+}
+
 .parallelogram span {
   transform: skewX(10deg);
   display: inline-block;
+}
+
+/* Styles pour les sections BD */
+.section {
+  padding: 4rem 1rem;
+  background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 0px rgba(37, 99, 235, 0.3);
+  transform: rotate(-2deg);
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  max-width: 2xl;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .section {
+    padding: 2rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .parallelogram {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mode sombre (déjà actif) */
+@media (prefers-color-scheme: dark) {
+  /* Styles pour mode sombre déjà appliqués */
+}
+
+/* Styles pour l'impression */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }

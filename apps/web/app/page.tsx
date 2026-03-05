@@ -1,26 +1,83 @@
 'use client';
 
-import Link from 'next/link';
-import InkUpLogo from '@/components/ui/InkUpLogo';
-import ComicButton from '@/components/ui/ComicButton';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+import LoginScreen from '@/components/LoginScreen';
+import Dashboard from '@/components/Dashboard';
+import LandingPage from '@/components/LandingPage';
+import SkeletonDashboard from '@/components/SkeletonDashboard';
+
+interface Profile {
+  role: 'reader' | 'author';
+  artist_name?: string;
+}
 
 export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4">
-      <InkUpLogo className="mb-8 w-48 h-auto" />
-      <h1 className="text-4xl font-bold mb-4 text-blue-500">Bienvenue sur InkUp</h1>
-      <p className="text-lg text-center mb-8 max-w-md">
-        La plateforme pour les artistes de bande dessinée indépendants et leurs lecteurs passionnés.
-        Découvrez, partagez et achetez des BD uniques.
-      </p>
-      <div className="flex gap-4">
-        <Link href="/login">
-          <ComicButton variant="primary">Se connecter</ComicButton>
-        </Link>
-        <Link href="/signup">
-          <ComicButton variant="secondary">S'inscrire</ComicButton>
-        </Link>
-      </div>
-    </div>
-  );
+  const [user, setUser] = useState<any>(null);
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const getData = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+      if (user) {
+        // Utiliser les métadonnées utilisateur au lieu de la table profiles
+        const userRole = user.user_metadata?.role || 'reader';
+        const artistName = user.user_metadata?.artist_name || 'Auteur';
+        setProfile({ role: userRole, artist_name: artistName } as Profile);
+      }
+      setLoading(false);
+    };
+    getData();
+  }, []);
+
+  const handleLogin = () => {
+    setShowLogin(true);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    setProfile(null);
+    setShowLogin(false);
+  };
+
+  const handleRead = (title: string) => {
+    // Implémenter la lecture
+    console.log('Lecture de:', title);
+  };
+
+  if (loading) {
+    return <SkeletonDashboard />;
+  }
+
+  // Si l'utilisateur est connecté, afficher le dashboard
+  if (user && profile) {
+    const dashboardUser = {
+      email: user.email || '',
+      role: profile.role,
+      balance: 150, // Solde simulé
+      plan: 'free' as const // Plan par défaut
+    };
+
+    return (
+      <Dashboard 
+        user={dashboardUser} 
+        onLogout={handleLogout} 
+        onRead={handleRead}
+      />
+    );
+  }
+
+  // Si l'utilisateur clique sur "Se connecter", afficher l'écran de login
+  if (showLogin) {
+    return <LoginScreen initialMode="login" />;
+  }
+
+  // Par défaut, afficher la landing page
+  return <LandingPage onStart={handleLogin} />;
 }
