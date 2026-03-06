@@ -175,17 +175,15 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
   const handleGoogleLogin = async () => {
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: `${window.location.origin}/dashboard`
-        }
+          redirectTo: `${window.location.origin}/dashboard`,
+        },
       });
-
       if (error) throw error;
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Erreur Google:', err);
-      alert('Erreur lors de la connexion Google');
     }
   };
 

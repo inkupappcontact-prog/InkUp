@@ -94,8 +94,9 @@ const OrderManager: React.FC = () => {
   });
 
   const handleUpdateStatus = (orderId: string, newStatus: Order['status']) => {
-    console.log(`Mise à jour du statut ${orderId} vers ${newStatus}`);
-    // Implémenter la mise à jour du statut
+    // TODO: implémenter via API Supabase
+    void orderId;
+    void newStatus;
   };
 
   return (
