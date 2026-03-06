@@ -24,7 +24,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
     }
   };
 
-  const toggleFullscreen = () => {
+  const handleToggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
   };
 
@@ -45,13 +45,13 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
         break;
       case 'f':
       case 'F':
-        toggleFullscreen();
+        handleToggleFullscreen();
         break;
     }
   };
 
   return (
-    <div 
+    <div
       className={`${isFullscreen ? 'fixed inset-0 z-50 bg-black' : 'min-h-screen bg-black'} flex flex-col`}
       onKeyDown={handleKeyDown}
       tabIndex={0}
@@ -73,10 +73,10 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
               </p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-2">
             <button
-              onClick={toggleFullscreen}
+              onClick={handleToggleFullscreen}
               className="p-2 border-2 border-black hover:bg-gray-100"
               title="Plein écran (F)"
             >
@@ -135,7 +135,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
               <ChevronLeft className="w-4 h-4" />
               Précédent
             </ComicButton>
-            
+
             <div className="flex items-center gap-2">
               {[...Array(Math.min(pages.length, 5))].map((_, index) => {
                 const pageIndex = index;
@@ -150,7 +150,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
                 );
               })}
             </div>
-            
+
             <ComicButton
               onClick={nextPage}
               disabled={currentPage === pages.length - 1}

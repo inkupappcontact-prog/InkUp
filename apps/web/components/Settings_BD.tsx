@@ -10,7 +10,7 @@ const Settings: React.FC = () => {
   return (
     <div className="bg-gray-900 border-4 border-[#2563EB] rounded-lg p-8">
       <h2 className="font-['Bangers'] text-3xl text-[#2563EB] mb-6">Paramètres</h2>
-      
+
       <div className="space-y-8">
         {/* Notifications */}
         <div className="bg-black border-2 border-[#2563EB] rounded-lg p-6">
@@ -21,8 +21,8 @@ const Settings: React.FC = () => {
           <div className="space-y-4">
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-white">Notifications par email</span>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={notifications}
                 onChange={(e) => setNotifications(e.target.checked)}
                 className="w-5 h-5 accent-[#2563EB]"
@@ -30,8 +30,8 @@ const Settings: React.FC = () => {
             </label>
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-white">Notifications push</span>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={notifications}
                 onChange={(e) => setNotifications(e.target.checked)}
                 className="w-5 h-5 accent-[#2563EB]"
@@ -39,8 +39,8 @@ const Settings: React.FC = () => {
             </label>
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-white">Nouveautés auteurs suivis</span>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={notifications}
                 onChange={(e) => setNotifications(e.target.checked)}
                 className="w-5 h-5 accent-[#2563EB]"
@@ -58,8 +58,8 @@ const Settings: React.FC = () => {
           <div className="space-y-4">
             <label className="flex items-center justify-between cursor-pointer">
               <span className="text-white">Mode sombre</span>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={darkMode}
                 onChange={(e) => setDarkMode(e.target.checked)}
                 className="w-5 h-5 accent-[#2563EB]"
@@ -67,7 +67,7 @@ const Settings: React.FC = () => {
             </label>
             <div>
               <label className="block text-white mb-2">Langue</label>
-              <select 
+              <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
                 className="w-full bg-gray-800 border border-[#2563EB] rounded-lg px-4 py-2 text-white"

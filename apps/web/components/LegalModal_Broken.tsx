@@ -48,7 +48,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Objet</h3>
               <p>
-                Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation de la plateforme InkUp, 
+                Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation de la plateforme InkUp,
                 mettant en relation les auteurs de bandes dessinées et les lecteurs.
               </p>
             </section>
@@ -63,7 +63,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">3. Inscription</h3>
               <p>
-                L'inscription est gratuite et ouverte à toute personne majeure. L'utilisateur s'engage à fournir 
+                L'inscription est gratuite et ouverte à toute personne majeure. L'utilisateur s'engage à fournir
                 des informations exactes et à maintenir ses données à jour.
               </p>
             </section>
@@ -71,7 +71,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">4. Contenu</h3>
               <p>
-                Les auteurs conservent tous les droits sur leurs œuvres. InkUp agit comme simple intermédiaire 
+                Les auteurs conservent tous les droits sur leurs œuvres. InkUp agit comme simple intermédiaire
                 et ne revendique aucun droit sur les contenus publiés.
               </p>
             </section>
@@ -79,7 +79,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">5. InkPoints</h3>
               <p>
-                Les InkPoints sont la monnaie virtuelle de la plateforme. Ils ne peuvent être échangés contre 
+                Les InkPoints sont la monnaie virtuelle de la plateforme. Ils ne peuvent être échangés contre
                 de l'argent réel et n'ont aucune valeur monétaire hors de la plateforme.
               </p>
             </section>
@@ -87,7 +87,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">6. Responsabilité</h3>
               <p>
-                InkUp s'efforce de maintenir la plateforme accessible mais ne garantit pas une disponibilité continue. 
+                InkUp s'efforce de maintenir la plateforme accessible mais ne garantit pas une disponibilité continue.
                 La responsabilité d'InkUp est limitée aux dommages directs et prouvés.
               </p>
             </section>
@@ -95,7 +95,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">7. Propriété intellectuelle</h3>
               <p>
-                Tous les éléments de la plateforme (design, logo, fonctionnalités) sont protégés par le droit 
+                Tous les éléments de la plateforme (design, logo, fonctionnalités) sont protégés par le droit
                 de la propriété intellectuelle et appartiennent à InkUp.
               </p>
             </section>
@@ -103,7 +103,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">8. Modification</h3>
               <p>
-                InkUp se réserve le droit de modifier les présentes CGU à tout moment. Les modifications seront 
+                InkUp se réserve le droit de modifier les présentes CGU à tout moment. Les modifications seront
                 notifiées aux utilisateurs par email.
               </p>
             </section>
@@ -116,7 +116,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Prix</h3>
               <p>
-                Les prix des œuvres sont fixés par les auteurs et affichés en euros. Les prix sont indiqués 
+                Les prix des œuvres sont fixés par les auteurs et affichés en euros. Les prix sont indiqués
                 TTC et incluent tous les frais applicables.
               </p>
             </section>
@@ -124,7 +124,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">2. Paiement</h3>
               <p>
-                Le paiement s'effectue par carte bancaire sécurisée ou via les InkPoints. La transaction est 
+                Le paiement s'effectue par carte bancaire sécurisée ou via les InkPoints. La transaction est
                 considérée comme definitive dès validation du paiement.
               </p>
             </section>
@@ -132,7 +132,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">3. Délai de rétractation</h3>
               <p>
-                Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique 
+                Conformément à l'article L221-28 du Code de la consommation, le droit de rétractation ne s'applique
                 pas aux contenus numériques téléchargés immédiatement après l'achat.
               </p>
             </section>
@@ -140,7 +140,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">4. Livraison</h3>
               <p>
-                Pour les œuvres physiques, la livraison s'effectue sous 3-5 jours ouvrés. Les frais de port 
+                Pour les œuvres physiques, la livraison s'effectue sous 3-5 jours ouvrés. Les frais de port
                 sont offerts dès 25€ d'achat.
               </p>
             </section>
@@ -148,7 +148,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">5. Garantie</h3>
               <p>
-                Les œuvres physiques sont garanties contre tout défaut de fabrication. En cas de problème, 
+                Les œuvres physiques sont garanties contre tout défaut de fabrication. En cas de problème,
                 contactez le service client sous 30 jours.
               </p>
             </section>
@@ -156,7 +156,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">6. Révocation</h3>
               <p>
-                En cas de non-respect des présentes CGV, InkUp se réserve le droit de suspendre ou de résilier 
+                En cas de non-respect des présentes CGV, InkUp se réserve le droit de suspendre ou de résilier
                 le compte de l'utilisateur.
               </p>
             </section>
@@ -169,7 +169,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Collecte des données</h3>
               <p>
-                Conformément au RGPD (Règlement Général sur la Protection des Données), InkUp collecte uniquement les 
+                Conformément au RGPD (Règlement Général sur la Protection des Données), InkUp collecte uniquement les
                 données strictement nécessaires à la fourniture de ses services :
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
@@ -267,7 +267,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">8. Transferts internationaux</h3>
               <p>
-                Certains de nos sous-traitants sont situés hors de l'Union Européenne. 
+                Certains de nos sous-traitants sont situés hors de l'Union Européenne.
                 Tous les transferts sont protégés par :
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
@@ -297,7 +297,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">10. Mise à jour de cette politique</h3>
               <p>
-                Cette politique peut être modifiée pour tenir compte des évolutions légales et techniques. 
+                Cette politique peut être modifiée pour tenir compte des évolutions légales et techniques.
                 Toute modification sera notifiée aux utilisateurs par email et publiée sur cette page.
               </p>
               <p className="mt-2">
@@ -345,7 +345,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">Propriété intellectuelle</h3>
               <p>
-                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur 
+                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur
                 et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
               </p>
             </section>
@@ -353,7 +353,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">Cookies et RGPD</h3>
               <p>
-                Ce site utilise des cookies conformément au RGPD. 
+                Ce site utilise des cookies conformément au RGPD.
                 Consultez notre politique de confidentialité pour plus d'informations.
               </p>
             </section>
@@ -385,7 +385,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         <div className="flex justify-end gap-4">
-          <ComicButton 
+          <ComicButton
             onClick={onClose}
             className="px-6 py-2"
           >
@@ -428,7 +428,7 @@ export default LegalModal;
             <section>
               <h3 className="font-bold text-lg mb-3">Propriété intellectuelle</h3>
               <p>
-                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur 
+                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur
                 et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
               </p>
             </section>
@@ -436,7 +436,7 @@ export default LegalModal;
             <section>
               <h3 className="font-bold text-lg mb-3">Limitation de responsabilité</h3>
               <p>
-                InkUp ne pourra être tenue responsable des dommages directs et indirects pouvant découler de 
+                InkUp ne pourra être tenue responsable des dommages directs et indirects pouvant découler de
                 l'utilisation de ce site.
               </p>
             </section>
@@ -444,7 +444,7 @@ export default LegalModal;
             <section>
               <h3 className="font-bold text-lg mb-3">Litiges</h3>
               <p>
-                Tout litige relatif à l'utilisation du site InkUp est soumis au droit français. En l'absence 
+                Tout litige relatif à l'utilisation du site InkUp est soumis au droit français. En l'absence
                 d'accord amiable, le litige sera porté devant les tribunaux compétents.
               </p>
             </section>
@@ -494,7 +494,7 @@ export default LegalModal;
               />
               <span className="font-bold">J'ai lu et j'accepte</span>
             </label>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={onClose}

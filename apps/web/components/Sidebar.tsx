@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
-          
+
           return (
             <button
               key={tab.id}
@@ -80,14 +80,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
               </p>
             </div>
           </div>
-          
+
           <div className="flex items-center justify-between bg-white border-2 border-black px-3 py-2">
             <span className="text-sm font-bold">Solde</span>
             <span className="font-bold text-[#2563EB]">{user.balance} €</span>
           </div>
         </div>
 
-        <ComicButton 
+        <ComicButton
           onClick={onLogout}
           className="w-full flex items-center gap-2 justify-center"
         >

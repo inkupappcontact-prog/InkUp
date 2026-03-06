@@ -36,38 +36,38 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({ onSubmit, onC
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-2">
-        <ParallelogramInput 
-            label="Destinataire (Nom complet)" 
-            value={formData.fullName} 
-            onChange={(e) => handleChange('fullName', e.target.value)} 
+        <ParallelogramInput
+            label="Destinataire (Nom complet)"
+            value={formData.fullName}
+            onChange={(e) => handleChange('fullName', e.target.value)}
             placeholder="Ex: Spirou"
         />
-        
-        <ParallelogramInput 
-            label="Adresse (Rue, Numéro)" 
-            value={formData.addressLine1} 
-            onChange={(e) => handleChange('addressLine1', e.target.value)} 
+
+        <ParallelogramInput
+            label="Adresse (Rue, Numéro)"
+            value={formData.addressLine1}
+            onChange={(e) => handleChange('addressLine1', e.target.value)}
             placeholder="Ex: 12 Rue de la Paix"
         />
 
         <div className="grid grid-cols-2 gap-4">
-             <ParallelogramInput 
-                label="Code Postal" 
-                value={formData.zipCode} 
-                onChange={(e) => handleChange('zipCode', e.target.value)} 
+             <ParallelogramInput
+                label="Code Postal"
+                value={formData.zipCode}
+                onChange={(e) => handleChange('zipCode', e.target.value)}
                 placeholder="75000"
             />
-            <ParallelogramInput 
-                label="Ville" 
-                value={formData.city} 
-                onChange={(e) => handleChange('city', e.target.value)} 
+            <ParallelogramInput
+                label="Ville"
+                value={formData.city}
+                onChange={(e) => handleChange('city', e.target.value)}
                 placeholder="Paris"
             />
         </div>
 
         <div className="mb-6">
             <label className="block text-black font-bold text-xs uppercase tracking-widest mb-2 ml-1">Pays</label>
-            <select 
+            <select
                 value={formData.country}
                 onChange={(e) => handleChange('country', e.target.value)}
                 className="w-full h-12 border-2 border-black px-4 font-bold uppercase text-black focus:outline-none focus:border-[#2563EB] focus:shadow-[4px_4px_0px_0px_#2563EB] transition-all bg-white"
@@ -80,8 +80,8 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({ onSubmit, onC
         </div>
 
         <div className="flex gap-4 pt-4">
-            <button 
-                type="button" 
+            <button
+                type="button"
                 onClick={onCancel}
                 className="flex-1 py-3 border-2 border-black font-['Bangers'] uppercase text-xl hover:bg-black hover:text-white transition-colors"
             >

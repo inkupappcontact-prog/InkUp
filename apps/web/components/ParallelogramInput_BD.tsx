@@ -24,14 +24,15 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === 'password';
-  const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
+  const inputType = isPassword && showPassword ? 'text' :
+                    isPassword ? 'password' : type;
 
   return (
     <div className="mb-6 group relative z-0">
       {/* Label style cartouche éditorial */}
       <div className="flex mb-[-2px] relative z-20">
         <div className={`
-          transform -skew-x-12 border-2 border-[#2563EB] border-b-0 px-4 py-1.5 
+          transform -skew-x-12 border-2 border-[#2563EB] border-b-0 px-4 py-1.5
           transition-all duration-200
           ${isFocused ? 'bg-[#2563EB] -translate-y-0.5' : 'bg-black'}
         `}>
@@ -58,9 +59,9 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             className="transform skew-x-12 w-full h-full px-8 py-2 focus:outline-none text-white font-bold text-base placeholder:text-gray-400 bg-transparent tracking-tight"
-            style={{ 
-              marginLeft: '-3%', 
-              width: isPassword ? '85%' : '106%' 
+            style={{
+              marginLeft: '-3%',
+              width: isPassword ? '85%' : '106%'
             }}
           />
 

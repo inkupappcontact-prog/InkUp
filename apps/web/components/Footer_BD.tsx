@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
               La plateforme de bande dessinée qui reconnecte auteurs et lecteurs.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-bold text-white mb-4 uppercase">Découvrir</h4>
             <ul className="space-y-2 text-white text-sm">
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-[#2563EB] transition-colors">Auteurs</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-bold text-white mb-4 uppercase">Légal</h4>
             <ul className="space-y-2 text-white text-sm">
@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="hover:text-[#2563EB] transition-colors">Mentions légales</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-bold text-white mb-4 uppercase">Contact</h4>
             <ul className="space-y-2 text-white text-sm">
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-[#2563EB]/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-white text-sm">
             <p>© 2026 InkUp - Tous droits réservés</p>

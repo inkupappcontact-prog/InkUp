@@ -28,7 +28,8 @@ export default function HomePage() {
         // Utiliser les métadonnées utilisateur au lieu de la table profiles
         const userRole = user.user_metadata?.role || 'reader';
         const artistName = user.user_metadata?.artist_name || 'Auteur';
-        setProfile({ role: userRole, artist_name: artistName } as Profile);
+        const userProfile = { role: userRole, artist_name: artistName } as Profile;
+        setProfile(userProfile);
       }
       setLoading(false);
     };
@@ -65,9 +66,9 @@ export default function HomePage() {
     };
 
     return (
-      <Dashboard 
-        user={dashboardUser} 
-        onLogout={handleLogout} 
+      <Dashboard
+        user={dashboardUser}
+        onLogout={handleLogout}
         onRead={handleRead}
       />
     );

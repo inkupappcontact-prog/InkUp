@@ -7,10 +7,10 @@ import Reader from './components/Reader';
 const App: React.FC = () => {
   // Gestion de l'état de l'application
   const [view, setView] = useState<'landing' | 'login' | 'dashboard' | 'reader'>('landing');
-  
+
   // État utilisateur connecté
   const [user, setUser] = useState<{ email: string; role: 'reader' | 'author'; balance: number; plan: 'free' | 'premium' } | null>(null);
-  
+
   // Livre en cours de lecture
   const [currentBook, setCurrentBook] = useState<{ title: string; pages: string[] } | null>(null);
 

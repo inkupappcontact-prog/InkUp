@@ -12,17 +12,17 @@ interface ComicCardProps {
   category: string;
   hasPhysical?: boolean;
   stock?: number;
-  isMature?: boolean; 
+  isMature?: boolean;
   onRead?: () => void;
 }
 
-const ComicCard: React.FC<ComicCardProps> = ({ 
-    title, 
-    author, 
-    cover, 
-    price, 
+const ComicCard: React.FC<ComicCardProps> = ({
+    title,
+    author,
+    cover,
+    price,
     category,
-    hasPhysical = false, 
+    hasPhysical = false,
     stock = 0,
     isMature = false,
     onRead
@@ -68,12 +68,12 @@ const ComicCard: React.FC<ComicCardProps> = ({
     <div className="bg-white border-4 border-black transform transition-all duration-200 hover:scale-105 hover:rotate-1">
       {/* Header avec badge catégorie */}
       <div className="relative">
-        <img 
-          src={cover} 
+        <img
+          src={cover}
           alt={title}
           className="w-full h-64 object-cover"
         />
-        
+
         {/* Badge catégorie */}
         <div className="absolute top-2 left-2 bg-[#2563EB] text-white px-3 py-1 font-bold text-sm border-2 border-black transform -rotate-2">
           {category}
@@ -131,7 +131,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
               <MessageSquare className="w-4 h-4" />
             </button>
           </div>
-          
+
           {getStockStatus()}
         </div>
 
@@ -141,8 +141,8 @@ const ComicCard: React.FC<ComicCardProps> = ({
             <button
               onClick={() => setFormat('digital')}
               className={`flex-1 py-2 px-3 border-2 border-black font-bold text-sm transition-colors ${
-                format === 'digital' 
-                  ? 'bg-[#2563EB] text-white' 
+                format === 'digital'
+                  ? 'bg-[#2563EB] text-white'
                   : 'bg-white hover:bg-gray-100'
               }`}
             >
@@ -152,8 +152,8 @@ const ComicCard: React.FC<ComicCardProps> = ({
             <button
               onClick={() => setFormat('physical')}
               className={`flex-1 py-2 px-3 border-2 border-black font-bold text-sm transition-colors ${
-                format === 'physical' 
-                  ? 'bg-[#2563EB] text-white' 
+                format === 'physical'
+                  ? 'bg-[#2563EB] text-white'
                   : 'bg-white hover:bg-gray-100'
               }`}
             >
@@ -195,7 +195,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
                 Lire
               </ComicButton>
             ) : (
-              <ComicButton 
+              <ComicButton
                 onClick={handlePurchase}
                 className="flex items-center gap-2"
                 disabled={format === 'physical' && stock === 0}

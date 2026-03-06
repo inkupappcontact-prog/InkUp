@@ -117,7 +117,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
       {isEditing && (
         <div className="bg-white border-4 border-black p-6">
           <h3 className="font-['Bangers'] text-2xl mb-4">Informations personnelles</h3>
-          
+
           <div className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -216,24 +216,24 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                   <ParallelogramInput
                     placeholder="Twitter @pseudo"
                     value={profile.socialLinks.twitter}
-                    onChange={(value) => setProfile(prev => ({ 
-                      ...prev, 
+                    onChange={(value) => setProfile(prev => ({
+                      ...prev,
                       socialLinks: { ...prev.socialLinks, twitter: value }
                     }))}
                   />
                   <ParallelogramInput
                     placeholder="Instagram @pseudo"
                     value={profile.socialLinks.instagram}
-                    onChange={(value) => setProfile(prev => ({ 
-                      ...prev, 
+                    onChange={(value) => setProfile(prev => ({
+                      ...prev,
                       socialLinks: { ...prev.socialLinks, instagram: value }
                     }))}
                   />
                   <ParallelogramInput
                     placeholder="Facebook URL"
                     value={profile.socialLinks.facebook}
-                    onChange={(value) => setProfile(prev => ({ 
-                      ...prev, 
+                    onChange={(value) => setProfile(prev => ({
+                      ...prev,
                       socialLinks: { ...prev.socialLinks, facebook: value }
                     }))}
                   />
@@ -265,7 +265,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
       {/* Statistiques */}
       <div className="bg-white border-4 border-black p-6">
         <h3 className="font-['Bangers'] text-2xl mb-4">Mes statistiques</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-gray-50 border-2 border-black p-4 text-center">
             <div className="text-3xl font-bold text-[#2563EB] mb-2">

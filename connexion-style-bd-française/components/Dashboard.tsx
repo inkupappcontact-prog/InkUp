@@ -21,28 +21,32 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
   // État local pour le formulaire "Nouveau Projet"
   const [newProjectPhysical, setNewProjectPhysical] = useState(false);
-  const [physicalPrice, setPhysicalPrice] = useState("2500");
-  const [physicalStock, setPhysicalStock] = useState("50");
-  
+  const DEFAULT_PHYSICAL_PRICE = '2500';
+  const DEFAULT_PHYSICAL_STOCK = '50';
+  const [physicalPrice, setPhysicalPrice] = useState(DEFAULT_PHYSICAL_PRICE);
+  const [physicalStock, setPhysicalStock] = useState(DEFAULT_PHYSICAL_STOCK);
+
   // État Notification
   const [toast, setToast] = useState<{message: string, subtext?: string} | null>(null);
 
   const showToast = (message: string, subtext?: string) => {
     setToast({ message, subtext });
-    setTimeout(() => setToast(null), 5000);
+    const TOAST_DURATION = 5000;
+    setTimeout(() => setToast(null), TOAST_DURATION);
   };
 
   // Simulation de données avec attributs physiques
-  const comics = [
+  const comicsList = [
     { id: '1', title: 'Le Secret de l\'Encre', author: 'Moebius II', cover: 'https://images.unsplash.com/photo-1580136608260-42d1c4101a92?auto=format&fit=crop&q=80&w=400', price: 45, category: 'Sci-Fi', hasPhysical: true, stock: 12 },
     { id: '2', title: 'Nuit de Plomb', author: 'Tardi Fan', cover: 'https://images.unsplash.com/photo-1618519764620-7403abdbf951?auto=format&fit=crop&q=80&w=400', price: 0, category: 'Noir', hasPhysical: false, isMature: true },
     { id: '3', title: 'Ligne d\'Horizon', author: 'Hergé Legacy', cover: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=400', price: 60, category: 'Aventure', hasPhysical: true, stock: 5 },
     { id: '4', title: 'Cyanure & Co', author: 'Franquin Jr', cover: 'https://images.unsplash.com/photo-1543004218-ee141104e14a?auto=format&fit=crop&q=80&w=400', price: 30, category: 'Humour', hasPhysical: false },
-    { id: '5', title: 'Ether Eternel', author: 'Uderzo Tribute', cover: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400', price: 50, category: 'Fantaisie', hasPhysical: true, stock: 0 }, 
+    { id: '5', title: 'Ether Eternel', author: 'Uderzo Tribute', cover: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400', price: 50, category: 'Fantaisie', hasPhysical: true, stock: 0 },
     { id: '6', title: 'Bruit de Fond', author: 'Giraud Style', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400', price: 25, category: 'Western', hasPhysical: false },
   ];
 
-  const myLibrary = comics.slice(0, 2);
+  const LIBRARY_PREVIEW_COUNT = 2;
+  const myLibrary = comicsList.slice(0, LIBRARY_PREVIEW_COUNT);
   const weeklyStats = [150, 230, 180, 320, 290, 450, 510]; // Lun -> Dim
   const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
   const maxStat = Math.max(...weeklyStats);
@@ -52,9 +56,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
       {/* Hero Banner */}
       <section className="mb-12 relative h-64 bg-white border-4 border-black shadow-[12px_12px_0px_0px_#2563EB] overflow-hidden group">
          <div className="absolute inset-0 halftone opacity-10"></div>
-         <img 
-           src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1200" 
-           className="absolute inset-0 w-full h-full object-cover grayscale opacity-10" 
+         <img
+           src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1200"
+           className="absolute inset-0 w-full h-full object-cover grayscale opacity-10"
            alt="Hero"
          />
          <div className="absolute inset-0 z-20 p-10 flex flex-col justify-center items-start">
@@ -85,7 +89,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-         {comics.map(comic => (
+         {comicsList.map(comic => (
            <ComicCard key={comic.id} {...comic} onRead={() => onRead && onRead(comic.title)} />
          ))}
       </div>
@@ -98,7 +102,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
           <Book className="w-8 h-8 text-black" />
           <h2 className="text-5xl text-black">Ma Bibliothèque</h2>
        </div>
-       
+
        {myLibrary.length > 0 ? (
          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {myLibrary.map(comic => (
@@ -155,7 +159,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
        <div className="bg-white border-4 border-black p-8 shadow-[8px_8px_0px_0px_#000] mb-12">
             <h3 className="font-['Bangers'] text-3xl uppercase mb-6 text-black border-b-4 border-black inline-block pb-2">Configuration Projet</h3>
-            
+
             <div className="flex items-center gap-4 mb-6">
                  <div className="flex items-center justify-between cursor-pointer group w-full max-w-md border-2 border-black p-4 bg-gray-50 hover:bg-white" onClick={() => setNewProjectPhysical(!newProjectPhysical)}>
                     <div className="flex items-center gap-3">
@@ -173,23 +177,23 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
             {newProjectPhysical && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-in slide-in-from-top-4 duration-300 bg-[#2563EB]/5 p-6 border-l-4 border-[#2563EB]">
-                     <ParallelogramInput 
-                        label="Prix Total (IP)" 
-                        value={physicalPrice} 
-                        onChange={(e) => setPhysicalPrice(e.target.value)} 
+                     <ParallelogramInput
+                        label="Prix Total (IP)"
+                        value={physicalPrice}
+                        onChange={(e) => setPhysicalPrice(e.target.value)}
                         placeholder="2500"
                     />
-                    <ParallelogramInput 
-                        label="Stock Initial" 
-                        value={physicalStock} 
-                        onChange={(e) => setPhysicalStock(e.target.value)} 
+                    <ParallelogramInput
+                        label="Stock Initial"
+                        value={physicalStock}
+                        onChange={(e) => setPhysicalStock(e.target.value)}
                         placeholder="50"
                     />
-                    
+
                     <div className="md:col-span-2 flex items-start gap-2 bg-[#FBBC05]/20 p-3 border-2 border-[#FBBC05] border-dashed">
                         <div className="mt-0.5 min-w-[20px] text-[#FBBC05]">★</div>
                         <p className="text-xs font-bold uppercase text-black leading-relaxed">
-                            <span className="underline">Important :</span> Le prix indiqué doit inclure vos frais de port moyens. 
+                            <span className="underline">Important :</span> Le prix indiqué doit inclure vos frais de port moyens.
                             Le client paiera {physicalPrice} IP au total. Aucune surcharge ne sera ajoutée au panier.
                         </p>
                     </div>
@@ -202,7 +206,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
        {user.plan === 'premium' ? (
            /* --- MODE PREMIUM : GRAPHIQUES COMPLETS --- */
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-              
+
               {/* 1. Revenus */}
               <div className="p-6 border-4 border-black shadow-[8px_8px_0px_0px_#000] relative bg-[#2563EB] text-white overflow-hidden flex flex-col justify-between">
                   <div className="relative z-10">
@@ -231,7 +235,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
                       </div>
                       <span className="bg-black text-white px-2 py-0.5 text-xs font-bold uppercase tracking-widest transform -skew-x-12">7 derniers jours</span>
                   </div>
-                  
+
                   {/* Tableau Invisible pour Lecteurs d'Écran (Accessibilité) */}
                   <table className="sr-only">
                     <caption>Nombre de lectures sur les 7 derniers jours</caption>
@@ -249,16 +253,16 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
                   <div className="h-48 w-full relative pt-4" aria-hidden="true">
                       <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
-                          <polyline 
-                             fill="none" 
-                             stroke="#2563EB" 
+                          <polyline
+                             fill="none"
+                             stroke="#2563EB"
                              strokeWidth="1.5"
                              points={weeklyStats.map((val, i) => `${(i / (weeklyStats.length - 1)) * 100},${100 - (val / maxStat) * 80}`).join(' ')}
                              vectorEffect="non-scaling-stroke"
                              className="drop-shadow-md"
                           />
                           {weeklyStats.map((val, i) => (
-                             <circle 
+                             <circle
                                 key={i}
                                 cx={(i / (weeklyStats.length - 1)) * 100}
                                 cy={100 - (val / maxStat) * 80}
@@ -296,7 +300,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
                        <p className="font-bold text-black uppercase text-sm mb-6 px-4">
                            Les statistiques avancées sont classées secret défense.
                        </p>
-                       <button 
+                       <button
                            onClick={() => setActiveTab('settings')}
                            className="bg-[#EA4335] text-white px-6 py-3 font-['Bangers'] text-xl border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:scale-105 transition-transform uppercase"
                        >
@@ -340,19 +344,19 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
     <div className="flex h-screen bg-white overflow-hidden relative">
       {/* Toast de Notification Système */}
       {toast && (
-          <NotificationToast 
-            message={toast.message} 
-            subtext={toast.subtext} 
-            onClose={() => setToast(null)} 
+          <NotificationToast
+            message={toast.message}
+            subtext={toast.subtext}
+            onClose={() => setToast(null)}
           />
       )}
 
       {/* Sidebar BD */}
-      <Sidebar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        onLogout={onLogout} 
-        isAuthor={user.role === 'author'} 
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        onLogout={onLogout}
+        isAuthor={user.role === 'author'}
       />
 
       {/* Main Content Planche */}
@@ -361,9 +365,9 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
         <header className="h-20 border-b-4 border-black flex items-center justify-between px-8 bg-white z-20">
           <div className="flex items-center gap-6">
              <div className="relative group">
-                <input 
-                  type="text" 
-                  placeholder="RECHERCHER..." 
+                <input
+                  type="text"
+                  placeholder="RECHERCHER..."
                   className="w-64 h-10 border-2 border-black px-10 font-['Bangers'] text-lg uppercase tracking-wide transform -skew-x-12 focus:outline-none focus:bg-[#2563EB]/5 transition-colors text-black placeholder:text-gray-600 pt-1"
                 />
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-black" />
@@ -376,11 +380,11 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
                 <Coins className="w-4 h-4 text-white transform skew-x-12" />
                 <span className="text-white font-['Bangers'] text-lg transform skew-x-12 mt-0.5">{user.balance} IP</span>
              </div>
-             
+
              <button className="w-10 h-10 border-2 border-black flex items-center justify-center transform -skew-x-12 hover:bg-black hover:text-white transition-all text-black">
                 <Bell className="w-4 h-4 transform skew-x-12" />
              </button>
-             
+
              <div className="w-10 h-10 border-2 border-black overflow-hidden transform -skew-x-12">
                 <img src={`https://ui-avatars.com/api/?name=${user.email}&background=000&color=fff`} alt="Avatar" className="w-full h-full object-cover transform skew-x-12 scale-125" />
              </div>

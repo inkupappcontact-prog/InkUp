@@ -26,12 +26,12 @@ const Settings: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto animate-in fade-in duration-500 pb-20">
-      
+
       {selectedPack && (
-          <PurchaseConfirmationModal 
-            pack={selectedPack} 
-            onClose={() => setSelectedPack(null)} 
-            onConfirm={handlePurchase} 
+          <PurchaseConfirmationModal
+            pack={selectedPack}
+            onClose={() => setSelectedPack(null)}
+            onConfirm={handlePurchase}
           />
       )}
 
@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        
+
         {/* COLONNE GAUCHE : PARAMÈTRES (4 cols) */}
         <div className="lg:col-span-4 space-y-10">
             {/* Section Notifications */}
@@ -59,7 +59,7 @@ const Settings: React.FC = () => {
                     <ComicToggle label="Notifs Push" checked={notifPush} onChange={setNotifPush} />
                 </div>
             </section>
-            
+
             {/* Section RGPD : Mes Données */}
             <section className="bg-white border-4 border-black p-6 relative shadow-[8px_8px_0px_0px_#000]">
                 <div className="absolute -top-5 left-4 bg-white border-2 border-black px-4 py-1">
@@ -87,7 +87,7 @@ const Settings: React.FC = () => {
                 </div>
                 <div className="flex flex-col gap-4 mt-2">
                     <p className="text-xs font-bold text-gray-700">Outils de test pour l'équipe CRM.</p>
-                    <button 
+                    <button
                         onClick={handlePreviewEmail}
                         className="flex items-center justify-center gap-2 bg-[#F0F0F0] border-2 border-black px-4 py-2 hover:bg-[#2563EB] hover:text-white transition-colors font-bold uppercase text-sm"
                     >
@@ -106,7 +106,7 @@ const Settings: React.FC = () => {
                 </div>
                 <div className="flex flex-col gap-4 mt-2">
                     <p className="text-xs font-medium text-black leading-tight">Suppression définitive du compte et anonymisation des transactions passées.</p>
-                    <button 
+                    <button
                         className="bg-white border-2 border-[#EA4335] text-[#EA4335] p-2 hover:bg-[#EA4335] hover:text-white transition-colors shadow-[3px_3px_0px_0px_#000] flex justify-center gap-2 font-black uppercase text-sm"
                         aria-label="Supprimer mon compte définitivement"
                         onClick={() => alert("Action irréversible. Un email de confirmation a été envoyé.")}
@@ -120,13 +120,13 @@ const Settings: React.FC = () => {
 
         {/* COLONNE DROITE : FINANCES & FACTURES (8 cols) */}
         <div className="lg:col-span-8 space-y-10">
-            
+
             {/* 1. PORTE-MONNAIE INKPOINTS */}
             <section className="bg-black border-4 border-black p-8 text-white shadow-[8px_8px_0px_0px_#2563EB] relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                      <Coins className="w-48 h-48 transform -rotate-12" aria-hidden="true" />
                 </div>
-                
+
                 <div className="relative z-10">
                     <div className="flex justify-between items-start mb-6">
                         <div>
@@ -145,8 +145,8 @@ const Settings: React.FC = () => {
                             { price: '10€', points: 1100, bonus: '+10% OFFERT', popular: true },
                             { price: '20€', points: 2200, bonus: '+10% OFFERT' }
                         ].map((pack, i) => (
-                            <button 
-                                key={i} 
+                            <button
+                                key={i}
                                 onClick={() => setSelectedPack(pack)}
                                 className={`
                                     relative border-2 p-4 flex flex-col items-center transition-all group min-h-[44px] cursor-pointer
@@ -216,8 +216,8 @@ const Settings: React.FC = () => {
 };
 
 const ComicToggle: React.FC<{ label: string; checked: boolean; onChange: (v: boolean) => void }> = ({ label, checked, onChange }) => (
-    <div 
-        className="flex items-center justify-between cursor-pointer group min-h-[44px]" 
+    <div
+        className="flex items-center justify-between cursor-pointer group min-h-[44px]"
         onClick={() => onChange(!checked)}
         role="switch"
         aria-checked={checked}

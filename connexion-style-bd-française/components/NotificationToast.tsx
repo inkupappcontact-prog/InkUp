@@ -12,7 +12,7 @@ const NotificationToast: React.FC<NotificationToastProps> = ({ message, subtext,
     <div className="fixed top-24 right-8 z-50 animate-in slide-in-from-right duration-300 pointer-events-auto">
       <div className="bg-white border-4 border-black p-4 shadow-[8px_8px_0px_0px_#000000] max-w-sm relative">
         {/* Bandeau de fermeture */}
-        <button 
+        <button
             onClick={onClose}
             className="absolute -top-3 -right-3 bg-[#EA4335] text-white border-2 border-black p-1 shadow-[2px_2px_0px_0px_#000] hover:scale-110 transition-transform"
         >

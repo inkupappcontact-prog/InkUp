@@ -11,7 +11,7 @@ interface PurchaseConfirmationModalProps {
 
 const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ pack, onClose, onConfirm }) => {
   const [waiveRights, setWaiveRights] = useState(false);
-  
+
   // Extraction valeur numérique pour démo
   const basePoints = Math.floor(pack.points / 1.1); // Approximation pour l'exemple (si 10% bonus)
   const bonusPoints = pack.points - basePoints;
@@ -19,7 +19,7 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in zoom-in-95 duration-200" role="dialog" aria-modal="true" aria-labelledby="purchase-title">
        <div className="bg-white border-4 border-black w-full max-w-lg shadow-[12px_12px_0px_0px_#2563EB] relative">
-          
+
           {/* Header */}
           <div className="bg-[#FBBC05] border-b-4 border-black p-4 flex justify-between items-center">
              <div className="flex items-center gap-2">
@@ -35,7 +35,7 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
              {/* Calcul Transparent */}
              <div className="bg-gray-50 border-2 border-black/10 p-4 mb-6 relative">
                  <div className="absolute -top-3 left-4 bg-black text-white text-[10px] font-bold uppercase px-2 py-0.5">Détail de la transaction</div>
-                 
+
                  <div className="flex items-center justify-between mb-4">
                     <span className="font-['Bangers'] text-4xl text-black">{pack.price}</span>
                     <ArrowRight className="w-6 h-6 text-gray-400" />
@@ -49,7 +49,7 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
                     <span>Base: {basePoints} IP</span>
                     <span className="text-[#34A853]">+ {bonusPoints} IP Bonus</span>
                  </div>
-                 
+
                  {/* Mention TVA (Obligation Micro-entreprise) */}
                  <div className="mt-2 text-center">
                     <p className="text-[10px] italic text-gray-500">{LEGAL_INFO.vat_mention}</p>
@@ -61,7 +61,7 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
                  <div className="flex items-start gap-3">
                      <ShieldCheck className="w-5 h-5 text-[#2563EB] flex-shrink-0 mt-0.5" />
                      <p className="text-xs text-gray-700 leading-relaxed font-medium">
-                        Vous achetez un contenu numérique non fourni sur support matériel. 
+                        Vous achetez un contenu numérique non fourni sur support matériel.
                         L'exécution commence immédiatement après validation.
                      </p>
                  </div>
@@ -71,9 +71,9 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
              <label className="flex items-start gap-3 cursor-pointer group mb-6 select-none">
                 <div className={`w-6 h-6 border-2 border-black flex-shrink-0 flex items-center justify-center transition-colors ${waiveRights ? 'bg-black' : 'bg-white group-hover:bg-gray-100'}`}>
                     {waiveRights && <CheckSquare className="w-4 h-4 text-white" />}
-                    <input 
-                        type="checkbox" 
-                        className="sr-only" 
+                    <input
+                        type="checkbox"
+                        className="sr-only"
                         checked={waiveRights}
                         onChange={(e) => setWaiveRights(e.target.checked)}
                     />
@@ -83,8 +83,8 @@ const PurchaseConfirmationModal: React.FC<PurchaseConfirmationModalProps> = ({ p
                 </span>
              </label>
 
-             <ComicButton 
-                onClick={onConfirm} 
+             <ComicButton
+                onClick={onConfirm}
                 className={`w-full text-xl ${!waiveRights ? 'opacity-50 cursor-not-allowed grayscale' : ''}`}
                 variant="primary"
              >

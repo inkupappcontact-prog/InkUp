@@ -44,14 +44,14 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {session && session.user ? (
-          <Stack.Screen 
-            name="Main" 
+          <Stack.Screen
+            name="Main"
             component={LoginScreen}
             options={{ headerShown: false }}
           />
         ) : (
-          <Stack.Screen 
-            name="Login" 
+          <Stack.Screen
+            name="Login"
             component={LoginScreen}
             options={{ headerShown: false }}
           />

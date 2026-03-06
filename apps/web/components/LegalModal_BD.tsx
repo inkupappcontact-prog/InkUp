@@ -108,7 +108,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         <div className="flex justify-end">
-          <button 
+          <button
             onClick={onClose}
             className="bg-[#2563EB] text-black px-6 py-3 font-bold border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
           >

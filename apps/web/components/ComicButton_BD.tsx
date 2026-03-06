@@ -8,15 +8,15 @@ interface ComicButtonProps {
   type?: 'button' | 'submit' | 'reset';
 }
 
-const ComicButton: React.FC<ComicButtonProps> = ({ 
-  children, 
-  variant = 'primary', 
-  onClick, 
+const ComicButton: React.FC<ComicButtonProps> = ({
+  children,
+  variant = 'primary',
+  onClick,
   className = '',
-  type = 'button' 
+  type = 'button'
 }) => {
   const baseStyles = "px-6 py-3 font-bold transition-all active:translate-y-1 active:translate-x-1 uppercase tracking-wider text-sm lg:text-base flex items-center justify-center gap-2";
-  
+
   const variants = {
     // Primary: Black background, White text
     primary: "bg-[#000000] text-[#FFFFFF] border-2 border-[#2563EB] shadow-[6px_6px_0px_0px_#2563EB] hover:shadow-[3px_3px_0px_0px_#2563EB] hover:translate-x-[3px] hover:translate-y-[3px] active:shadow-none",
@@ -25,7 +25,7 @@ const ComicButton: React.FC<ComicButtonProps> = ({
   };
 
   return (
-    <button 
+    <button
       type={type}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${className}`}

@@ -81,12 +81,12 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
           {/* Message */}
           <div className="flex-1 text-sm text-gray-700">
             <p className="mb-2">
-              <strong>InkUp respecte votre vie privée !</strong> Nous utilisons des cookies pour améliorer 
+              <strong>InkUp respecte votre vie privée !</strong> Nous utilisons des cookies pour améliorer
               votre expérience, analyser le trafic et vous proposer des contenus adaptés.
             </p>
             <p>
-              Conformément au RGPD, vous avez le contrôle sur vos données. 
-              <button 
+              Conformément au RGPD, vous avez le contrôle sur vos données.
+              <button
                 onClick={() => setShowCustomize(!showCustomize)}
                 className="text-[#2563EB] font-bold underline ml-1"
               >
@@ -119,7 +119,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
               <Shield className="w-5 h-5 text-[#2563EB]" />
               <h4 className="font-bold text-lg">Personnaliser les cookies</h4>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-4">
               {/* Essential Cookies */}
               <div className="bg-white p-4 border-2 border-black rounded-lg">
@@ -133,7 +133,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Nécessaires au fonctionnement du site (authentification, panier, sécurité). 
+                  Nécessaires au fonctionnement du site (authentification, panier, sécurité).
                   Non désactivables conformément au RGPD.
                 </p>
               </div>
@@ -150,7 +150,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Pour mesurer l'audience et améliorer nos services (Google Analytics anonymisé). 
+                  Pour mesurer l'audience et améliorer nos services (Google Analytics anonymisé).
                   Consentement requis selon le RGPD.
                 </p>
               </div>
@@ -167,7 +167,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Pour vous proposer des contenus personnalisés et des publicités pertinentes. 
+                  Pour vous proposer des contenus personnalisés et des publicités pertinentes.
                   Consentement requis selon le RGPD.
                 </p>
               </div>
@@ -187,12 +187,12 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
         {/* RGPD Compliance Notice */}
         <div className="mt-4 text-xs text-gray-500 border-t pt-4">
           <p>
-            <strong>Conformité RGPD :</strong> Vous disposez d'un droit d'accès, de rectification, 
-            de suppression et de portabilité sur vos données. 
+            <strong>Conformité RGPD :</strong> Vous disposez d'un droit d'accès, de rectification,
+            de suppression et de portabilité sur vos données.
             Pour exercer ces droits : <a href="mailto:privacy@inkup.com" className="text-[#2563EB] underline">privacy@inkup.com</a>
           </p>
           <p className="mt-1">
-            <strong>Durée de conservation :</strong> 13 mois maximum pour les cookies analytiques. 
+            <strong>Durée de conservation :</strong> 13 mois maximum pour les cookies analytiques.
             <strong>Sous-traitants :</strong> Google Analytics (anonymisé), Stripe (paiements).
           </p>
         </div>

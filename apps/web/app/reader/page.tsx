@@ -30,7 +30,7 @@ export default function ReaderPage() {
     console.log('Reader page - profile:', profile);
     console.log('Reader page - loading:', loading);
     console.log('Reader page - condition:', !loading && (!user || profile?.role !== 'reader'));
-    
+
     if (!loading && (!user || profile?.role !== 'reader')) {
       console.log('Reader page - redirecting to home');
       router.push('/');

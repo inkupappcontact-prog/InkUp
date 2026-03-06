@@ -15,9 +15,9 @@ interface ShippingAddressFormProps {
   onCancel: () => void;
 }
 
-const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({ 
-  onSubmit, 
-  onCancel 
+const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
+  onSubmit,
+  onCancel
 }) => {
   const [address, setAddress] = useState<Address>({
     street: '',
@@ -30,10 +30,10 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
-    
+
     // Simuler un traitement
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     onSubmit(address);
     setIsProcessing(false);
   };

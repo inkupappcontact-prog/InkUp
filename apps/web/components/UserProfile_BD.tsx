@@ -9,7 +9,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   return (
     <div className="bg-gray-900 border-4 border-[#2563EB] rounded-lg p-8">
       <h2 className="font-['Bangers'] text-3xl text-[#2563EB] mb-6">Profil</h2>
-      
+
       <div className="space-y-6">
         {/* Avatar et infos principales */}
         <div className="flex items-center gap-6">

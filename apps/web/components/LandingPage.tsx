@@ -25,8 +25,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             <span className="font-bangers text-3xl tracking-wide hidden sm:block text-[#FFD700]">InkUp</span>
         </div>
         <div className="flex gap-4">
-             <button 
-               onClick={onStart} 
+             <button
+               onClick={onStart}
                className="font-bangers text-xl uppercase hover:text-[#FF6B35] transition-colors min-h-[44px] px-4 py-2 border-2 border-transparent hover:border-[#FFD700] rounded-lg text-white"
              >
                 Se Connecter
@@ -50,7 +50,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 <span className="text-[#FF6B35] block transform rotate-2">Auteurs & Lecteurs</span>
               </h1>
               <p className="text-xl text-white font-comic-neue max-w-2xl leading-relaxed">
-                Découvrez des bandes dessinées exclusives en haute définition et soutenez directement les créateurs. 
+                Découvrez des bandes dessinées exclusives en haute définition et soutenez directement les créateurs.
                 Pas d'intermédiaires, juste de l'art pur.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -87,7 +87,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
               Une plateforme pensée pour les passionnés de BD
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card transform -rotate-1 hover:rotate-0 transition-transform duration-300">
               <div className="bg-[#FFD700] w-16 h-16 rounded-full flex items-center justify-center mb-6 border-4 border-[#FFD700] shadow-lg">

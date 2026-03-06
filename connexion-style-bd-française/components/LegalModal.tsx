@@ -87,14 +87,14 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div className="bg-white border-4 border-black w-full max-w-2xl max-h-[80vh] flex flex-col shadow-[12px_12px_0px_0px_#2563EB]">
-        
+
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b-4 border-black bg-[#F0F0F0]">
             <div className="flex items-center gap-3">
                 <Icon className="w-8 h-8 text-[#2563EB]" aria-hidden="true" />
                 <h2 id="modal-title" className="font-['Bangers'] text-2xl uppercase tracking-wide">{title}</h2>
             </div>
-            <button 
+            <button
                 onClick={onClose}
                 className="p-2 border-2 border-black bg-white hover:bg-[#EA4335] hover:text-white transition-colors"
                 aria-label="Fermer la fenêtre"
@@ -110,7 +110,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
 
         {/* Footer */}
         <div className="p-6 border-t-4 border-black bg-white flex justify-end">
-             <button 
+             <button
                 onClick={onClose}
                 className="font-['Bangers'] uppercase text-xl border-2 border-black px-6 py-2 shadow-[4px_4px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:bg-black active:text-white"
              >

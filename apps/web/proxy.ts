@@ -4,15 +4,15 @@ import type { NextRequest } from 'next/server'
 
 export async function proxy(req: NextRequest) {
   const res = NextResponse.next()
-  
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  
+
   if (!supabaseUrl || !supabaseAnonKey) {
     console.error('Missing Supabase environment variables')
     return res
   }
-  
+
   try {
     const supabase = createServerClient(
       supabaseUrl,

@@ -14,7 +14,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [userType, setUserType] = useState<'reader' | 'author'>('reader');
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [artistName, setArtistName] = useState('');
@@ -49,13 +49,13 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: { email?: string; password?: string; artistName?: string } = {};
-    
+
     if (!email) newErrors.email = "Manquant !";
     if (!password) newErrors.password = "Secret !";
     if (!isLogin && userType === 'author' && !artistName) {
       newErrors.artistName = "C'est votre signature !";
     }
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -96,7 +96,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           console.log('User metadata:', data.user.user_metadata);
           const userRole = data.user.user_metadata?.role || 'reader';
           console.log('User role:', userRole);
-          
+
           if (userRole === 'author') {
             console.log('Redirecting to dashboard');
             window.location.href = '/dashboard';
@@ -149,7 +149,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           console.log('📋 User metadata:', data.user.user_metadata);
           console.log('🎯 User role from metadata:', data.user.user_metadata?.role);
           console.log('🎨 Artist name from metadata:', data.user.user_metadata?.artist_name);
-          
+
           // Vérifier si le profile a été créé dans la base de données
           try {
             const { data: profileData, error: profileError } = await supabase
@@ -157,7 +157,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
               .select('*')
               .eq('id', data.user.id)
               .single();
-            
+
             if (profileError) {
               console.error('❌ Profile creation error:', profileError);
             } else {
@@ -168,9 +168,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           }
 
           // Envoyer l'email de bienvenue
+          const userName = data.user.user_metadata?.full_name || email.split('@')[0];
           await sendWelcomeEmail(
             email,
-            data.user.user_metadata?.full_name || email.split('@')[0],
+            userName,
             userType,
             userType === 'author' ? artistName : undefined
           );
@@ -178,7 +179,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           // Connexion immédiate après signup (email confirmation désactivée)
           // Utiliser les métadonnées utilisateur pour déterminer le rôle
           const userRole = data.user.user_metadata?.role || 'reader';
-          
+
           if (userRole === 'author') {
             console.log('Redirecting to dashboard');
             window.location.href = '/dashboard';
@@ -221,7 +222,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             if (loginData.user) {
               // Utiliser les métadonnées utilisateur pour déterminer le rôle
               const userRole = loginData.user.user_metadata?.role || 'reader';
-              
+
               if (userRole === 'author') {
                 console.log('Redirecting to dashboard');
                 window.location.href = '/dashboard';
@@ -264,12 +265,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
   return (
     <div className="min-h-screen w-full flex flex-col lg:flex-row bg-white overflow-hidden font-roboto">
-      
+
       {/* --- PLANCHE GAUCHE : L'ILLUSTRATION --- */}
       <div className="lg:w-1/2 bg-[#FFFFFF] relative flex flex-col items-center justify-center p-10 lg:p-20 border-b-8 lg:border-b-0 lg:border-r-8 border-black z-10 overflow-hidden text-center">
         {/* Trame de fond BD classique */}
         <div className="absolute inset-0 halftone opacity-10"></div>
-        
+
         <div className="relative z-10 flex flex-col items-center">
           {/* Logo encadré comme un titre d'album */}
           <div className="bg-white p-4 border-4 border-black shadow-[12px_12px_0px_0px_#000000] rotate-[-1deg] transition-transform hover:rotate-0 duration-300">
@@ -279,24 +280,24 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           {/* Bulle de dialogue style "Ligne Claire" */}
           <div className="mt-12 relative bg-white border-[3px] border-black px-8 py-6 max-w-[340px] shadow-[8px_8px_0px_0px_#2563EB] text-center rotate-[2deg]">
             <p className="font-bold text-lg text-black uppercase italic leading-tight tracking-tight">
-              {isLogin 
-                ? "Vite ! Tournez la page pour découvrir la suite de l'histoire !" 
+              {isLogin
+                ? "Vite ! Tournez la page pour découvrir la suite de l'histoire !"
                 : "Prenez vos crayons et rejoignez la plus grande rédaction de BD !"}
             </p>
             {/* Queue de la bulle (Appendice) */}
-            <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-0 h-0 
-              border-l-[15px] border-l-transparent 
-              border-r-[15px] border-r-transparent 
+            <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-0 h-0
+              border-l-[15px] border-l-transparent
+              border-r-[15px] border-r-transparent
               border-b-[20px] border-black">
             </div>
-            <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0 
-              border-l-[12px] border-l-transparent 
-              border-r-[12px] border-r-transparent 
+            <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0
+              border-l-[12px] border-l-transparent
+              border-r-[12px] border-r-transparent
               border-b-[17px] border-white">
             </div>
           </div>
         </div>
-        
+
         {/* Mention légale style bas de page BD */}
         <div className="absolute bottom-6 flex items-center gap-2 text-black font-bold uppercase text-[9px] tracking-[0.25em] italic opacity-60">
             <span className="bg-black text-white px-1 py-0.5 not-italic">©</span> Dépôt Légal : {new Date().getFullYear()} • Tome 1
@@ -305,10 +306,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
       {/* --- PLANCHE DROITE : LE BUREAU DE RÉDACTION --- */}
       <div className="lg:w-1/2 relative bg-black flex flex-col justify-center p-8 sm:p-12 lg:p-24 border-l-4 border-white/10 overflow-y-auto">
-        
+
         {/* Toggle Mode (Interrupteur de case) */}
         <div className="absolute top-8 left-8 flex gap-2 z-30">
-          <button 
+          <button
             onClick={() => handleToggleMode(true)}
             className={`
               relative h-10 transform -skew-x-12 border-2 px-6 flex items-center gap-2 transition-all duration-200
@@ -318,7 +319,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             <LogIn className="w-4 h-4 transform skew-x-12" />
             <span className="transform skew-x-12 font-bold text-[10px] uppercase tracking-widest">Lecture</span>
           </button>
-          <button 
+          <button
             onClick={() => handleToggleMode(false)}
             className={`
               relative h-10 transform -skew-x-12 border-2 px-6 flex items-center gap-2 transition-all duration-200
@@ -402,7 +403,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
                   </div>
                   <span className="font-bold text-[10px] uppercase tracking-wider text-white/60 group-hover:text-white">Rester connecté</span>
                </label>
-               
+
                {isLogin && (
                  <a href="#" className="font-bold text-[10px] uppercase tracking-wider text-[#2563EB] hover:text-[#2563EB]/80 transition-colors italic">
                    Mot de passe oublié ?
@@ -411,9 +412,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             </div>
 
             {/* Bouton Principal - RECTANGLE NOIR (Règle #4) sans l'icône éclair */}
-            <ComicButton 
-              type="submit" 
-              variant="primary" 
+            <ComicButton
+              type="submit"
+              variant="primary"
               className="w-full h-16 text-xl italic tracking-[0.2em] group disabled:opacity-50"
               disabled={loading}
             >
@@ -430,10 +431,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
           {/* Connexion Sociale en Parallélogramme avec Logo Google Officiel sur fond noir */}
           <div className="flex justify-center">
-             <button 
-               type="button" 
+             <button
+               type="button"
                onClick={handleGoogleLogin}
-               className="w-full relative h-14 transform -skew-x-12 border-2 border-white bg-[#000000] 
+               className="w-full relative h-14 transform -skew-x-12 border-2 border-white bg-[#000000]
                           hover:bg-white/10 transition-all
                           shadow-[6px_6px_0px_0px_#2563EB] active:shadow-none active:translate-x-[6px] active:translate-y-[6px]"
              >

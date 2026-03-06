@@ -13,16 +13,16 @@ interface LoginScreenProps {
 const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [userType, setUserType] = useState<'reader' | 'author'>('reader');
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [artistName, setArtistName] = useState('');
   const [birthDate, setBirthDate] = useState('');
-  
+
   // Consentements
   const [consentTos, setConsentTos] = useState(false);
   const [consentPrivacy, setConsentPrivacy] = useState(false);
-  
+
   // Modale légale
   const [showLegal, setShowLegal] = useState<'cgu' | 'privacy' | null>(null);
 
@@ -31,10 +31,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: typeof errors = {};
-    
+
     if (!email) newErrors.email = "Manquant !";
     if (!password) newErrors.password = "Secret !";
-    
+
     if (!isLogin) {
         if (userType === 'author' && !artistName) {
             newErrors.artistName = "C'est votre signature !";
@@ -60,7 +60,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
             }
         }
     }
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
@@ -81,7 +81,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
       {/* --- PLANCHE GAUCHE : L'ILLUSTRATION --- */}
       <div className="lg:w-1/2 bg-[#FFFFFF] relative flex flex-col items-center justify-center p-10 lg:p-20 border-b-8 lg:border-b-0 lg:border-r-8 border-black z-10 overflow-hidden text-center">
         <div className="absolute inset-0 halftone opacity-10"></div>
-        
+
         <div className="relative z-10 flex flex-col items-center">
           <div className="bg-white p-4 border-4 border-black shadow-[12px_12px_0px_0px_#000000] rotate-[-1deg] transition-transform hover:rotate-0 duration-300">
              <InkUpLogo className="w-48 h-48 lg:w-72 lg:h-72" />
@@ -89,15 +89,15 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
 
           <div className="mt-12 relative bg-white border-[3px] border-black px-8 py-6 max-w-[340px] shadow-[8px_8px_0px_0px_#2563EB] text-center rotate-[2deg]">
             <p className="font-['Bangers'] text-2xl text-black uppercase tracking-wide leading-tight">
-              {isLogin 
-                ? "Vite ! Tournez la page pour découvrir la suite !" 
+              {isLogin
+                ? "Vite ! Tournez la page pour découvrir la suite !"
                 : "Rejoignez la plus grande rédaction de BD !"}
             </p>
             <div className="absolute -top-[20px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[20px] border-black"></div>
             <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-b-[17px] border-white"></div>
           </div>
         </div>
-        
+
         <div className="absolute bottom-6 flex items-center gap-2 text-black font-bold uppercase text-xs tracking-[0.25em] italic">
             <span className="bg-black text-white px-2 py-0.5 not-italic">©</span> Dépôt Légal : {new Date().getFullYear()} • Tome 1
         </div>
@@ -105,10 +105,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
 
       {/* --- PLANCHE DROITE : LE BUREAU DE RÉDACTION --- */}
       <div className="lg:w-1/2 relative bg-white flex flex-col justify-center p-8 sm:p-12 lg:p-24 border-l-4 border-black overflow-y-auto">
-        
+
         {/* Barre d'outils (Retour et Toggles) */}
         <div className="absolute top-8 left-8 flex items-center gap-6 z-30">
-          <button 
+          <button
              onClick={onBack}
              className="h-10 w-10 bg-white border-2 border-black flex items-center justify-center shadow-[3px_3px_0px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all group"
              title="Retour à l'accueil"
@@ -118,14 +118,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
           </button>
 
           <div className="flex gap-2">
-            <button 
+            <button
                 onClick={() => handleToggleMode(true)}
                 className={`relative h-10 transform -skew-x-12 border-2 px-6 flex items-center gap-2 transition-all duration-200 ${isLogin ? 'bg-[#2563EB] border-black text-white shadow-[4px_4px_0px_0px_#000000] scale-105' : 'bg-transparent border-black text-black hover:bg-black/5'}`}
             >
                 <LogIn className="w-4 h-4 transform skew-x-12" />
                 <span className="transform skew-x-12 font-['Bangers'] text-lg uppercase tracking-widest mt-1">Lecture</span>
             </button>
-            <button 
+            <button
                 onClick={() => handleToggleMode(false)}
                 className={`relative h-10 transform -skew-x-12 border-2 px-6 flex items-center gap-2 transition-all duration-200 ${!isLogin ? 'bg-[#2563EB] border-black text-white shadow-[4px_4px_0px_0px_#000000] scale-105' : 'bg-transparent border-black text-black hover:bg-black/5'}`}
             >
@@ -165,7 +165,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
                 {userType === 'author' && (
                   <ParallelogramInput label="Nom de Plume" placeholder="Hergé, Franquin..." value={artistName} onChange={(e) => setArtistName(e.target.value)} error={errors.artistName} />
                 )}
-                
+
                 <ParallelogramInput label="Date de Naissance" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} error={errors.birthDate} />
               </div>
             )}
@@ -177,9 +177,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
             {!isLogin && (
                 <div className="space-y-3 bg-gray-50 p-4 border-2 border-black/20">
                      <label className="flex items-start gap-3 cursor-pointer">
-                        <input 
-                            type="checkbox" 
-                            className="mt-1 w-5 h-5 accent-black cursor-pointer" 
+                        <input
+                            type="checkbox"
+                            className="mt-1 w-5 h-5 accent-black cursor-pointer"
                             checked={consentTos}
                             onChange={(e) => setConsentTos(e.target.checked)}
                         />
@@ -188,9 +188,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
                         </span>
                      </label>
                      <label className="flex items-start gap-3 cursor-pointer">
-                        <input 
-                            type="checkbox" 
-                            className="mt-1 w-5 h-5 accent-black cursor-pointer" 
+                        <input
+                            type="checkbox"
+                            className="mt-1 w-5 h-5 accent-black cursor-pointer"
                             checked={consentPrivacy}
                             onChange={(e) => setConsentPrivacy(e.target.checked)}
                         />

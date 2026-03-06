@@ -107,7 +107,7 @@ const OrderManager: React.FC = () => {
           <Package className="w-8 h-8" />
           Gestion des Commandes
         </h2>
-        
+
         {/* Filtres */}
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
@@ -172,7 +172,7 @@ const OrderManager: React.FC = () => {
       {/* Liste des commandes */}
       <div className="bg-white border-4 border-black p-6">
         <h3 className="font-['Bangers'] text-2xl mb-4">Liste des commandes</h3>
-        
+
         <div className="space-y-4">
           {filteredOrders.map((order) => (
             <div key={order.id} className="border-4 border-black p-4 hover:shadow-lg transition-shadow">
@@ -188,7 +188,7 @@ const OrderManager: React.FC = () => {
                       {order.format === 'physical' ? 'Physique' : 'Numérique'}
                     </span>
                   </div>
-                  
+
                   <div className="space-y-1 text-sm">
                     <div className="flex items-center gap-2">
                       <User className="w-4 h-4 text-gray-500" />

@@ -37,7 +37,7 @@ interface InvoiceStructure {
  */
 export const generateInvoiceData = (order: OrderDetails): InvoiceStructure => {
     const totalAmount = order.items.reduce((acc, item) => acc + (item.quantity * item.unitPrice), 0);
-    
+
     // Génération d'un numéro de facture séquentiel (Simulation)
     // En prod: utiliser un compteur atomique en base de données.
     const invoiceNum = `INV-${order.date.getFullYear()}-${Math.floor(Math.random() * 10000).toString().padStart(4, '0')}`;

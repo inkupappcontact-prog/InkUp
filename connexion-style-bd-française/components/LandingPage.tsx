@@ -103,7 +103,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       {/* Creator Section */}
       <section className="bg-black text-white py-20 border-b-4 border-black overflow-hidden relative">
           <div className="absolute inset-0 opacity-20" style={{backgroundImage: 'radial-gradient(#333 1px, transparent 1px)', backgroundSize: '20px 20px'}}></div>
-          
+
           <div className="max-w-7xl mx-auto px-6 relative z-10">
               <div className="flex flex-col lg:flex-row items-center gap-16">
                   <div className="lg:w-1/2">
@@ -133,7 +133,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                           Devenir Auteur
                       </button>
                   </div>
-                  
+
                   {/* Pricing Card Illustration */}
                   <div className="lg:w-1/2 w-full">
                       <div className="bg-white text-black border-4 border-black p-8 shadow-[12px_12px_0px_0px_#FFFFFF] transform rotate-2 max-w-md mx-auto">

@@ -9,11 +9,11 @@ interface ContentUnlockModalProps {
   onCancel: () => void;
 }
 
-const ContentUnlockModal: React.FC<ContentUnlockModalProps> = ({ 
-  title, 
-  price, 
-  onConfirm, 
-  onCancel 
+const ContentUnlockModal: React.FC<ContentUnlockModalProps> = ({
+  title,
+  price,
+  onConfirm,
+  onCancel
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -59,7 +59,7 @@ const ContentUnlockModal: React.FC<ContentUnlockModalProps> = ({
                   </span>
                 </div>
               </div>
-              
+
               {price > 0 && (
                 <p className="text-sm text-gray-600">
                   Ce montant sera débité de votre solde InkPoints

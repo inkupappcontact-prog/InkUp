@@ -3,11 +3,11 @@ import React from 'react';
 const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <div className={`flex flex-col items-center justify-center select-none ${className}`}>
-      <svg 
-        width="300" 
-        height="300" 
-        viewBox="0 0 400 400" 
-        fill="none" 
+      <svg
+        width="300"
+        height="300"
+        viewBox="0 0 400 400"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="transition-transform duration-300 hover:scale-105"
       >
@@ -19,7 +19,7 @@ const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
              {/* Pointe du crayon */}
              <path d="M-18 0 L18 0 L0 -55 Z" />
           </g>
-          
+
           {/* Définition du Parallélogramme Noir */}
           <path id="box-shape" d="M80 200 L340 200 L380 90 L120 90 Z" />
         </defs>
@@ -31,14 +31,14 @@ const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
            <g transform="translate(235, 80) rotate(15)">
              <use href="#pencil-shape" fill="black" />
            </g>
-           <text 
-            x="200" 
-            y="340" 
+           <text
+            x="200"
+            y="340"
             textAnchor="middle"
-            fontFamily="'Comic Neue', cursive" 
-            fontWeight="900" 
-            fontStyle="italic" 
-            fontSize="100" 
+            fontFamily="'Comic Neue', cursive"
+            fontWeight="900"
+            fontStyle="italic"
+            fontSize="100"
             fill="black"
             letterSpacing="-0.03em"
           >
@@ -47,10 +47,10 @@ const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
         </g>
 
         {/* COUCHE PRINCIPALE */}
-        
+
         {/* 1. Le Parallélogramme Noir de fond */}
         <use href="#box-shape" fill="black" />
-        
+
         {/* 2. Le Stylet (Remonté à y=80) */}
         <g transform="translate(235, 80) rotate(15)">
            {/* Corps Bleu */}
@@ -60,14 +60,14 @@ const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
         </g>
 
         {/* 3. Texte InkUp (Ink en noir, Up en bleu) */}
-        <text 
-            x="200" 
-            y="330" 
+        <text
+            x="200"
+            y="330"
             textAnchor="middle"
-            fontFamily="'Comic Neue', cursive" 
-            fontWeight="900" 
-            fontStyle="italic" 
-            fontSize="100" 
+            fontFamily="'Comic Neue', cursive"
+            fontWeight="900"
+            fontStyle="italic"
+            fontSize="100"
             letterSpacing="-0.03em"
         >
             <tspan fill="black">Ink</tspan>

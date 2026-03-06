@@ -11,17 +11,17 @@ interface ComicCardProps {
   category: string;
   hasPhysical?: boolean;
   stock?: number;
-  isMature?: boolean; 
+  isMature?: boolean;
   onRead?: () => void;
 }
 
-const ComicCard: React.FC<ComicCardProps> = ({ 
-    title, 
-    author, 
-    cover, 
-    price, 
+const ComicCard: React.FC<ComicCardProps> = ({
+    title,
+    author,
+    cover,
+    price,
     category,
-    hasPhysical = false, 
+    hasPhysical = false,
     stock = 0,
     isMature = false,
     onRead
@@ -31,7 +31,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
   const [showUnlockModal, setShowUnlockModal] = useState(false);
   const [matureRevealed, setMatureRevealed] = useState(false);
 
-  const displayPrice = price; 
+  const displayPrice = price;
   const isOutOfStock = format === 'physical' && stock <= 0;
 
   const handleBuy = (e: React.MouseEvent) => {
@@ -76,15 +76,15 @@ const ComicCard: React.FC<ComicCardProps> = ({
     <>
         {showShippingForm && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in" role="dialog" aria-modal="true">
-                <ShippingAddressForm 
-                    onSubmit={handleShippingSubmit} 
-                    onCancel={() => setShowShippingForm(false)} 
+                <ShippingAddressForm
+                    onSubmit={handleShippingSubmit}
+                    onCancel={() => setShowShippingForm(false)}
                 />
             </div>
         )}
 
         {showUnlockModal && (
-            <ContentUnlockModal 
+            <ContentUnlockModal
                 title={title}
                 price={price}
                 onConfirm={handleUnlockConfirm}
@@ -95,13 +95,13 @@ const ComicCard: React.FC<ComicCardProps> = ({
         <article className="group relative" aria-label={`Bande dessinée : ${title} par ${author}`}>
         {/* Case Image */}
         <div className="relative aspect-[3/4] border-4 border-black bg-white shadow-[8px_8px_0px_0px_#000000] group-hover:shadow-[12px_12px_0px_0px_#2563EB] group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all duration-200 overflow-hidden">
-            
-            <img 
-                src={cover} 
-                alt={`Couverture de ${title}`} 
+
+            <img
+                src={cover}
+                alt={`Couverture de ${title}`}
                 className={`w-full h-full object-cover transition-all duration-300 scale-105 group-hover:scale-110 ${isMature && !matureRevealed ? 'blur-xl' : 'grayscale-[0.2] group-hover:grayscale-0'}`}
             />
-            
+
             {/* Overlay Mature (Design Sobre et Légal) */}
             {isMature && !matureRevealed && (
                 <div className="absolute inset-0 z-20 bg-black/80 flex flex-col items-center justify-center p-4 text-center animate-in fade-in">
@@ -110,7 +110,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
                     <p className="text-gray-300 text-xs font-bold uppercase mb-4 max-w-[200px]">
                         Cette œuvre contient des thèmes réservés à un public averti.
                     </p>
-                    <button 
+                    <button
                         onClick={toggleMature}
                         className="bg-transparent border-2 border-white text-white px-4 py-2 font-bold uppercase text-xs hover:bg-white hover:text-black transition-colors"
                     >
@@ -118,7 +118,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
                     </button>
                 </div>
             )}
-            
+
             {/* Badge Catégorie */}
             <div className="absolute top-4 left-4 z-10">
                 <div className="bg-white border-2 border-black px-3 py-1 transform -skew-x-12 shadow-[3px_3px_0px_0px_#000]">
@@ -129,14 +129,14 @@ const ComicCard: React.FC<ComicCardProps> = ({
             {/* Toggle Physique / Digital */}
             {hasPhysical && (
                 <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
-                    <button 
+                    <button
                         onClick={(e) => { e.stopPropagation(); setFormat('digital'); }}
                         className={`min-w-[44px] min-h-[44px] flex items-center justify-center border-2 border-black transition-all shadow-[2px_2px_0px_0px_#000] ${format === 'digital' ? 'bg-[#2563EB] text-white scale-110' : 'bg-white text-black hover:bg-gray-100'}`}
                         aria-label="Sélectionner format numérique"
                     >
                         <BookOpen className="w-4 h-4" aria-hidden="true" />
                     </button>
-                    <button 
+                    <button
                         onClick={(e) => { e.stopPropagation(); setFormat('physical'); }}
                         className={`min-w-[44px] min-h-[44px] flex items-center justify-center border-2 border-black transition-all shadow-[2px_2px_0px_0px_#000] ${format === 'physical' ? 'bg-[#EA4335] text-white scale-110' : 'bg-white text-black hover:bg-gray-100'}`}
                         aria-label="Sélectionner format papier"
@@ -148,7 +148,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
 
             {/* Overlay Actions */}
             <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 z-20 pb-20 pointer-events-none group-hover:pointer-events-auto">
-                <button 
+                <button
                     onClick={handleBuy}
                     disabled={isOutOfStock || (isMature && !matureRevealed)}
                     aria-label={isOutOfStock ? "Produit en rupture de stock" : `Acheter ${format === 'physical' ? 'la version papier' : 'la version numérique'} de ${title} pour ${price} InkPoints`}

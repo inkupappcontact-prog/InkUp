@@ -39,7 +39,7 @@ export const readerService = {
       .select('pages_urls')
       .eq('id', workId)
       .single();
-    
+
     if (!work?.pages_urls) {
       return { data: null, error: new Error('No pages found') };
     }

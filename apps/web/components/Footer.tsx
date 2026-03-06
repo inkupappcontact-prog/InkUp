@@ -111,9 +111,9 @@ const Footer: React.FC = () => {
         {/* Copyright */}
         <div className="border-t-2 border-black mt-8 pt-8 text-center">
           <p className="text-sm text-gray-600">
-            © {currentYear} InkUp. Tous droits réservés. | 
-            <a href="#" className="hover:text-[#2563EB] transition-colors ml-1">Mentions légales</a> | 
-            <a href="#" className="hover:text-[#2563EB] transition-colors ml-1">Politique de confidentialité</a> | 
+            © {currentYear} InkUp. Tous droits réservés. |
+            <a href="#" className="hover:text-[#2563EB] transition-colors ml-1">Mentions légales</a> |
+            <a href="#" className="hover:text-[#2563EB] transition-colors ml-1">Politique de confidentialité</a> |
             <a href="#" className="hover:text-[#2563EB] transition-colors ml-1">CGU/CGV</a>
           </p>
           <p className="text-xs text-gray-500 mt-2">

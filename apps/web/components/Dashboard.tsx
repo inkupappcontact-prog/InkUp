@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { TIMING } from '@/constants';
 import { Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package, Plus } from 'lucide-react';
 import Sidebar from './Sidebar';
 import ComicCard from './ComicCard';
@@ -22,35 +23,38 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
   // État local pour le formulaire "Nouveau Projet"
   const [newProjectPhysical, setNewProjectPhysical] = useState(false);
-  const [physicalPrice, setPhysicalPrice] = useState("2500");
-  const [physicalStock, setPhysicalStock] = useState("50");
-  
+  const DEFAULT_PHYSICAL_PRICE = '2500';
+  const DEFAULT_PHYSICAL_STOCK = '50';
+  const [physicalPrice, setPhysicalPrice] = useState(DEFAULT_PHYSICAL_PRICE);
+  const [physicalStock, setPhysicalStock] = useState(DEFAULT_PHYSICAL_STOCK);
+
   // État Notification
   const [toast, setToast] = useState<{message: string, subtext?: string} | null>(null);
 
   const showToast = (message: string, subtext?: string) => {
     setToast({ message, subtext });
-    setTimeout(() => setToast(null), 5000);
+    setTimeout(() => setToast(null), TIMING.TOAST_DURATION);
   };
 
   // Simulation de données avec attributs physiques
-  const comics = [
+  const comicsList = [
     { id: '1', title: 'Le Secret de l\'Encre', author: 'Moebius II', cover: 'https://images.unsplash.com/photo-1580136608260-42d1c4101a92?auto=format&fit=crop&q=80&w=400', price: 45, category: 'Sci-Fi', hasPhysical: true, stock: 12 },
     { id: '2', title: 'Nuit de Plomb', author: 'Tardi Fan', cover: 'https://images.unsplash.com/photo-1618519764620-7403abdbf951?auto=format&fit=crop&q=80&w=400', price: 0, category: 'Noir', hasPhysical: false, isMature: true },
     { id: '3', title: 'Ligne d\'Horizon', author: 'Hergé Legacy', cover: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=400', price: 60, category: 'Aventure', hasPhysical: true, stock: 5 },
     { id: '4', title: 'Cyanure & Co', author: 'Franquin Jr', cover: 'https://images.unsplash.com/photo-1543004218-ee141104e14a?auto=format&fit=crop&q=80&w=400', price: 30, category: 'Humour', hasPhysical: false },
-    { id: '5', title: 'Ether Eternel', author: 'Uderzo Tribute', cover: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400', price: 50, category: 'Fantaisie', hasPhysical: true, stock: 0 }, 
+    { id: '5', title: 'Ether Eternel', author: 'Uderzo Tribute', cover: 'https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=400', price: 50, category: 'Fantaisie', hasPhysical: true, stock: 0 },
     { id: '6', title: 'Bruit de Fond', author: 'Giraud Style', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400', price: 25, category: 'Western', hasPhysical: false },
   ];
 
-  const myLibrary = comics.slice(0, 2);
+  const LIBRARY_PREVIEW_COUNT = 2;
+  const myLibrary = comicsList.slice(0, LIBRARY_PREVIEW_COUNT);
   const weeklyStats = [150, 230, 180, 320, 290, 450, 510]; // Lun -> Dim
   const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
   const maxStat = Math.max(...weeklyStats);
 
   const renderDiscovery = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {comics.map(comic => (
+      {comicsList.map(comic => (
         <ComicCard
           key={comic.id}
           title={comic.title}
@@ -94,7 +98,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
             <div key={index} className="flex items-center gap-2">
               <span className="w-12 text-sm font-bold text-black">{days[index]}</span>
               <div className="flex-1 bg-gray-200 h-8 relative">
-                <div 
+                <div
                   className="bg-[#2563EB] h-full border-2 border-black transition-all duration-300"
                   style={{ width: `${(stat / maxStat) * 100}%` }}
                 >
@@ -105,7 +109,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
           ))}
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="card transform -rotate-1">
           <div className="text-center">
@@ -136,7 +140,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
           <Upload className="w-8 h-8" />
           Nouveau Projet
         </h3>
-        
+
         <div className="space-y-4">
           <div>
             <label className="font-bold block mb-2">Titre du Projet</label>
@@ -149,7 +153,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
           <div>
             <label className="font-bold block mb-2">Description</label>
-            <textarea 
+            <textarea
               className="w-full border-4 border-black p-3 font-['Comic Neue'] focus:outline-none focus:border-[#2563EB]"
               rows={4}
               placeholder="Une aventure épique dans les méandres du temps..."
@@ -198,7 +202,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
             </div>
           </div>
 
-          <ComicButton 
+          <ComicButton
             onClick={() => showToast("Projet publié avec succès !", "Il est maintenant disponible dans le catalogue.")}
             className="w-full"
           >
@@ -232,13 +236,13 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
-      <Sidebar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
-        user={user} 
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        user={user}
         onLogout={onLogout}
       />
-      
+
       <div className="flex-1 p-6">
         <div className="max-w-7xl mx-auto">
           {renderContent()}

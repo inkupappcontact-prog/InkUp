@@ -12,35 +12,35 @@ const Footer: React.FC<FooterProps> = ({ onLegalClick }) => {
     <footer className="bg-white pt-12 pb-8 px-6 text-center border-t-8 border-black">
       <InkUpLogo className="w-16 h-16 mx-auto mb-6 grayscale opacity-50 hover:opacity-100 hover:grayscale-0 transition-all" />
       <p className="font-['Bangers'] text-xl uppercase text-[#1A1A1A] mb-8">InkUp - La Plateforme BD de demain</p>
-      
+
       {/* Navigation Légale : Empilée sur mobile, ligne sur desktop */}
       <nav className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-sm font-bold uppercase text-[#374151] mb-10">
-          <button 
-            onClick={() => onLegalClick('mentions')} 
+          <button
+            onClick={() => onLegalClick('mentions')}
             className="hover:text-[#1A1A1A] hover:underline hover:scale-105 transition-all py-2 md:py-0"
           >
             Mentions Légales
           </button>
-          <button 
-            onClick={() => onLegalClick('cgu')} 
+          <button
+            onClick={() => onLegalClick('cgu')}
             className="hover:text-[#1A1A1A] hover:underline hover:scale-105 transition-all py-2 md:py-0"
           >
             CGU
           </button>
-          <button 
-            onClick={() => onLegalClick('cgv')} 
+          <button
+            onClick={() => onLegalClick('cgv')}
             className="hover:text-[#1A1A1A] hover:underline hover:scale-105 transition-all py-2 md:py-0"
           >
             CGV
           </button>
-          <button 
-            onClick={() => onLegalClick('privacy')} 
+          <button
+            onClick={() => onLegalClick('privacy')}
             className="hover:text-[#1A1A1A] hover:underline hover:scale-105 transition-all py-2 md:py-0"
           >
             Confidentialité
           </button>
-          <a 
-            href={`mailto:${LEGAL_INFO.contact_email}`} 
+          <a
+            href={`mailto:${LEGAL_INFO.contact_email}`}
             className="hover:text-[#1A1A1A] hover:underline hover:scale-105 transition-all py-2 md:py-0"
           >
             Contact Support
@@ -48,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ onLegalClick }) => {
       </nav>
 
       {/* Badge de Sécurité Stripe */}
-      <div 
+      <div
          className="flex justify-center items-center gap-2 mb-8 bg-gray-50 inline-flex px-4 py-2 border border-gray-200 rounded mx-auto"
          role="img"
          aria-label="Paiements 100% sécurisés par Stripe"

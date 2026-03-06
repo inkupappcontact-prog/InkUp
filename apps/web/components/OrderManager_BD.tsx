@@ -129,7 +129,7 @@ const OrderManager: React.FC = () => {
                 <p className="text-gray-400 text-sm">Client: {order.customer}</p>
                 <p className="text-[#2563EB] font-bold">{order.amount} InkPoints</p>
               </div>
-              
+
               <div className="flex flex-col items-end gap-2">
                 {order.trackingNumber && (
                   <div className="text-right">
@@ -137,7 +137,7 @@ const OrderManager: React.FC = () => {
                     <p className="text-white font-mono text-sm">{order.trackingNumber}</p>
                   </div>
                 )}
-                
+
                 <div className="flex gap-2">
                   {order.status === 'pending' && (
                     <>
@@ -149,13 +149,13 @@ const OrderManager: React.FC = () => {
                       </button>
                     </>
                   )}
-                  
+
                   {order.status === 'shipped' && (
                     <button className="bg-green-600 text-white px-3 py-1 text-sm rounded hover:bg-green-700 transition-colors">
                       Marquer comme livré
                     </button>
                   )}
-                  
+
                   <button className="bg-gray-700 text-white px-3 py-1 text-sm rounded hover:bg-gray-600 transition-colors">
                     Détails
                   </button>

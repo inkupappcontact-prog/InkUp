@@ -24,7 +24,7 @@ const OrderManager: React.FC<OrderManagerProps> = ({ onNotify }) => {
 
   const handleShipOrder = (id: string) => {
     const tracking = trackingInput[id];
-    
+
     if (!tracking) {
         setErrors({ ...errors, [id]: "Requis !" });
         return;
@@ -37,7 +37,7 @@ const OrderManager: React.FC<OrderManagerProps> = ({ onNotify }) => {
 
     setOrders(orders.map(o => o.id === id ? { ...o, status: 'shipped', fundsReleased: true, tracking: tracking } : o));
     setErrors({ ...errors, [id]: "" });
-    
+
     if (onNotify) {
         onNotify("Colis Expédié !", `Le suivi ${tracking} a été envoyé à l'acheteur.`);
     }
@@ -88,7 +88,7 @@ const OrderManager: React.FC<OrderManagerProps> = ({ onNotify }) => {
                             <span className="transform skew-x-12 font-['Bangers'] text-lg uppercase tracking-wide">{statusStyle.text}</span>
                         </div>
                     </div>
-                    
+
                     {/* Indicateur Escrow */}
                     <div className={`flex items-center gap-2 px-4 py-1 border-2 border-black ${order.fundsReleased ? 'bg-[#34A853]/10 text-[#34A853]' : 'bg-gray-100 text-gray-500'}`}>
                         {order.fundsReleased ? <Unlock className="w-4 h-4" /> : <Lock className="w-4 h-4" />}
@@ -129,17 +129,17 @@ const OrderManager: React.FC<OrderManagerProps> = ({ onNotify }) => {
                                     </span>
                                 </div>
                                 <label htmlFor={`tracking-${order.id}`} className="sr-only">Numéro de suivi colis</label>
-                                <input 
+                                <input
                                     id={`tracking-${order.id}`}
-                                    type="text" 
-                                    placeholder="N° de Suivi (Requis)" 
+                                    type="text"
+                                    placeholder="N° de Suivi (Requis)"
                                     className="w-full border-2 border-black px-2 py-1 mb-2 font-mono text-sm uppercase focus:outline-none focus:border-[#2563EB]"
                                     value={trackingInput[order.id] || ''}
                                     onChange={(e) => handleTrackingChange(order.id, e.target.value)}
                                     aria-invalid={hasError}
                                     aria-describedby={`error-${order.id}`}
                                 />
-                                <button 
+                                <button
                                     onClick={() => handleShipOrder(order.id)}
                                     className="w-full bg-[#2563EB] border-2 border-black px-4 py-2 font-['Bangers'] uppercase text-white shadow-[3px_3px_0px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-sm min-h-[44px]"
                                 >

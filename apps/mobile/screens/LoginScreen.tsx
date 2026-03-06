@@ -99,7 +99,7 @@ export default function LoginScreen() {
           </Text>
           <Text style={styles.userRole}>Rôle: {profile.role}</Text>
           <Text style={styles.userBalance}>Solde: {profile.balance} InkPoints</Text>
-          
+
           <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
             <Text style={styles.logoutButtonText}>Se déconnecter</Text>
           </TouchableOpacity>
@@ -110,7 +110,7 @@ export default function LoginScreen() {
 
   // Écran de login
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
@@ -136,8 +136,8 @@ export default function LoginScreen() {
           secureTextEntry
         />
 
-        <TouchableOpacity 
-          style={[styles.loginButton, loading && styles.disabledButton]} 
+        <TouchableOpacity
+          style={[styles.loginButton, loading && styles.disabledButton]}
           onPress={handleLogin}
           disabled={loading}
         >

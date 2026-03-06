@@ -30,7 +30,8 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
-    if (!loading && (!user || profile?.role !== 'author')) {
+    const shouldRedirect = !loading && (!user || profile?.role !== 'author');
+    if (shouldRedirect) {
       router.push('/');
     }
   }, [user, profile, loading, router]);
@@ -62,9 +63,9 @@ export default function DashboardPage() {
   };
 
   return (
-    <Dashboard 
-      user={dashboardUser} 
-      onLogout={handleLogout} 
+    <Dashboard
+      user={dashboardUser}
+      onLogout={handleLogout}
       onRead={handleRead}
     />
   );

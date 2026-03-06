@@ -14,7 +14,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
 
   return (
     <div className="max-w-6xl mx-auto animate-in slide-in-from-bottom-4 duration-500 pb-12">
-      
+
       {/* En-tête de la page */}
       <div className="flex items-center gap-4 mb-8">
         <div className="bg-black text-white p-2 transform -skew-x-12">
@@ -24,7 +24,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-12">
-        
+
         {/* COLONNE GAUCHE : L'AVATAR & STATS (Style Carte à collectionner) */}
         <div className="lg:w-1/3 flex flex-col gap-8">
             <div className="border-4 border-black bg-white p-4 shadow-[12px_12px_0px_0px_#000000] relative group">
@@ -39,9 +39,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
 
                 {/* Photo */}
                 <div className="relative aspect-square border-2 border-black overflow-hidden mb-4 bg-gray-100">
-                    <img 
-                        src={`https://ui-avatars.com/api/?name=${user.email}&background=fff&color=000&size=400&font-size=0.33`} 
-                        alt="Avatar" 
+                    <img
+                        src={`https://ui-avatars.com/api/?name=${user.email}&background=fff&color=000&size=400&font-size=0.33`}
+                        alt="Avatar"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
                     />
                     <button className="absolute bottom-2 right-2 bg-white border-2 border-black p-2 shadow-[3px_3px_0px_0px_#2563EB] hover:bg-black hover:text-white transition-colors">
@@ -92,15 +92,15 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
 
                 <div className="space-y-8 mt-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <ParallelogramInput 
-                            label="Pseudo (Nom de Code)" 
-                            value={pseudo} 
-                            onChange={(e) => setPseudo(e.target.value)} 
+                        <ParallelogramInput
+                            label="Pseudo (Nom de Code)"
+                            value={pseudo}
+                            onChange={(e) => setPseudo(e.target.value)}
                         />
-                        <ParallelogramInput 
-                            label="Quartier Général" 
-                            value={location} 
-                            onChange={(e) => setLocation(e.target.value)} 
+                        <ParallelogramInput
+                            label="Quartier Général"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
                             placeholder="Ville, Pays"
                         />
                     </div>
@@ -116,7 +116,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                          </div>
                          {/* Textarea (Rectangulaire) */}
                          <div className="border-[3px] border-black bg-white shadow-[6px_6px_0px_0px_#000000] p-4 relative z-10 focus-within:shadow-[6px_6px_0px_0px_#2563EB] focus-within:border-[#2563EB] transition-all">
-                             <textarea 
+                             <textarea
                                 rows={4}
                                 value={bio}
                                 onChange={(e) => setBio(e.target.value)}
@@ -125,10 +125,10 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                          </div>
                     </div>
 
-                    <ParallelogramInput 
-                        label="Email Sécurisé" 
-                        value={user.email} 
-                        onChange={() => {}} 
+                    <ParallelogramInput
+                        label="Email Sécurisé"
+                        value={user.email}
+                        onChange={() => {}}
                         placeholder="email@domain.com"
                     />
 

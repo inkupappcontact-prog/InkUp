@@ -48,7 +48,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Objet</h3>
               <p>
-                Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme 
+                Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme
                 InkUp, spécialisée dans la distribution de bandes dessinées numériques et physiques.
               </p>
             </section>
@@ -56,7 +56,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">2. Acceptation</h3>
               <p>
-                L'utilisation de la plateforme InkUp implique l'acceptation pleine et entière des présentes CGU. 
+                L'utilisation de la plateforme InkUp implique l'acceptation pleine et entière des présentes CGU.
                 En cas de non-acceptation, l'utilisateur doit cesser d'utiliser le service.
               </p>
             </section>
@@ -64,8 +64,8 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">3. Inscription</h3>
               <p>
-                L'inscription est gratuite et réservée aux personnes majeures disposant de la capacité juridique 
-                pour contracter. Chaque utilisateur s'engage à fournir des informations exactes et à maintenir 
+                L'inscription est gratuite et réservée aux personnes majeures disposant de la capacité juridique
+                pour contracter. Chaque utilisateur s'engage à fournir des informations exactes et à maintenir
                 ses identifiants confidentiels.
               </p>
             </section>
@@ -73,8 +73,8 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">4. Contenu</h3>
               <p>
-                Les utilisateurs s'engagent à respecter les droits d'auteur et la propriété intellectuelle. 
-                Tout contenu contrefaisant ou illégal sera immédiatement supprimé et pourra entraîner 
+                Les utilisateurs s'engagent à respecter les droits d'auteur et la propriété intellectuelle.
+                Tout contenu contrefaisant ou illégal sera immédiatement supprimé et pourra entraîner
                 la résiliation du compte.
               </p>
             </section>
@@ -82,8 +82,8 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">5. Responsabilité</h3>
               <p>
-                InkUp s'efforce d'assurer la disponibilité du service mais ne peut garantir une 
-                continuité absolue. La responsabilité d'InkUp est limitée aux dommages directs 
+                InkUp s'efforce d'assurer la disponibilité du service mais ne peut garantir une
+                continuité absolue. La responsabilité d'InkUp est limitée aux dommages directs
                 prévus par la loi.
               </p>
             </section>
@@ -91,7 +91,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">6. Propriété intellectuelle</h3>
               <p>
-                Tous les éléments de la plateforme (logos, textes, graphismes, structure) sont 
+                Tous les éléments de la plateforme (logos, textes, graphismes, structure) sont
                 protégés par le droit d'auteur et ne peuvent être reproduits sans autorisation.
               </p>
             </section>
@@ -99,7 +99,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">7. Modification</h3>
               <p>
-                InkUp se réserve le droit de modifier les présentes CGU à tout moment. 
+                InkUp se réserve le droit de modifier les présentes CGU à tout moment.
                 Les modifications seront notifiées aux utilisateurs par email.
               </p>
             </section>
@@ -112,7 +112,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Objet</h3>
               <p>
-                Les présentes Conditions Générales de Vente (CGV) régissent les ventes de bandes dessinées 
+                Les présentes Conditions Générales de Vente (CGV) régissent les ventes de bandes dessinées
                 numériques et physiques proposées par InkUp.
               </p>
             </section>
@@ -120,7 +120,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">2. Produits</h3>
               <p>
-                Les bandes dessinées numériques sont disponibles en téléchargement immédiat. 
+                Les bandes dessinées numériques sont disponibles en téléchargement immédiat.
                 Les exemplaires physiques sont expédiés sous 48h en France métropolitaine.
               </p>
             </section>
@@ -128,7 +128,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">3. Prix</h3>
               <p>
-                Les prix sont indiqués en euros TTC et incluent tous les frais applicables. 
+                Les prix sont indiqués en euros TTC et incluent tous les frais applicables.
                 InkUp se réserve le droit de modifier ses prix à tout moment.
               </p>
             </section>
@@ -136,7 +136,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">4. Paiement</h3>
               <p>
-                Le paiement est sécurisé via Stripe. Les cartes bancaires acceptées sont : 
+                Le paiement est sécurisé via Stripe. Les cartes bancaires acceptées sont :
                 Visa, Mastercard, American Express. Le paiement est débité lors de la validation de la commande.
               </p>
             </section>
@@ -144,7 +144,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">5. Livraison</h3>
               <p>
-                Les livraisons sont effectuées par La Poste. Les délais de livraison sont de 2-5 jours ouvrés. 
+                Les livraisons sont effectuées par La Poste. Les délais de livraison sont de 2-5 jours ouvrés.
                 En cas de perte, un nouvel exemplaire sera expédié sans frais supplémentaires.
               </p>
             </section>
@@ -152,8 +152,8 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">6. Rétractation</h3>
               <p>
-                Conformément au Code de la consommation, l'utilisateur dispose d'un délai de 14 jours 
-                pour exercer son droit de rétractation. Pour les contenus numériques, ce droit s'applique 
+                Conformément au Code de la consommation, l'utilisateur dispose d'un délai de 14 jours
+                pour exercer son droit de rétractation. Pour les contenus numériques, ce droit s'applique
                 uniquement si le téléchargement n'a pas été effectué.
               </p>
             </section>
@@ -166,7 +166,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">1. Collecte des données</h3>
               <p>
-                Conformément au RGPD (Règlement Général sur la Protection des Données), InkUp collecte uniquement les 
+                Conformément au RGPD (Règlement Général sur la Protection des Données), InkUp collecte uniquement les
                 données strictement nécessaires à la fourniture de ses services :
               </p>
               <ul className="list-disc list-inside mt-2 space-y-1">
@@ -281,7 +281,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">9. Mise à jour de cette politique</h3>
               <p>
-                Cette politique peut être modifiée pour tenir compte des évolutions légales et techniques. 
+                Cette politique peut être modifiée pour tenir compte des évolutions légales et techniques.
                 Toute modification sera notifiée aux utilisateurs par email et publiée sur cette page.
               </p>
               <p className="mt-2">
@@ -329,7 +329,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">Propriété intellectuelle</h3>
               <p>
-                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur 
+                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur
                 et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
               </p>
             </section>
@@ -337,7 +337,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
             <section>
               <h3 className="font-bold text-lg mb-3">Cookies et RGPD</h3>
               <p>
-                Ce site utilise des cookies conformément au RGPD. 
+                Ce site utilise des cookies conformément au RGPD.
                 Consultez notre politique de confidentialité pour plus d'informations.
               </p>
             </section>
@@ -369,7 +369,7 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
         </div>
 
         <div className="flex justify-end gap-4">
-          <ComicButton 
+          <ComicButton
             onClick={onClose}
             className="px-6 py-2"
           >

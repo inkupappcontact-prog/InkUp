@@ -80,7 +80,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
               Une plateforme pensée pour les passionnés de BD
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-900 border-4 border-[#2563EB] rounded-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
               <div className="bg-[#2563EB] w-16 h-16 rounded-full flex items-center justify-center mb-6 border-4 border-[#2563EB] shadow-lg">

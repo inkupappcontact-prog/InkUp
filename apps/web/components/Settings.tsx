@@ -97,7 +97,7 @@ const Settings: React.FC = () => {
   const renderNotifications = () => (
     <div className="space-y-6">
       <h3 className="font-['Bangers'] text-xl mb-4">Préférences de notification</h3>
-      
+
       <div className="space-y-4">
         <div className="flex items-center justify-between p-4 border-2 border-black">
           <div>
@@ -173,7 +173,7 @@ const Settings: React.FC = () => {
   const renderPrivacy = () => (
     <div className="space-y-6">
       <h3 className="font-['Bangers'] text-xl mb-4">Paramètres de confidentialité</h3>
-      
+
       <div className="space-y-4">
         <div className="flex items-center justify-between p-4 border-2 border-black">
           <div>
@@ -259,7 +259,7 @@ const Settings: React.FC = () => {
   const renderAppearance = () => (
     <div className="space-y-6">
       <h3 className="font-['Bangers'] text-xl mb-4">Apparence</h3>
-      
+
       <div className="space-y-4">
         <div className="flex items-center justify-between p-4 border-2 border-black">
           <div>
@@ -303,7 +303,7 @@ const Settings: React.FC = () => {
   const renderBilling = () => (
     <div className="space-y-6">
       <h3 className="font-['Bangers'] text-xl mb-4">Facturation</h3>
-      
+
       <div className="bg-gray-50 border-2 border-black p-4">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -358,7 +358,7 @@ const Settings: React.FC = () => {
   const renderHelp = () => (
     <div className="space-y-6">
       <h3 className="font-['Bangers'] text-xl mb-4">Aide et support</h3>
-      
+
       <div className="space-y-4">
         <div className="border-2 border-black p-4">
           <h4 className="font-bold mb-2">FAQ</h4>
@@ -421,7 +421,7 @@ const Settings: React.FC = () => {
             {sections.map((section) => {
               const Icon = section.icon;
               const isActive = activeSection === section.id;
-              
+
               return (
                 <button
                   key={section.id}
@@ -445,7 +445,7 @@ const Settings: React.FC = () => {
       <div className="flex-1">
         <div className="bg-white border-4 border-black p-6">
           {renderContent()}
-          
+
           {/* Save button */}
           <div className="flex gap-3 mt-8 pt-6 border-t-4 border-black">
             <button className="flex-1 border-2 border-black px-4 py-3 font-bold hover:bg-gray-100 transition-colors">

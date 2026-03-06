@@ -7,10 +7,10 @@ interface NotificationToastProps {
   type?: 'success' | 'error' | 'info';
 }
 
-const NotificationToast: React.FC<NotificationToastProps> = ({ 
-  message, 
-  subtext, 
-  type = 'success' 
+const NotificationToast: React.FC<NotificationToastProps> = ({
+  message,
+  subtext,
+  type = 'success'
 }) => {
   const [isVisible, setIsVisible] = useState(true);
 

@@ -19,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, is
 
   if (isAuthor) {
     // Insérer Atelier et Commandes après Découverte
-    menuItems.splice(1, 0, 
+    menuItems.splice(1, 0,
         { id: 'atelier', label: 'Mon Atelier', icon: PenTool },
         { id: 'orders', label: 'Commandes', icon: Package }
     );
@@ -35,15 +35,15 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, is
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
-          
+
           return (
             <button
               key={item.id}
               onClick={() => setActiveTab(item.id)}
               className={`
                 w-full h-12 flex items-center gap-4 px-4 border-2 transform -skew-x-12 transition-all duration-150 relative group
-                ${isActive 
-                  ? 'bg-black border-black text-white shadow-[6px_6px_0px_0px_#2563EB] translate-x-1.5' 
+                ${isActive
+                  ? 'bg-black border-black text-white shadow-[6px_6px_0px_0px_#2563EB] translate-x-1.5'
                   : 'bg-white border-black text-black hover:bg-[#F0F0F0]'}
               `}
             >
@@ -70,7 +70,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onLogout, is
           </button>
         )}
 
-        <button 
+        <button
           onClick={onLogout}
           className="w-full h-12 flex items-center justify-center gap-3 border-2 border-black transform -skew-x-12 hover:bg-black hover:text-white transition-all text-black font-['Bangers'] uppercase text-lg"
         >
