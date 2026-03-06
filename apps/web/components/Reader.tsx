@@ -12,13 +12,13 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const nextPage = () => {
+  const handleNextPage = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
   };
 
-  const prevPage = () => {
+  const handlePrevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
@@ -31,10 +31,10 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case 'ArrowLeft':
-        prevPage();
+        handlePrevPage();
         break;
       case 'ArrowRight':
-        nextPage();
+        handleNextPage();
         break;
       case 'Escape':
         if (isFullscreen) {
@@ -94,7 +94,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
         {/* Page précédente */}
         {currentPage > 0 && (
           <button
-            onClick={prevPage}
+            onClick={handlePrevPage}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full hover:bg-opacity-70 transition-colors"
             title="Page précédente (←)"
           >
@@ -114,7 +114,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
         {/* Page suivante */}
         {currentPage < pages.length - 1 && (
           <button
-            onClick={nextPage}
+            onClick={handleNextPage}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-4 rounded-full hover:bg-opacity-70 transition-colors"
             title="Page suivante (→)"
           >
@@ -128,7 +128,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <ComicButton
-              onClick={prevPage}
+              onClick={handlePrevPage}
               disabled={currentPage === 0}
               className="flex items-center gap-2"
             >
@@ -152,7 +152,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
             </div>
 
             <ComicButton
-              onClick={nextPage}
+              onClick={handleNextPage}
               disabled={currentPage === pages.length - 1}
               className="flex items-center gap-2"
             >

@@ -56,7 +56,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
     setIsVisible(false);
   };
 
-  const togglePreference = (key: keyof CookiePreferences) => {
+  const handlePreferenceToggle = (key: keyof CookiePreferences) => {
     if (key === 'essential') return; // Essential cookies cannot be disabled
     setPreferences(prev => ({ ...prev, [key]: !prev[key] }));
   };
@@ -145,7 +145,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   <input
                     type="checkbox"
                     checked={preferences.analytics}
-                    onChange={() => togglePreference('analytics')}
+                    onChange={() => handlePreferenceToggle('analytics')}
                     className="w-4 h-4"
                   />
                 </div>
@@ -162,7 +162,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   <input
                     type="checkbox"
                     checked={preferences.marketing}
-                    onChange={() => togglePreference('marketing')}
+                    onChange={() => handlePreferenceToggle('marketing')}
                     className="w-4 h-4"
                   />
                 </div>

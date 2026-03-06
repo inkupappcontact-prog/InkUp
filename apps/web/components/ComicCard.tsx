@@ -53,7 +53,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
     // Logique d'achat physique
   };
 
-  const toggleLike = () => {
+  const handleLikeToggle = () => {
     setIsLiked(!isLiked);
   };
 
@@ -120,7 +120,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <button
-              onClick={toggleLike}
+              onClick={handleLikeToggle}
               className={`p-2 border-2 border-black transition-colors ${
                 isLiked ? 'bg-red-500 text-white' : 'bg-white hover:bg-red-100'
               }`}

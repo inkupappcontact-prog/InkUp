@@ -52,8 +52,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
             const birth = new Date(birthDate);
             const today = new Date();
             let age = today.getFullYear() - birth.getFullYear();
-            const m = today.getMonth() - birth.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+            const monthDiff = today.getMonth() - birth.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
                 age--;
             }
             if (age < 15) { // Minimum légal RGPD pour consentement numérique sans parents en France

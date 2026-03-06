@@ -36,7 +36,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
   };
 
   // Simulation de données avec attributs physiques
-  const comicsList = [
+  const comics = [
     { id: '1', title: 'Le Secret de l\'Encre', author: 'Moebius II', cover: 'https://images.unsplash.com/photo-1580136608260-42d1c4101a92?auto=format&fit=crop&q=80&w=400', price: 45, category: 'Sci-Fi', hasPhysical: true, stock: 12 },
     { id: '2', title: 'Nuit de Plomb', author: 'Tardi Fan', cover: 'https://images.unsplash.com/photo-1618519764620-7403abdbf951?auto=format&fit=crop&q=80&w=400', price: 0, category: 'Noir', hasPhysical: false, isMature: true },
     { id: '3', title: 'Ligne d\'Horizon', author: 'Hergé Legacy', cover: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=400', price: 60, category: 'Aventure', hasPhysical: true, stock: 5 },
@@ -46,14 +46,14 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
   ];
 
   const LIBRARY_PREVIEW_COUNT = 2;
-  const myLibrary = comicsList.slice(0, LIBRARY_PREVIEW_COUNT);
+  const myLibrary = comics.slice(0, LIBRARY_PREVIEW_COUNT);
   const weeklyStats = [150, 230, 180, 320, 290, 450, 510]; // Lun -> Dim
   const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
   const maxStat = Math.max(...weeklyStats);
 
   const renderDiscovery = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {comicsList.map(comic => (
+      {comics.map(comic => (
         <ComicCard
           key={comic.id}
           title={comic.title}
