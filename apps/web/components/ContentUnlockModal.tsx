@@ -17,10 +17,12 @@ const ContentUnlockModal: React.FC<ContentUnlockModalProps> = ({
 }) => {
   const [isProcessing, setIsProcessing] = useState(false);
 
+  const PROCESSING_DELAY_MS = 1500;
+
   const handleConfirm = async () => {
     setIsProcessing(true);
     // Simuler un traitement
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise(resolve => setTimeout(resolve, PROCESSING_DELAY_MS));
     onConfirm();
   };
 
