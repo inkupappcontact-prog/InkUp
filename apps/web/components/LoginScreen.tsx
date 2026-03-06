@@ -55,53 +55,17 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   };
 
   const handleLogin = async () => {
-    console.log('🔍 Tentative de connexion avec:', {
-      email,
-      passwordLength: password.length,
-      passwordProvided: !!password
-    });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    console.log('📊 Réponse login Supabase:', { data, error });
-
-    if (error) {
-      console.error('❌ Erreur login détaillée:', {
-        message: error.message,
-        status: error.status,
-        code: error.code,
-        details: error
-      });
-      throw error;
-    }
+    if (error) throw error;
 
     if (data.user) {
-      console.log('User data:', data.user);
-      console.log('User metadata:', data.user.user_metadata);
       const userRole = data.user.user_metadata?.role || 'reader';
-      console.log('User role:', userRole);
-
-      if (userRole === 'author') {
-        console.log('Redirecting to dashboard');
-        router.push('/dashboard');
-      } else {
-        console.log('Redirecting to home');
-        router.push('/');
-      }
+      router.push(userRole === 'author' ? '/dashboard' : '/');
     }
   };
 
   const handleSignup = async () => {
-    console.log('🔍 Tentative d\'inscription avec:', {
-      email,
-      passwordLength: password.length,
-      userType,
-      artistName: userType === 'author' ? artistName : 'N/A'
-    });
-
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -109,41 +73,18 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         data: {
           role: userType,
           artist_name: userType === 'author' ? artistName : null,
-          full_name: email.split('@')[0]
-        }
-      }
+          full_name: email.split('@')[0],
+        },
+      },
     });
 
-    if (error) {
-      console.error('❌ Erreur signup détaillée:', {
-        message: error.message,
-        status: error.status,
-        code: error.code,
-        details: error
-      });
-      throw error;
-    }
-
-    console.log('✅ Inscription réussie:', data);
+    if (error) throw error;
 
     if (data.user) {
       const userName = data.user.user_metadata?.full_name || email.split('@')[0];
-      await sendWelcomeEmail(
-        email,
-        userName,
-        userType,
-        userType === 'author' ? artistName : undefined
-      );
-
+      await sendWelcomeEmail(email, userName, userType, userType === 'author' ? artistName : undefined);
       const userRole = data.user.user_metadata?.role || 'reader';
-
-      if (userRole === 'author') {
-        console.log('Redirecting to dashboard');
-        router.push('/dashboard');
-      } else {
-        console.log('Redirecting to home');
-        router.push('/');
-      }
+      router.push(userRole === 'author' ? '/dashboard' : '/');
     }
   };
 
