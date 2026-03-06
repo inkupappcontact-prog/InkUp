@@ -1,8 +1,15 @@
 // Test simple pour vérifier la connexion Supabase
+// Usage: SUPABASE_URL=... SUPABASE_KEY=... node test-supabase.js
 const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = 'https://nuiddjsqqxmkeanxzsfa.supabase.co';
-const supabaseKey = 'sb_publishable_VtiTX27Sl-QjYmjbCr6buQ_q_mR8fbE';
+const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error('❌ Variables manquantes: SUPABASE_URL et SUPABASE_KEY requis');
+  console.error('   Exemple: SUPABASE_URL=https://xxx.supabase.co SUPABASE_KEY=xxx node test-supabase.js');
+  process.exit(1);
+}
 
 console.log('🔍 Test connexion Supabase...');
 console.log('URL:', supabaseUrl);
