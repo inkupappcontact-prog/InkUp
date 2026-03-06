@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TIMING } from '@/constants';
-import { Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package, Plus } from 'lucide-react';
+import { Upload } from 'lucide-react';
 import Sidebar from './Sidebar';
 import ComicCard from './ComicCard';
 import ComicButton from './ui/ComicButton';
