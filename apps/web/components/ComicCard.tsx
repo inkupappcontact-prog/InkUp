@@ -49,7 +49,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
 
   const handleShippingSubmit = (_address: unknown) => {
     setShowShippingForm(false);
-    // TODO: implémenter la logique d'achat physique via API
+    // TODO(#ISSUE): implémenter la logique d'achat physique via API
   };
 
   const handleLikeToggle = () => {

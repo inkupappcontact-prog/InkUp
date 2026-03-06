@@ -94,7 +94,7 @@ const OrderManager: React.FC = () => {
   });
 
   const handleUpdateStatus = (orderId: string, newStatus: Order['status']) => {
-    // TODO: implémenter via API Supabase
+    // TODO(#ISSUE): implémenter via API Supabase
     void orderId;
     void newStatus;
   };

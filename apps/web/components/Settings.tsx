@@ -33,7 +33,7 @@ const Settings: React.FC = () => {
   ];
 
   const handleSave = () => {
-    // TODO: implémenter la sauvegarde via API
+    // TODO(#ISSUE): implémenter la sauvegarde via API
   };
 
   const handleNotificationToggle = (key: keyof NotificationPrefs) => {
