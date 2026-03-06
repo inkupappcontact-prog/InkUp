@@ -32,7 +32,7 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
   });
 
   const handleSave = () => {
-    console.log('Sauvegarde du profil:', profile);
+    // TODO: implémenter la sauvegarde via API Supabase
     setIsEditing(false);
   };
 

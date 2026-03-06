@@ -147,9 +147,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
 
       {/* Cookie Consent Banner - RGPD Compliance */}
       <CookieConsent
-        onAccept={() => console.log('All cookies accepted')}
-        onRefuse={() => console.log('Non-essential cookies refused')}
-        onCustomize={(preferences) => console.log('Custom preferences:', preferences)}
+        onAccept={() => {}}
+        onRefuse={() => {}}
+        onCustomize={() => {}}
       />
 
       {/* Footer */}

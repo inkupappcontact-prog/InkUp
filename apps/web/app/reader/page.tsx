@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import type { User } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
 import { Profile } from '@shared/types';
 
 export default function ReaderPage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -26,13 +27,7 @@ export default function ReaderPage() {
   }, []);
 
   useEffect(() => {
-    console.log('Reader page - user:', user);
-    console.log('Reader page - profile:', profile);
-    console.log('Reader page - loading:', loading);
-    console.log('Reader page - condition:', !loading && (!user || profile?.role !== 'reader'));
-
     if (!loading && (!user || profile?.role !== 'reader')) {
-      console.log('Reader page - redirecting to home');
       router.push('/');
     }
   }, [user, profile, loading, router]);

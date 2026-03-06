@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import type { User } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
 import { Profile } from '@shared/types';
+import Dashboard from '@/components/Dashboard';
 
 function SkeletonDashboard() {
 }
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -57,9 +59,8 @@ export default function DashboardPage() {
     router.push('/');
   };
 
-  const handleRead = (title: string) => {
-    // Implémenter la lecture
-    console.log('Lecture de:', title);
+  const handleRead = (_title: string) => {
+    // TODO: implémenter la navigation vers le lecteur
   };
 
   return (

@@ -47,10 +47,9 @@ const ComicCard: React.FC<ComicCardProps> = ({
     setShowUnlockModal(false);
   };
 
-  const handleShippingSubmit = (address: any) => {
-    console.log('Adresse de livraison:', address);
+  const handleShippingSubmit = (_address: unknown) => {
     setShowShippingForm(false);
-    // Logique d'achat physique
+    // TODO: implémenter la logique d'achat physique via API
   };
 
   const handleLikeToggle = () => {
