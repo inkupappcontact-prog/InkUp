@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Maximize2, Minimize2, BookOpen, Settings } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize2, Minimize2, Settings } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 
 interface ReaderProps {

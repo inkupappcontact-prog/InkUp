@@ -1,6 +1,12 @@
 import React from 'react';
 import { Package, Truck, CheckCircle, Clock, XCircle, AlertCircle } from 'lucide-react';
 
+const ORDER_AMOUNTS = {
+  ENCRE_PHYSIQUE: 2500,
+  HORIZON_PHYSIQUE: 3000,
+  ETHER_PHYSIQUE: 2800,
+} as const;
+
 const OrderManager: React.FC = () => {
   // Simulation de données de commandes
   const orders = [
@@ -11,7 +17,7 @@ const OrderManager: React.FC = () => {
       product: 'Le Secret de l\'Encre - Édition Physique',
       status: 'shipped',
       trackingNumber: '1Z999AA10123456784',
-      amount: 2500,
+      amount: ORDER_AMOUNTS.ENCRE_PHYSIQUE,
     },
     {
       id: 'ORD-002',
@@ -20,7 +26,7 @@ const OrderManager: React.FC = () => {
       product: 'Ligne d\'Horizon - Édition Physique',
       status: 'pending',
       trackingNumber: null,
-      amount: 3000,
+      amount: ORDER_AMOUNTS.HORIZON_PHYSIQUE,
     },
     {
       id: 'ORD-003',
@@ -29,7 +35,7 @@ const OrderManager: React.FC = () => {
       product: 'Ether Eternel - Édition Physique',
       status: 'delivered',
       trackingNumber: '1Z999AA10123456783',
-      amount: 2800,
+      amount: ORDER_AMOUNTS.ETHER_PHYSIQUE,
     },
   ];
 

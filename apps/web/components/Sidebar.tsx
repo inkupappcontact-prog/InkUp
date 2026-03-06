@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, BarChart3, Upload, Package, Users } from 'lucide-react';
+import { Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, BarChart3, Upload, Package, Users } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import InkUpLogo from './ui/InkUpLogo';
 

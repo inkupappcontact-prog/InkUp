@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package } from 'lucide-react';
+import { Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package } from 'lucide-react';
 import Sidebar from './Sidebar';
 import ComicCard from './ComicCard';
 import ComicButton from './ComicButton';
@@ -16,7 +16,6 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
-  const activeTabStyle = 'text-black';
   const [activeTab, setActiveTab] = useState('discovery');
 
   // État local pour le formulaire "Nouveau Projet"

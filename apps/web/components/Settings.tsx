@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, Bell, Shield, Palette, Globe, CreditCard, HelpCircle, LogOut, Save, X, Eye, EyeOff, Moon, Sun } from 'lucide-react';
+import { Bell, Shield, Palette, Globe, CreditCard, HelpCircle, LogOut, Save, X, Eye, EyeOff, Moon, Sun } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import ParallelogramInput from './ui/ParallelogramInput';
 
@@ -7,6 +7,8 @@ const Settings: React.FC = () => {
   const [activeSection, setActiveSection] = useState('general');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('inkup_lover');
+  const [passwordValue, setPasswordValue] = useState('password123');
   const [notifications, setNotifications] = useState({
     email: true,
     push: false,
@@ -41,8 +43,10 @@ const Settings: React.FC = () => {
           <div>
             <label className="font-bold block mb-2">Nom d'utilisateur</label>
             <ParallelogramInput
+              label="Nom d'utilisateur"
               placeholder="pseudo_inkup"
-              defaultValue="inkup_lover"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>
@@ -55,9 +59,11 @@ const Settings: React.FC = () => {
             <label className="font-bold block mb-2">Mot de passe</label>
             <div className="relative">
               <ParallelogramInput
+                label="Mot de passe"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="••••••••"
-                defaultValue="password123"
+                value={passwordValue}
+                onChange={(e) => setPasswordValue(e.target.value)}
               />
               <button
                 onClick={() => setShowPassword(!showPassword)}

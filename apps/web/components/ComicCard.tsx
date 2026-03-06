@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Coins, Heart, MessageSquare, BookOpen, Package, ShoppingCart, Lock, EyeOff, Eye, AlertTriangle } from 'lucide-react';
+import { Coins, Heart, MessageSquare, BookOpen, Package, ShoppingCart, Lock, Eye, AlertTriangle } from 'lucide-react';
 import ShippingAddressForm from './ShippingAddressForm';
 import ContentUnlockModal from './ContentUnlockModal';
 import ComicButton from './ui/ComicButton';

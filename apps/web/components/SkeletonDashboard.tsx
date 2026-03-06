@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 
 const SKELETON_ITEMS_COUNT = 12;
 

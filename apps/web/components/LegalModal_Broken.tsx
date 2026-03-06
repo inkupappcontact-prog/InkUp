@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, ShieldCheck, Users, CreditCard, Mail, Phone, MapPin } from 'lucide-react';
+import { X, FileText, ShieldCheck, Users, Mail, Phone, MapPin } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import { LEGAL_INFO } from '../../../constants/legal';
 
@@ -8,7 +8,7 @@ interface LegalModalProps {
   onClose: () => void;
 }
 
-const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
+const LegalModalOld: React.FC<LegalModalProps> = ({ type, onClose }) => {
   const [isAccepted, setIsAccepted] = useState(false);
 
   const getTitle = () => {
@@ -397,124 +397,4 @@ const LegalModal: React.FC<LegalModalProps> = ({ type, onClose }) => {
   );
 };
 
-export default LegalModal;
-
-            <section>
-              <h3 className="font-bold text-lg mb-3">Contact</h3>
-              <div className="space-y-2">
-                <p className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <strong>Email :</strong> contact@inkup.com
-                </p>
-                <p className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <strong>Téléphone :</strong> +33 6 12 34 56 78
-                </p>
-                <p className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <strong>Siège social :</strong> {LEGAL_INFO.address}
-                </p>
-              </div>
-            </section>
-
-            <section>
-              <h3 className="font-bold text-lg mb-3">Hébergement</h3>
-              <p>
-                <strong>Fournisseur :</strong> Supabase Inc.<br/>
-                <strong>Adresse :</strong> 7700 Woodland Avenue, Suite 200, San Mateo, CA 94403, USA
-              </p>
-            </section>
-
-            <section>
-              <h3 className="font-bold text-lg mb-3">Propriété intellectuelle</h3>
-              <p>
-                L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur
-                et la propriété intellectuelle. Tous les droits de reproduction sont réservés.
-              </p>
-            </section>
-
-            <section>
-              <h3 className="font-bold text-lg mb-3">Limitation de responsabilité</h3>
-              <p>
-                InkUp ne pourra être tenue responsable des dommages directs et indirects pouvant découler de
-                l'utilisation de ce site.
-              </p>
-            </section>
-
-            <section>
-              <h3 className="font-bold text-lg mb-3">Litiges</h3>
-              <p>
-                Tout litige relatif à l'utilisation du site InkUp est soumis au droit français. En l'absence
-                d'accord amiable, le litige sera porté devant les tribunaux compétents.
-              </p>
-            </section>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white border-4 border-black max-w-4xl w-full max-h-[90vh] overflow-hidden transform rotate-1">
-        {/* Header */}
-        <div className="bg-[#2563EB] border-b-4 border-black p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 text-white">
-              <div className="bg-white bg-opacity-20 p-3 border-2 border-white">
-                {getIcon()}
-              </div>
-              <h2 className="font-['Bangers'] text-2xl">{getTitle()}</h2>
-            </div>
-            <button
-              onClick={onClose}
-              className="bg-white bg-opacity-20 p-2 border-2 border-white hover:bg-opacity-30 transition-colors"
-            >
-              <X className="w-5 h-5 text-white" />
-            </button>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6 overflow-y-auto max-h-[60vh]">
-          {getContent()}
-        </div>
-
-        {/* Footer */}
-        <div className="border-t-4 border-black p-6 bg-gray-50">
-          <div className="flex items-center justify-between">
-            <label className="flex items-center gap-3">
-              <input
-                type="checkbox"
-                checked={isAccepted}
-                onChange={(e) => setIsAccepted(e.target.checked)}
-                className="w-5 h-5 border-2 border-black"
-              />
-              <span className="font-bold">J'ai lu et j'accepte</span>
-            </label>
-
-            <div className="flex gap-3">
-              <button
-                onClick={onClose}
-                className="border-2 border-black px-6 py-3 font-bold hover:bg-gray-100 transition-colors"
-              >
-                Fermer
-              </button>
-              <ComicButton
-                onClick={onClose}
-                disabled={!isAccepted}
-                className="flex items-center gap-2"
-              >
-                Valider
-              </ComicButton>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default LegalModal;
+export default LegalModalOld;

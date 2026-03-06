@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, Shield, Coins, TrendingUp, Check, X, Star, CreditCard, Trash2, Download, FileText, Mail, Code } from 'lucide-react';
-import ComicButton from './ComicButton';
+import { Bell, Shield, Coins, Check, X, Star, CreditCard, Trash2, Download, FileText, Mail, Code } from 'lucide-react';
 import PurchaseConfirmationModal from './PurchaseConfirmationModal';
 import { getWelcomeEmailHtml } from '../utils/emailTemplates';
 

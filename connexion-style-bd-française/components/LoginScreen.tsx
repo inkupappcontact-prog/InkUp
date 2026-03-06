@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogIn, UserPlus, BookOpen, PenTool, Sparkles, ArrowLeft, Calendar } from 'lucide-react';
+import { LogIn, UserPlus, BookOpen, PenTool, Sparkles, ArrowLeft } from 'lucide-react';
 import ParallelogramInput from './ParallelogramInput';
 import ComicButton from './ComicButton';
 import InkUpLogo from './InkUpLogo';

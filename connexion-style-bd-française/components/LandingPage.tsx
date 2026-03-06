@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Coins, Users, Zap, Star, ArrowRight, PenTool, ChevronRight, ShieldCheck, Lock } from 'lucide-react';
+import { BookOpen, Coins, Star, ArrowRight, PenTool, ChevronRight, ShieldCheck, Lock } from 'lucide-react';
 import ComicButton from './ComicButton';
 import InkUpLogo from './InkUpLogo';
 import LegalModal from './LegalModal';

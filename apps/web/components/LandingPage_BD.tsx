@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { BookOpen, Coins, Users, Zap, Star, ArrowRight, PenTool, ChevronRight, ShieldCheck, Lock } from 'lucide-react';
+import { BookOpen, Coins, Users, Star, ArrowRight, PenTool, ChevronRight, ShieldCheck, Lock } from 'lucide-react';
 import ComicButton from './ComicButton_BD';
 import InkUpLogo from './InkUpLogo_BD';
 import LegalModal from './LegalModal_BD';
 import Footer from './Footer_BD';
-import { LEGAL_INFO } from './constants/legal_BD';
 
 interface LandingPageProps {
   onStart: () => void;

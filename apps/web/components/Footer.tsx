@@ -1,6 +1,5 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Github } from 'lucide-react';
-import ComicButton from './ui/ComicButton';
 import { LEGAL_INFO } from '../../../constants/legal';
 
 const Footer: React.FC = () => {

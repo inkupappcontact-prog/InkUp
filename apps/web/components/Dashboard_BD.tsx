@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TIMING } from '@/constants';
-import { Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package } from 'lucide-react';
+import { Book, User, Settings as SettingsIcon, PenTool, LogOut, Coins, Search, Bell, Upload, BarChart3, PieChart, TrendingUp, Layers, Lock, ArrowRightLeft, HardDrive, Calendar, Package } from 'lucide-react';
 import Sidebar from './Sidebar_BD';
 import ComicCard from './ComicCard_BD';
 import ComicButton from './ComicButton_BD';
@@ -17,13 +17,14 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
-  const activeTabStyle = "text-black";
   const [activeTab, setActiveTab] = useState('discovery');
 
   // État local pour le formulaire "Nouveau Projet"
   const [newProjectPhysical, setNewProjectPhysical] = useState(false);
-  const [physicalPrice, setPhysicalPrice] = useState("2500");
-  const [physicalStock, setPhysicalStock] = useState("50");
+  const DEFAULT_PHYSICAL_PRICE = '2500';
+  const DEFAULT_PHYSICAL_STOCK = '50';
+  const [physicalPrice, setPhysicalPrice] = useState(DEFAULT_PHYSICAL_PRICE);
+  const [physicalStock, setPhysicalStock] = useState(DEFAULT_PHYSICAL_STOCK);
 
   // État Notification
   const [toast, setToast] = useState<{message: string, subtext?: string} | null>(null);

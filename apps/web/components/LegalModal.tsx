@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, ShieldCheck, Users, CreditCard, Mail, Phone, MapPin } from 'lucide-react';
+import { X, FileText, ShieldCheck, Users, Mail, Phone, MapPin } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import { LEGAL_INFO } from '../../../constants/legal';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, LogIn, UserPlus, BookOpen, PenTool, Sparkles } from 'lucide-react';
+import { LogIn, UserPlus, BookOpen, PenTool, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import ParallelogramInput from '@/components/ui/ParallelogramInput';
