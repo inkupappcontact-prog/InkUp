@@ -8,7 +8,6 @@ interface ParallelogramInputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
-  dark?: boolean;
 }
 
 const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
@@ -18,14 +17,15 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
   value,
   onChange,
   error,
-  dark = false
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === 'password';
-  const inputType = isPassword && showPassword ? 'text' :
-                    isPassword ? 'password' : type;
+  let inputType = type;
+  if (isPassword) {
+    inputType = showPassword ? 'text' : 'password';
+  }
 
   return (
     <div className="mb-6 group relative z-0">
