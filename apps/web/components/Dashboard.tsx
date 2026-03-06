@@ -18,7 +18,7 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
-  const activeTabStyle = "text-black";
+  const activeTabStyle = 'text-black';
   const [activeTab, setActiveTab] = useState('discovery');
 
   // État local pour le formulaire "Nouveau Projet"
@@ -145,6 +145,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
           <div>
             <label className="font-bold block mb-2">Titre du Projet</label>
             <ParallelogramInput
+              label="Titre"
               placeholder="Le Secret de l'Encre..."
               value=""
               onChange={() => {}}
@@ -177,17 +178,19 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
               <div>
                 <label className="font-bold block mb-2">Prix (€)</label>
                 <ParallelogramInput
+                  label="Prix (€)"
                   placeholder="2500"
                   value={physicalPrice}
-                  onChange={setPhysicalPrice}
+                  onChange={(e) => setPhysicalPrice(e.target.value)}
                 />
               </div>
               <div>
                 <label className="font-bold block mb-2">Stock</label>
                 <ParallelogramInput
+                  label="Stock"
                   placeholder="50"
                   value={physicalStock}
-                  onChange={setPhysicalStock}
+                  onChange={(e) => setPhysicalStock(e.target.value)}
                 />
               </div>
             </div>

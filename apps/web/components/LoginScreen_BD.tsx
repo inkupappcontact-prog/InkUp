@@ -26,13 +26,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
   // Modale légale
   const [showLegal, setShowLegal] = useState<'cgu' | 'privacy' | null>(null);
 
-  const [errors, setErrors] = useState<{ email?: string; password?: string; artistName?: string; birthDate?: string; consent?: string }>({});
+  type FormErrors = { email?: string; password?: string; artistName?: string; birthDate?: string; consent?: string };
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: typeof errors = {};
 
-    if (!email) newErrors.email = "Manquant !";
+    if (!email) newErrors.email = 'Manquant !';
     if (!password) newErrors.password = "Secret !";
 
     if (!isLogin) {

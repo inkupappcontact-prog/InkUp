@@ -16,7 +16,7 @@ interface DashboardProps {
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
-  const activeTabStyle = "text-black";
+  const activeTabStyle = 'text-black';
   const [activeTab, setActiveTab] = useState('discovery');
 
   // État local pour le formulaire "Nouveau Projet"
