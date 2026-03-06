@@ -5,11 +5,17 @@ interface OrderManagerProps {
   onNotify?: (message: string, subtext: string) => void;
 }
 
+const ORDER_TOTALS = {
+  ENCRE_PAPIER: 2500,
+  NUIT_COLLECTOR: 4500,
+  HORIZON: 1200,
+} as const;
+
 // Simulation des données de commande avec statut des fonds
 const initialOrders = [
-  { id: 'CMD-8492', buyer: 'tintin@moulinsart.be', items: 'Le Secret de l\'Encre (Tome 1) - Édition Papier', total: 2500, status: 'paid', fundsReleased: false, tracking: '', date: '24/10/2023', address: '26 Rue du Labrador, 1000 Bruxelles, Belgique' },
-  { id: 'CMD-8493', buyer: 'asterix@village.ga', items: 'Nuit de Plomb - Collector', total: 4500, status: 'shipped', fundsReleased: true, tracking: 'GAUL-POST-123', date: '23/10/2023', address: 'Village Gaulois, Armorique, France' },
-  { id: 'CMD-8494', buyer: 'spirou@dupuis.com', items: 'Ligne d\'Horizon', total: 1200, status: 'delivered', fundsReleased: true, tracking: 'SPIROU-XPRESS-99', date: '20/10/2023', address: 'Hôtel Moustic, Bruxelles' },
+  { id: 'CMD-8492', buyer: 'tintin@moulinsart.be', items: 'Le Secret de l\'Encre (Tome 1) - Édition Papier', total: ORDER_TOTALS.ENCRE_PAPIER, status: 'paid', fundsReleased: false, tracking: '', date: '24/10/2023', address: '26 Rue du Labrador, 1000 Bruxelles, Belgique' },
+  { id: 'CMD-8493', buyer: 'asterix@village.ga', items: 'Nuit de Plomb - Collector', total: ORDER_TOTALS.NUIT_COLLECTOR, status: 'shipped', fundsReleased: true, tracking: 'GAUL-POST-123', date: '23/10/2023', address: 'Village Gaulois, Armorique, France' },
+  { id: 'CMD-8494', buyer: 'spirou@dupuis.com', items: 'Ligne d\'Horizon', total: ORDER_TOTALS.HORIZON, status: 'delivered', fundsReleased: true, tracking: 'SPIROU-XPRESS-99', date: '20/10/2023', address: 'Hôtel Moustic, Bruxelles' },
 ];
 
 const OrderManager: React.FC<OrderManagerProps> = ({ onNotify }) => {

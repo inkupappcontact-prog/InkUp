@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, Phone, MapPin, Calendar, Edit2, Camera, Save, X } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Edit2, Camera, Save, X } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import ParallelogramInput from './ui/ParallelogramInput';
 
@@ -123,17 +123,19 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
               <div>
                 <label className="font-bold block mb-2">Prénom</label>
                 <ParallelogramInput
+                  label="Prénom"
                   placeholder="Jean"
                   value={profile.firstName}
-                  onChange={(value) => setProfile(prev => ({ ...prev, firstName: value }))}
+                  onChange={(e) => setProfile(prev => ({ ...prev, firstName: e.target.value }))}
                 />
               </div>
               <div>
                 <label className="font-bold block mb-2">Nom</label>
                 <ParallelogramInput
+                  label="Nom"
                   placeholder="Dupont"
                   value={profile.lastName}
-                  onChange={(value) => setProfile(prev => ({ ...prev, lastName: value }))}
+                  onChange={(e) => setProfile(prev => ({ ...prev, lastName: e.target.value }))}
                 />
               </div>
             </div>
@@ -156,17 +158,19 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                   Téléphone
                 </label>
                 <ParallelogramInput
+                  label="Téléphone"
                   placeholder="06 12 34 56 78"
                   value={profile.phone}
-                  onChange={(value) => setProfile(prev => ({ ...prev, phone: value }))}
+                  onChange={(e) => setProfile(prev => ({ ...prev, phone: e.target.value }))}
                 />
               </div>
               <div>
                 <label className="font-bold block mb-2">Site web</label>
                 <ParallelogramInput
+                  label="Site web"
                   placeholder="https://monsite.com"
                   value={profile.website}
-                  onChange={(value) => setProfile(prev => ({ ...prev, website: value }))}
+                  onChange={(e) => setProfile(prev => ({ ...prev, website: e.target.value }))}
                 />
               </div>
             </div>
@@ -179,20 +183,23 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
               </label>
               <div className="space-y-2">
                 <ParallelogramInput
+                  label="Adresse"
                   placeholder="123 rue de la BD"
                   value={profile.address}
-                  onChange={(value) => setProfile(prev => ({ ...prev, address: value }))}
+                  onChange={(e) => setProfile(prev => ({ ...prev, address: e.target.value }))}
                 />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                   <ParallelogramInput
+                    label="Code postal"
                     placeholder="Code postal"
                     value={profile.postalCode}
-                    onChange={(value) => setProfile(prev => ({ ...prev, postalCode: value }))}
+                    onChange={(e) => setProfile(prev => ({ ...prev, postalCode: e.target.value }))}
                   />
                   <ParallelogramInput
+                    label="Ville"
                     placeholder="Ville"
                     value={profile.city}
-                    onChange={(value) => setProfile(prev => ({ ...prev, city: value }))}
+                    onChange={(e) => setProfile(prev => ({ ...prev, city: e.target.value }))}
                   />
                   <select
                     value={profile.country}
@@ -214,27 +221,30 @@ const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
                 <label className="font-bold block mb-2">Réseaux sociaux</label>
                 <div className="space-y-2">
                   <ParallelogramInput
+                    label="Twitter"
                     placeholder="Twitter @pseudo"
                     value={profile.socialLinks.twitter}
-                    onChange={(value) => setProfile(prev => ({
+                    onChange={(e) => setProfile(prev => ({
                       ...prev,
-                      socialLinks: { ...prev.socialLinks, twitter: value }
+                      socialLinks: { ...prev.socialLinks, twitter: e.target.value }
                     }))}
                   />
                   <ParallelogramInput
+                    label="Instagram"
                     placeholder="Instagram @pseudo"
                     value={profile.socialLinks.instagram}
-                    onChange={(value) => setProfile(prev => ({
+                    onChange={(e) => setProfile(prev => ({
                       ...prev,
-                      socialLinks: { ...prev.socialLinks, instagram: value }
+                      socialLinks: { ...prev.socialLinks, instagram: e.target.value }
                     }))}
                   />
                   <ParallelogramInput
+                    label="Facebook"
                     placeholder="Facebook URL"
                     value={profile.socialLinks.facebook}
-                    onChange={(value) => setProfile(prev => ({
+                    onChange={(e) => setProfile(prev => ({
                       ...prev,
-                      socialLinks: { ...prev.socialLinks, facebook: value }
+                      socialLinks: { ...prev.socialLinks, facebook: e.target.value }
                     }))}
                   />
                 </div>

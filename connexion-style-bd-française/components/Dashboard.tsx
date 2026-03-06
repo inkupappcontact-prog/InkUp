@@ -318,7 +318,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
                 <div key={i} className="flex items-center justify-between p-4 border-2 border-black/10 hover:border-black transition-colors bg-[#F8F8F8]">
                    <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-gray-200 border-2 border-black relative overflow-hidden">
-                        <img src={`https://picsum.photos/seed/${i+10}/200`} className="w-full h-full object-cover grayscale" />
+                        <img src={`https://picsum.photos/seed/${i+10}/200`} alt={`Couverture projet ${i}`} className="w-full h-full object-cover grayscale" />
                       </div>
                       <div>
                          <p className="font-['Bangers'] uppercase text-xl text-black tracking-wide">Projet #{i} - Tome 1</p>

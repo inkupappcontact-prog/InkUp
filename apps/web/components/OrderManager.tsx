@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Package, Truck, Calendar, User, Mail, Phone, MapPin, Search, Filter } from 'lucide-react';
+import { Package, Truck, Calendar, User, MapPin } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
-import ParallelogramInput from './ui/ParallelogramInput';
 
 interface Order {
   id: string;
@@ -111,10 +110,11 @@ const OrderManager: React.FC = () => {
         {/* Filtres */}
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
-            <ParallelogramInput
+            <input
               placeholder="Rechercher une commande..."
               value={searchTerm}
-              onChange={setSearchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full border-4 border-black p-3 font-bold focus:outline-none focus:border-[#2563EB]"
             />
           </div>
           <select
