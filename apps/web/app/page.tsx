@@ -14,6 +14,8 @@ interface Profile {
   artist_name?: string;
 }
 
+const DEFAULT_BALANCE = 150;
+
 export default function HomePage() {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -23,12 +25,11 @@ export default function HomePage() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      if (user) {
-        // Utiliser les métadonnées utilisateur au lieu de la table profiles
-        const userRole = user.user_metadata?.role || 'reader';
-        const artistName = user.user_metadata?.artist_name || 'Auteur';
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      setUser(currentUser);
+      if (currentUser) {
+        const userRole = currentUser.user_metadata?.role || 'reader';
+        const artistName = currentUser.user_metadata?.artist_name || 'Auteur';
         const userProfile = { role: userRole, artist_name: artistName } as Profile;
         setProfile(userProfile);
       }
@@ -61,7 +62,7 @@ export default function HomePage() {
     const dashboardUser = {
       email: user.email || '',
       role: profile.role,
-      balance: 150, // Solde simulé
+      balance: DEFAULT_BALANCE,
       plan: 'free' as const // Plan par défaut
     };
 

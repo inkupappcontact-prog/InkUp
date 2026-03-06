@@ -7,6 +7,8 @@ import { supabase } from '@/lib/supabase';
 import { Profile } from '@shared/types';
 import Dashboard from '@/components/Dashboard';
 
+const DEFAULT_BALANCE = 150;
+
 function SkeletonDashboard() {
 }
 
@@ -18,12 +20,11 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-      if (user) {
-        // Utiliser les métadonnées utilisateur au lieu de la table profiles
-        const userRole = user.user_metadata?.role || 'reader';
-        const artistName = user.user_metadata?.artist_name || 'Auteur';
+      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      setUser(currentUser);
+      if (currentUser) {
+        const userRole = currentUser.user_metadata?.role || 'reader';
+        const artistName = currentUser.user_metadata?.artist_name || 'Auteur';
         setProfile({ role: userRole, artist_name: artistName } as Profile);
       }
       setLoading(false);
@@ -50,7 +51,7 @@ export default function DashboardPage() {
   const dashboardUser = {
     email: user.email || '',
     role: profile.role,
-    balance: 150, // Solde simulé
+    balance: DEFAULT_BALANCE, // Solde simulé
     plan: 'free' as const // Plan par défaut
   };
 
