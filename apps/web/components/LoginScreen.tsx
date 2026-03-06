@@ -21,7 +21,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const [errors, setErrors] = useState<{ email?: string; password?: string; artistName?: string }>({});
   const [loading, setLoading] = useState(false);
 
-  const sendWelcomeEmail = async (userEmail: string, userName: string, userRole: string, artistName?: string) => {
+  interface WelcomeEmailParams {
+    userEmail: string;
+    userName: string;
+    userRole: string;
+    artistName?: string;
+  }
+
+  const sendWelcomeEmail = async ({ userEmail, userName, userRole, artistName }: WelcomeEmailParams) => {
     try {
       const { error } = await supabase.functions.invoke('send-welcome-email', {
         body: {
@@ -31,12 +38,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
           artist_name: artistName,
         },
       });
-
-      if (error) {
-        console.error('Erreur envoi email bienvenue:', error);
-      } else {
-        console.log('Email de bienvenue envoyé avec succès');
-      }
+      if (error) console.error('Erreur envoi email bienvenue:', error);
     } catch (error) {
       console.error('Erreur service email bienvenue:', error);
     }
@@ -82,7 +84,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
     if (data.user) {
       const userName = data.user.user_metadata?.full_name || email.split('@')[0];
-      await sendWelcomeEmail(email, userName, userType, userType === 'author' ? artistName : undefined);
+      await sendWelcomeEmail({ userEmail: email, userName, userRole: userType, artistName: userType === 'author' ? artistName : undefined });
       const userRole = data.user.user_metadata?.role || 'reader';
       router.push(userRole === 'author' ? '/dashboard' : '/');
     }
