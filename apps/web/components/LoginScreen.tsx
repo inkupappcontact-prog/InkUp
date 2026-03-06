@@ -45,8 +45,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const validateForm = () => {
     const newErrors: { email?: string; password?: string; artistName?: string } = {};
 
-    if (!email) newErrors.email = "Manquant !";
-    if (!password) newErrors.password = "Secret !";
+    if (!email) newErrors.email = 'Manquant !';
+    if (!password) newErrors.password = 'Secret !';
     if (!isLogin && userType === 'author' && !artistName) {
       newErrors.artistName = "C'est votre signature !";
     }
@@ -147,8 +147,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
@@ -309,7 +309,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             variant="primary"
             className="w-full h-16 text-xl italic tracking-[0.2em] group disabled:opacity-50"
             disabled={loading}
-            onClick={handleSubmit}
+            onClick={() => handleSubmit()}
           >
             <span>{loading ? 'Chargement...' : (isLogin ? 'Entrer dans la Case' : 'Signer le Contrat')}</span>
           </ComicButton>

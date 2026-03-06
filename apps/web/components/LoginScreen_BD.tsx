@@ -34,17 +34,17 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onBack }) => {
     const newErrors: typeof errors = {};
 
     if (!email) newErrors.email = 'Manquant !';
-    if (!password) newErrors.password = "Secret !";
+    if (!password) newErrors.password = 'Secret !';
 
     if (!isLogin) {
         if (userType === 'author' && !artistName) {
             newErrors.artistName = "C'est votre signature !";
         }
         if (!birthDate) {
-            newErrors.birthDate = "Requis pour l'âge légal.";
+            newErrors.birthDate = 'Requis pour l\'âge légal.';
         }
         if (!consentTos || !consentPrivacy) {
-            newErrors.consent = "Veuillez accepter les conditions.";
+            newErrors.consent = 'Veuillez accepter les conditions.';
         }
 
         // Vérification simple de l'âge (18+)

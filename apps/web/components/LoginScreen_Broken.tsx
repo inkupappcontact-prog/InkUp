@@ -50,8 +50,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
     e.preventDefault();
     const newErrors: { email?: string; password?: string; artistName?: string } = {};
 
-    if (!email) newErrors.email = "Manquant !";
-    if (!password) newErrors.password = "Secret !";
+    if (!email) newErrors.email = 'Manquant !';
+    if (!password) newErrors.password = 'Secret !';
     if (!isLogin && userType === 'author' && !artistName) {
       newErrors.artistName = "C'est votre signature !";
     }
@@ -420,7 +420,6 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             >
               <span>{loading ? 'Chargement...' : (isLogin ? 'Entrer dans la Case' : 'Signer le Contrat')}</span>
             </ComicButton>
-          </form>
 
           {/* Séparateur de Chapitre */}
           <div className="my-10 flex items-center gap-4">
