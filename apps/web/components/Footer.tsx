@@ -6,13 +6,13 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t-4 border-black">
+    <footer className="bg-white border-t-4 border-black" role="contentinfo" aria-label="Pied de page">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo et description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#2563EB] rounded-lg flex items-center justify-center border-2 border-black">
+              <div className="w-10 h-10 bg-[#2563EB] rounded-lg flex items-center justify-center border-2 border-black" aria-hidden="true">
                 <span className="text-white font-bold text-xl">I</span>
               </div>
               <span className="font-['Bangers'] text-2xl">InkUp</span>
@@ -20,24 +20,24 @@ const Footer: React.FC = () => {
             <p className="text-gray-600 font-['Comic Neue']">
               La plateforme qui reconnecte auteurs et lecteurs de bandes dessinées.
             </p>
-            <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors">
-                <Facebook className="w-5 h-5" />
+            <div className="flex gap-3" aria-label="Réseaux sociaux">
+              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors" aria-label="Facebook InkUp">
+                <Facebook className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors" aria-label="Twitter InkUp">
+                <Twitter className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors">
-                <Instagram className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors" aria-label="Instagram InkUp">
+                <Instagram className="w-5 h-5" aria-hidden="true" />
               </a>
-              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors">
-                <Github className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 bg-black text-white rounded-lg flex items-center justify-center hover:bg-[#2563EB] transition-colors" aria-label="GitHub InkUp">
+                <Github className="w-5 h-5" aria-hidden="true" />
               </a>
             </div>
           </div>
 
           {/* Liens rapides */}
-          <div className="space-y-4">
+          <nav className="space-y-4" aria-label="Liens de découverte">
             <h3 className="font-['Bangers'] text-xl">Découvrir</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Catalogue</a></li>
@@ -46,10 +46,10 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Gratuit</a></li>
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Auteurs</a></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Support */}
-          <div className="space-y-4">
+          <nav className="space-y-4" aria-label="Support et aide">
             <h3 className="font-['Bangers'] text-xl">Support</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Aide</a></li>
@@ -58,10 +58,10 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Signaler un problème</a></li>
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Statut du service</a></li>
             </ul>
-          </div>
+          </nav>
 
           {/* Légal */}
-          <div className="space-y-4">
+          <nav className="space-y-4" aria-label="Informations légales">
             <h3 className="font-['Bangers'] text-xl">Légal</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">CGU/CGV</a></li>
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Cookies</a></li>
               <li><a href="#" className="text-gray-600 hover:text-[#2563EB] transition-colors">Licences</a></li>
             </ul>
-          </div>
+          </nav>
         </div>
 
         {/* Barre de séparation */}
