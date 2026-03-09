@@ -24,7 +24,11 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === 'password';
-  const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
+  const getInputType = () => {
+    if (!isPassword) return type;
+    return showPassword ? 'text' : 'password';
+  };
+  const inputType = getInputType();
 
   return (
     <div className="mb-6 group relative z-0">

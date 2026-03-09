@@ -56,6 +56,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
     return newErrors;
   };
 
+  const getButtonText = () => {
+    if (isLogin) return 'Entrer dans la Case';
+    return 'Signer le Contrat';
+  };
+
   const handleLogin = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
@@ -252,7 +257,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             disabled={loading}
             onClick={() => handleSubmit()}
           >
-            <span>{loading ? 'Chargement...' : (isLogin ? 'Entrer dans la Case' : 'Signer le Contrat')}</span>
+            <span>{loading ? 'Chargement...' : getButtonText()}</span>
           </ComicButton>
         </div>
 
