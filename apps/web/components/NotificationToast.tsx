@@ -47,7 +47,12 @@ const NotificationToast: React.FC<NotificationToastProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-50 animate-bounce">
+    <div 
+      className="fixed top-4 right-4 z-50 animate-bounce"
+      role="alert"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <div className={`bg-white border-4 border-black p-4 shadow-lg transform rotate-1 max-w-sm`}>
         <div className="flex items-start gap-3">
           <div className="flex-shrink-0 mt-1">
@@ -62,8 +67,9 @@ const NotificationToast: React.FC<NotificationToastProps> = ({
           <button
             onClick={handleClose}
             className="flex-shrink-0 p-1 hover:bg-gray-100 rounded border border-black"
+            aria-label="Fermer la notification"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
       </div>

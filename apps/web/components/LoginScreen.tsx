@@ -149,7 +149,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             </p>
           </div>
 
-          <div className="flex mb-8 bg-gray-800 border-2 border-[#FFD700] rounded-lg p-1">
+          <div className="flex mb-8 bg-gray-800 border-2 border-[#FFD700] rounded-lg p-1" role="tablist" aria-label="Type d'authentification">
             <button
               onClick={() => setIsLogin(true)}
               className={`flex-1 py-3 px-4 font-bold transition-all duration-200 rounded-md ${
@@ -157,6 +157,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
                   ? 'bg-[#FFD700] text-black shadow-lg'
                   : 'text-gray-400 hover:text-white'
               }`}
+              role="tab"
+              aria-selected={isLogin}
+              aria-label="Connexion"
             >
               Connexion
             </button>
@@ -167,6 +170,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
                   ? 'bg-[#FFD700] text-black shadow-lg'
                   : 'text-gray-400 hover:text-white'
               }`}
+              role="tab"
+              aria-selected={!isLogin}
+              aria-label="Inscription"
             >
               Inscription
             </button>
@@ -174,8 +180,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
           {!isLogin && (
             <div className="mb-8">
-              <label className="block text-sm font-bold mb-3 text-[#FFD700]">Je suis :</label>
-              <div className="grid grid-cols-2 gap-4">
+              <label className="block text-sm font-bold mb-3 text-[#FFD700]" id="user-type-label">Je suis :</label>
+              <div className="grid grid-cols-2 gap-4" role="radiogroup" aria-labelledby="user-type-label">
                 <button
                   onClick={() => setUserType('reader')}
                   className={`p-4 border-2 border-[#FFD700] rounded-lg font-bold transition-all duration-200 ${
@@ -183,8 +189,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
                       ? 'bg-[#FFD700] text-black shadow-lg'
                       : 'bg-gray-800 text-white hover:bg-gray-700'
                   }`}
+                  role="radio"
+                  aria-checked={userType === 'reader'}
+                  aria-label="Lecteur - Je veux lire des bandes dessinées"
                 >
-                  <BookOpen className="w-6 h-6 mx-auto mb-2" />
+                  <BookOpen className="w-6 h-6 mx-auto mb-2" aria-hidden="true" />
                   Lecteur
                 </button>
                 <button
@@ -194,8 +203,11 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
                       ? 'bg-[#FFD700] text-black shadow-lg'
                       : 'bg-gray-800 text-white hover:bg-gray-700'
                   }`}
+                  role="radio"
+                  aria-checked={userType === 'author'}
+                  aria-label="Auteur - Je veux publier mes œuvres"
                 >
-                  <PenTool className="w-6 h-6 mx-auto mb-2" />
+                  <PenTool className="w-6 h-6 mx-auto mb-2" aria-hidden="true" />
                   Auteur
                 </button>
               </div>

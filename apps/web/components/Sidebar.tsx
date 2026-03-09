@@ -44,7 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
       </div>
 
       {/* Navigation */}
-      <nav className="space-y-2 mb-8">
+      <nav className="space-y-2 mb-8" aria-label="Menu principal">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -58,8 +58,10 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
                   ? 'bg-[#2563EB] text-white border-2 border-black transform -rotate-1'
                   : 'hover:bg-gray-100 border-2 border-transparent hover:border-black'
               }`}
+              aria-current={isActive ? 'page' : undefined}
+              aria-label={tab.label}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-5 h-5" aria-hidden="true" />
               <span>{tab.label}</span>
             </button>
           );
@@ -90,8 +92,9 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
         <ComicButton
           onClick={onLogout}
           className="w-full flex items-center gap-2 justify-center"
+          aria-label="Se déconnecter"
         >
-          <LogOut className="w-4 h-4" />
+          <LogOut className="w-4 h-4" aria-hidden="true" />
           Déconnexion
         </ComicButton>
       </div>
