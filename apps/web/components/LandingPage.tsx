@@ -18,19 +18,20 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       {showLegal && <LegalModal type={showLegal} onClose={() => setShowLegal(null)} />}
 
       {/* Navigation BD */}
-      <nav className="border-b-4 border-[#FFD700] px-6 py-4 flex justify-between items-center sticky top-0 bg-black z-50 shadow-lg">
+      <nav className="border-b-4 border-[#FFD700] px-6 py-4 flex justify-between items-center sticky top-0 bg-black z-50 shadow-lg" aria-label="Navigation principale">
         <div className="flex items-center gap-3">
-            <InkUpLogo className="w-12 h-12" />
+            <InkUpLogo className="w-12 h-12" aria-hidden="true" />
             <span className="font-bangers text-3xl tracking-wide hidden sm:block text-[#FFD700]">InkUp</span>
         </div>
         <div className="flex gap-4">
              <button
                onClick={onStart}
                className="font-bangers text-xl uppercase hover:text-[#FF6B35] transition-colors min-h-[44px] px-4 py-2 border-2 border-transparent hover:border-[#FFD700] rounded-lg text-white"
+               aria-label="Se connecter à mon compte"
              >
                 Se Connecter
              </button>
-             <ComicButton onClick={onStart} className="hidden sm:flex h-12 px-6 text-lg">
+             <ComicButton onClick={onStart} className="hidden sm:flex h-12 px-6 text-lg" aria-label="Commencer à utiliser InkUp">
                 Commencer
              </ComicButton>
         </div>
