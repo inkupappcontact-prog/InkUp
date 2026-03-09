@@ -9,6 +9,7 @@ import Settings from './Settings';
 import OrderManager from './OrderManager';
 import ParallelogramInput from './ui/ParallelogramInput';
 import NotificationToast from './NotificationToast';
+import SkipLink from './ui/SkipLink';
 import { supabase } from '@/lib/supabase';
 
 interface DashboardProps {
@@ -238,6 +239,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
+      <SkipLink />
       <Sidebar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -245,11 +247,11 @@ const Dashboard: React.FC<DashboardProps> = ({ user, onLogout, onRead }) => {
         onLogout={onLogout}
       />
 
-      <div className="flex-1 p-6">
+      <main id="main-content" className="flex-1 p-6" role="main">
         <div className="max-w-7xl mx-auto">
           {renderContent()}
         </div>
-      </div>
+      </main>
 
       {toast && (
         <NotificationToast

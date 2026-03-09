@@ -66,6 +66,7 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
               marginLeft: '-3%',
               width: isPassword ? '85%' : '106%'
             }}
+            aria-describedby={error ? `${label}-error` : undefined}
           />
 
           {/* Bouton pour afficher/masquer le mot de passe (Règle #6) */}
@@ -74,7 +75,8 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-2 h-10 w-12 flex items-center justify-center transition-colors group/btn"
-              title={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              aria-pressed={showPassword}
             >
               {/* Le bouton lui-même est un petit parallélogramme bleu/noir */}
               <div className={`
@@ -94,7 +96,11 @@ const ParallelogramInput: React.FC<ParallelogramInputProps> = ({
 
         {/* Erreur - Style "Note de l'éditeur" */}
         {error && (
-          <div className="absolute -right-2 -bottom-5 bg-[#EA4335] border-2 border-black text-white px-3 py-0.5 text-[10px] font-black uppercase italic z-20 transform -skew-x-12 shadow-[4px_4px_0px_0px_#000]">
+          <div 
+            id={`${label}-error`}
+            className="absolute -right-2 -bottom-5 bg-[#EA4335] border-2 border-black text-white px-3 py-0.5 text-[10px] font-black uppercase italic z-20 transform -skew-x-12 shadow-[4px_4px_0px_0px_#000]"
+            role="alert"
+          >
             <span className="transform skew-x-12 inline-block">Attention : {error}</span>
           </div>
         )}

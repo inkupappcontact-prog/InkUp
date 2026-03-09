@@ -102,6 +102,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
               <button
                 onClick={() => setShowMature(true)}
                 className="bg-red-500 text-white px-4 py-2 font-bold border-2 border-black hover:bg-red-600"
+                aria-label="Confirmer que j'ai 18 ans pour accéder au contenu adulte"
               >
                 Je confirme avoir 18 ans
               </button>
@@ -123,11 +124,13 @@ const ComicCard: React.FC<ComicCardProps> = ({
               className={`p-2 border-2 border-black transition-colors ${
                 isLiked ? 'bg-red-500 text-white' : 'bg-white hover:bg-red-100'
               }`}
+              aria-label={isLiked ? "Retirer le like" : "Ajouter un like"}
+              aria-pressed={isLiked}
             >
-              <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
+              <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} aria-hidden="true" />
             </button>
-            <button className="p-2 border-2 border-black bg-white hover:bg-gray-100">
-              <MessageSquare className="w-4 h-4" />
+            <button className="p-2 border-2 border-black bg-white hover:bg-gray-100" aria-label="Commenter">
+              <MessageSquare className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
 
@@ -144,8 +147,11 @@ const ComicCard: React.FC<ComicCardProps> = ({
                   ? 'bg-[#2563EB] text-white'
                   : 'bg-white hover:bg-gray-100'
               }`}
+              role="radio"
+              aria-checked={format === 'digital'}
+              aria-label="Format numérique"
             >
-              <BookOpen className="w-4 h-4 inline mr-1" />
+              <BookOpen className="w-4 h-4 inline mr-1" aria-hidden="true" />
               Numérique
             </button>
             <button
@@ -155,8 +161,11 @@ const ComicCard: React.FC<ComicCardProps> = ({
                   ? 'bg-[#2563EB] text-white'
                   : 'bg-white hover:bg-gray-100'
               }`}
+              role="radio"
+              aria-checked={format === 'physical'}
+              aria-label="Format physique"
             >
-              <Package className="w-4 h-4 inline mr-1" />
+              <Package className="w-4 h-4 inline mr-1" aria-hidden="true" />
               Physique
             </button>
           </div>
