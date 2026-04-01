@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { Package, Truck, Calendar, User, MapPin } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
@@ -21,12 +22,12 @@ const OrderManager: React.FC = () => {
       id: 'ORD-001',
       customerName: 'Jean Dupont',
       customerEmail: 'jean.dupont@email.com',
-      title: 'Le Secret de l\'Encre',
+      title: "Le Secret de l'Encre",
       format: 'physical',
       price: 45,
       status: 'processing',
       date: '2024-02-08',
-      address: '123 rue de la BD, 75001 Paris'
+      address: '123 rue de la BD, 75001 Paris',
     },
     {
       id: 'ORD-002',
@@ -36,20 +37,20 @@ const OrderManager: React.FC = () => {
       format: 'digital',
       price: 0,
       status: 'delivered',
-      date: '2024-02-07'
+      date: '2024-02-07',
     },
     {
       id: 'ORD-003',
       customerName: 'Pierre Martin',
       customerEmail: 'pierre.martin@email.com',
-      title: 'Ligne d\'Horizon',
+      title: "Ligne d'Horizon",
       format: 'physical',
       price: 60,
       status: 'shipped',
       date: '2024-02-06',
       trackingNumber: 'FR123456789',
-      address: '456 avenue des Livres, 69000 Lyon'
-    }
+      address: '456 avenue des Livres, 69000 Lyon',
+    },
   ]);
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -85,10 +86,11 @@ const OrderManager: React.FC = () => {
     }
   };
 
-  const filteredOrders = orders.filter(order => {
-    const matchesSearch = order.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         order.id.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredOrders = orders.filter((order) => {
+    const matchesSearch =
+      order.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.id.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'all' || order.status === statusFilter;
     return matchesSearch && matchesStatus;
   });
@@ -147,7 +149,7 @@ const OrderManager: React.FC = () => {
             <span className="font-bold">En cours</span>
           </div>
           <p className="text-2xl font-bold">
-            {orders.filter(o => o.status === 'processing' || o.status === 'shipped').length}
+            {orders.filter((o) => o.status === 'processing' || o.status === 'shipped').length}
           </p>
         </div>
         <div className="bg-white border-4 border-black p-4 transform -rotate-1">
@@ -156,7 +158,7 @@ const OrderManager: React.FC = () => {
             <span className="font-bold">Aujourd'hui</span>
           </div>
           <p className="text-2xl font-bold">
-            {orders.filter(o => o.date === new Date().toISOString().split('T')[0]).length}
+            {orders.filter((o) => o.date === new Date().toISOString().split('T')[0]).length}
           </p>
         </div>
         <div className="bg-white border-4 border-black p-4 transform -rotate-1">
@@ -164,9 +166,7 @@ const OrderManager: React.FC = () => {
             <Package className="w-6 h-6 text-purple-500" />
             <span className="font-bold">Physiques</span>
           </div>
-          <p className="text-2xl font-bold">
-            {orders.filter(o => o.format === 'physical').length}
-          </p>
+          <p className="text-2xl font-bold">{orders.filter((o) => o.format === 'physical').length}</p>
         </div>
       </div>
 
@@ -182,7 +182,9 @@ const OrderManager: React.FC = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="font-bold text-lg">{order.id}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold border-2 ${getStatusColor(order.status)}`}>
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-bold border-2 ${getStatusColor(order.status)}`}
+                    >
                       {getStatusLabel(order.status)}
                     </span>
                     <span className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-bold border-2 border-gray-300">
@@ -199,7 +201,9 @@ const OrderManager: React.FC = () => {
                     <div className="flex items-center gap-2">
                       <Package className="w-4 h-4 text-gray-500" />
                       <span>{order.title}</span>
-                      <span className="font-bold text-[#2563EB]">{order.price === 0 ? 'GRATUIT' : `${order.price}€`}</span>
+                      <span className="font-bold text-[#2563EB]">
+                        {order.price === 0 ? 'GRATUIT' : `${order.price}€`}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-gray-500" />
@@ -223,26 +227,17 @@ const OrderManager: React.FC = () => {
                 {/* Actions */}
                 <div className="flex flex-col gap-2">
                   {order.status === 'pending' && (
-                    <ComicButton
-                      onClick={() => handleUpdateStatus(order.id, 'processing')}
-                      className="text-sm"
-                    >
+                    <ComicButton onClick={() => handleUpdateStatus(order.id, 'processing')} className="text-sm">
                       Traiter
                     </ComicButton>
                   )}
                   {order.status === 'processing' && (
-                    <ComicButton
-                      onClick={() => handleUpdateStatus(order.id, 'shipped')}
-                      className="text-sm"
-                    >
+                    <ComicButton onClick={() => handleUpdateStatus(order.id, 'shipped')} className="text-sm">
                       Expédier
                     </ComicButton>
                   )}
                   {order.status === 'shipped' && (
-                    <ComicButton
-                      onClick={() => handleUpdateStatus(order.id, 'delivered')}
-                      className="text-sm"
-                    >
+                    <ComicButton onClick={() => handleUpdateStatus(order.id, 'delivered')} className="text-sm">
                       Marquer comme livré
                     </ComicButton>
                   )}

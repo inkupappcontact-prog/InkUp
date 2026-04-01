@@ -1,8 +1,9 @@
 import React from 'react';
 
-const InkUpLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
+const InkUpLogo: React.FC<{ className?: string }> = ({ className = '' }) => {
   return (
     <div className={`flex flex-col items-center justify-center select-none ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo-inkup-new.jpg"
         className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"

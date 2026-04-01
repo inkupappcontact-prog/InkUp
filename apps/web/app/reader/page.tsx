@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
-import { Profile } from '@shared/types';
+import { Profile } from '@shared';
 
 export default function ReaderPage() {
   const [user, setUser] = useState<User | null>(null);

@@ -7,11 +7,7 @@ interface NotificationToastProps {
   type?: 'success' | 'error' | 'info';
 }
 
-const NotificationToast: React.FC<NotificationToastProps> = ({
-  message,
-  subtext,
-  type = 'success'
-}) => {
+const NotificationToast: React.FC<NotificationToastProps> = ({ message, subtext, type = 'success' }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const handleClose = () => {
@@ -31,38 +27,16 @@ const NotificationToast: React.FC<NotificationToastProps> = ({
     }
   };
 
-  const getBackgroundColor = () => {
-    switch (type) {
-      case 'success':
-        return 'bg-green-50 border-green-500';
-      case 'error':
-        return 'bg-red-50 border-red-500';
-      case 'info':
-        return 'bg-blue-50 border-blue-500';
-      default:
-        return 'bg-green-50 border-green-500';
-    }
-  };
-
   if (!isVisible) return null;
 
   return (
-    <div 
-      className="fixed top-4 right-4 z-50 animate-bounce"
-      role="alert"
-      aria-live="polite"
-      aria-atomic="true"
-    >
+    <div className="fixed top-4 right-4 z-50 animate-bounce" role="alert" aria-live="polite" aria-atomic="true">
       <div className={`bg-white border-4 border-black p-4 shadow-lg transform rotate-1 max-w-sm`}>
         <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 mt-1">
-            {getIcon()}
-          </div>
+          <div className="flex-shrink-0 mt-1">{getIcon()}</div>
           <div className="flex-1">
             <p className="font-bold text-sm">{message}</p>
-            {subtext && (
-              <p className="text-xs text-gray-600 mt-1">{subtext}</p>
-            )}
+            {subtext && <p className="text-xs text-gray-600 mt-1">{subtext}</p>}
           </div>
           <button
             onClick={handleClose}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 // Test simple pour vérifier la connexion Supabase
 // Usage: SUPABASE_URL=... SUPABASE_KEY=... node test-supabase.js
 const { createClient } = require('@supabase/supabase-js');
@@ -18,28 +19,30 @@ console.log('Key length:', supabaseKey.length);
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Test simple
-supabase.auth.getSession()
-  .then(result => {
+supabase.auth
+  .getSession()
+  .then((result) => {
     console.log('✅ getSession réussi:', result);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('❌ Erreur getSession:', error);
   });
 
 // Test d'inscription simple
-supabase.auth.signUp({
-  email: 'test@example.com',
-  password: 'test123456',
-  options: {
-    data: {
-      full_name: 'Test User',
-      role: 'reader'
-    }
-  }
-})
-  .then(result => {
+supabase.auth
+  .signUp({
+    email: 'test@example.com',
+    password: 'test123456',
+    options: {
+      data: {
+        full_name: 'Test User',
+        role: 'reader',
+      },
+    },
+  })
+  .then((result) => {
     console.log('✅ signUp résultat:', result);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('❌ Erreur signUp:', error);
   });

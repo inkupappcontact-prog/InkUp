@@ -1,5 +1,5 @@
 import React from 'react';
-import { Compass, Book, User, Settings as SettingsIcon, PenTool, LogOut, BarChart3, Upload, Package, Users } from 'lucide-react';
+import { Compass, Book, User, Settings as SettingsIcon, LogOut, BarChart3, Upload, Package } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import InkUpLogo from './ui/InkUpLogo';
 
@@ -53,15 +53,15 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full flex items-center gap-3 px-4 py-3 font-bold transition-all ${
+              className={`w-full flex items-center gap-3 px-4 py-3 text-xs uppercase tracking-wider transition-all border-4 font-bold ${
                 isActive
-                  ? 'bg-[#2563EB] text-white border-2 border-black transform -rotate-1'
-                  : 'hover:bg-gray-100 border-2 border-transparent hover:border-black'
+                  ? 'bg-[#2563EB] text-white border-black transform -rotate-1 shadow-[6px_6px_0_0_rgba(0,0,0,0.9)]'
+                  : 'bg-white text-black border-black hover:bg-[#f3f4f6] hover:shadow-[3px_3px_0_0_rgba(0,0,0,0.5)] hover:-rotate-1'
               }`}
               aria-current={isActive ? 'page' : undefined}
               aria-label={tab.label}
             >
-              <Icon className="w-5 h-5" aria-hidden="true" />
+              <Icon className="w-4 h-4" aria-hidden="true" />
               <span>{tab.label}</span>
             </button>
           );
@@ -77,9 +77,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, user, onLogo
             </div>
             <div className="flex-1">
               <p className="font-bold text-sm truncate">{user.email}</p>
-              <p className="text-xs text-gray-600">
-                {user.plan === 'premium' ? 'Premium' : 'Gratuit'}
-              </p>
+              <p className="text-xs text-gray-600">{user.plan === 'premium' ? 'Premium' : 'Gratuit'}</p>
             </div>
           </div>
 

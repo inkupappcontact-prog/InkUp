@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Coins, Heart, MessageSquare, BookOpen, Package, ShoppingCart, Lock, Eye, AlertTriangle } from 'lucide-react';
+import Image from 'next/image';
+import { Coins, Heart, MessageSquare, BookOpen, Package, ShoppingCart, Lock, AlertTriangle } from 'lucide-react';
 import ShippingAddressForm from './ShippingAddressForm';
 import ContentUnlockModal from './ContentUnlockModal';
 import ComicButton from './ui/ComicButton';
@@ -17,15 +18,15 @@ interface ComicCardProps {
 }
 
 const ComicCard: React.FC<ComicCardProps> = ({
-    title,
-    author,
-    cover,
-    price,
-    category,
-    hasPhysical = false,
-    stock = 0,
-    isMature = false,
-    onRead
+  title,
+  author,
+  cover,
+  price,
+  category,
+  hasPhysical = false,
+  stock = 0,
+  isMature = false,
+  onRead,
 }) => {
   const [format, setFormat] = useState<'digital' | 'physical'>('digital');
   const [showShippingForm, setShowShippingForm] = useState(false);
@@ -47,7 +48,8 @@ const ComicCard: React.FC<ComicCardProps> = ({
     setShowUnlockModal(false);
   };
 
-  const handleShippingSubmit = (_address: unknown) => {
+  const handleShippingSubmit = (address: unknown) => {
+    void address;
     setShowShippingForm(false);
     // TODO(#ISSUE): implémenter la logique d'achat physique via API
   };
@@ -67,11 +69,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
     <div className="bg-white border-4 border-black transform transition-all duration-200 hover:scale-105 hover:rotate-1">
       {/* Header avec badge catégorie */}
       <div className="relative">
-        <img
-          src={cover}
-          alt={title}
-          className="w-full h-64 object-cover"
-        />
+        <Image src={cover} alt={title} width={400} height={256} className="w-full h-64 object-cover" />
 
         {/* Badge catégorie */}
         <div className="absolute top-2 left-2 bg-[#2563EB] text-white px-3 py-1 font-bold text-sm border-2 border-black transform -rotate-2">
@@ -124,7 +122,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
               className={`p-2 border-2 border-black transition-colors ${
                 isLiked ? 'bg-red-500 text-white' : 'bg-white hover:bg-red-100'
               }`}
-              aria-label={isLiked ? "Retirer le like" : "Ajouter un like"}
+              aria-label={isLiked ? 'Retirer le like' : 'Ajouter un like'}
               aria-pressed={isLiked}
             >
               <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} aria-hidden="true" />
@@ -143,9 +141,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
             <button
               onClick={() => setFormat('digital')}
               className={`flex-1 py-2 px-3 border-2 border-black font-bold text-sm transition-colors ${
-                format === 'digital'
-                  ? 'bg-[#2563EB] text-white'
-                  : 'bg-white hover:bg-gray-100'
+                format === 'digital' ? 'bg-[#2563EB] text-white' : 'bg-white hover:bg-gray-100'
               }`}
               role="radio"
               aria-checked={format === 'digital'}
@@ -157,9 +153,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
             <button
               onClick={() => setFormat('physical')}
               className={`flex-1 py-2 px-3 border-2 border-black font-bold text-sm transition-colors ${
-                format === 'physical'
-                  ? 'bg-[#2563EB] text-white'
-                  : 'bg-white hover:bg-gray-100'
+                format === 'physical' ? 'bg-[#2563EB] text-white' : 'bg-white hover:bg-gray-100'
               }`}
               role="radio"
               aria-checked={format === 'physical'}
@@ -176,9 +170,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
           <div>
             {format === 'digital' ? (
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold">
-                  {price === 0 ? 'GRATUIT' : `${price}€`}
-                </span>
+                <span className="text-2xl font-bold">{price === 0 ? 'GRATUIT' : `${price}€`}</span>
                 {price > 0 && (
                   <div className="flex items-center gap-1">
                     <Coins className="w-4 h-4 text-[#2563EB]" />
@@ -188,9 +180,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold">
-                  {price === 0 ? 'GRATUIT' : `${price}€`}
-                </span>
+                <span className="text-2xl font-bold">{price === 0 ? 'GRATUIT' : `${price}€`}</span>
                 <span className="text-sm text-gray-600">+ livraison</span>
               </div>
             )}
@@ -227,10 +217,7 @@ const ComicCard: React.FC<ComicCardProps> = ({
 
       {/* Modals */}
       {showShippingForm && (
-        <ShippingAddressForm
-          onSubmit={handleShippingSubmit}
-          onCancel={() => setShowShippingForm(false)}
-        />
+        <ShippingAddressForm onSubmit={handleShippingSubmit} onCancel={() => setShowShippingForm(false)} />
       )}
 
       {showUnlockModal && (

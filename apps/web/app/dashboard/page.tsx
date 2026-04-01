@@ -1,15 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
-import { Profile } from '@shared/types';
+import { Profile } from '@shared';
 import Dashboard from '@/components/Dashboard';
 
 const DEFAULT_BALANCE = 150;
 
 function SkeletonDashboard() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-pulse flex flex-col items-center gap-4">
+        <div className="h-8 w-48 bg-gray-200 rounded"></div>
+        <div className="h-4 w-32 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  );
 }
 
 export default function DashboardPage() {
@@ -20,7 +27,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const getData = async () => {
-      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      const {
+        data: { user: currentUser },
+      } = await supabase.auth.getUser();
       setUser(currentUser);
       if (currentUser) {
         const userRole = currentUser.user_metadata?.role || 'reader';
@@ -52,7 +61,7 @@ export default function DashboardPage() {
     email: user.email || '',
     role: profile.role,
     balance: DEFAULT_BALANCE, // Solde simulé
-    plan: 'free' as const // Plan par défaut
+    plan: 'free' as const, // Plan par défaut
   };
 
   const handleLogout = async () => {
@@ -60,15 +69,10 @@ export default function DashboardPage() {
     router.push('/');
   };
 
-  const handleRead = (_title: string) => {
+  const handleRead = (title: string) => {
+    void title;
     // TODO: implémenter la navigation vers le lecteur
   };
 
-  return (
-    <Dashboard
-      user={dashboardUser}
-      onLogout={handleLogout}
-      onRead={handleRead}
-    />
-  );
+  return <Dashboard user={dashboardUser} onLogout={handleLogout} onRead={handleRead} />;
 }

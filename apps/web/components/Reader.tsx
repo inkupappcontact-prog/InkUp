@@ -60,10 +60,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
       <div className="bg-white border-b-4 border-black p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button
-              onClick={onClose}
-              className="p-2 border-2 border-black hover:bg-gray-100"
-            >
+            <button onClick={onClose} className="p-2 border-2 border-black hover:bg-gray-100">
               <ChevronLeft className="w-5 h-5" />
             </button>
             <div>
@@ -104,6 +101,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
 
         {/* Image */}
         <div className={`${isFullscreen ? 'max-w-full max-h-full' : 'max-w-4xl'} flex items-center justify-center`}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={pages[currentPage]}
             alt={`Page ${currentPage + 1}`}
@@ -127,11 +125,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
       <div className="bg-white border-t-4 border-black p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <ComicButton
-              onClick={handlePrevPage}
-              disabled={currentPage === 0}
-              className="flex items-center gap-2"
-            >
+            <ComicButton onClick={handlePrevPage} disabled={currentPage === 0} className="flex items-center gap-2">
               <ChevronLeft className="w-4 h-4" />
               Précédent
             </ComicButton>
@@ -161,9 +155,7 @@ const Reader: React.FC<ReaderProps> = ({ title, pages, onClose }) => {
             </ComicButton>
           </div>
 
-          <div className="text-sm text-gray-600">
-            Utilisez les flèches ← → pour naviguer
-          </div>
+          <div className="text-sm text-gray-600">Utilisez les flèches ← → pour naviguer</div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
-import { BookOpen, Coins, Users, Star, ArrowRight, PenTool, ChevronRight, ShieldCheck, Lock } from 'lucide-react';
+import { BookOpen, Coins, Users, PenTool } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import InkUpLogo from './ui/InkUpLogo';
 import LegalModal from './LegalModal';
@@ -18,22 +19,29 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       {showLegal && <LegalModal type={showLegal} onClose={() => setShowLegal(null)} />}
 
       {/* Navigation BD */}
-      <nav className="border-b-4 border-[#FFD700] px-6 py-4 flex justify-between items-center sticky top-0 bg-black z-50 shadow-lg" aria-label="Navigation principale">
+      <nav
+        className="border-b-4 border-[#FFD700] px-6 py-4 flex justify-between items-center sticky top-0 bg-black z-50 shadow-lg"
+        aria-label="Navigation principale"
+      >
         <div className="flex items-center gap-3">
-            <InkUpLogo className="w-12 h-12" aria-hidden="true" />
-            <span className="font-bangers text-3xl tracking-wide hidden sm:block text-[#FFD700]">InkUp</span>
+          <InkUpLogo className="w-12 h-12" aria-hidden="true" />
+          <span className="font-bangers text-3xl tracking-wide hidden sm:block text-[#FFD700]">InkUp</span>
         </div>
         <div className="flex gap-4">
-             <button
-               onClick={onStart}
-               className="font-bangers text-xl uppercase hover:text-[#FF6B35] transition-colors min-h-[44px] px-4 py-2 border-2 border-transparent hover:border-[#FFD700] rounded-lg text-white"
-               aria-label="Se connecter à mon compte"
-             >
-                Se Connecter
-             </button>
-             <ComicButton onClick={onStart} className="hidden sm:flex h-12 px-6 text-lg" aria-label="Commencer à utiliser InkUp">
-                Commencer
-             </ComicButton>
+          <button
+            onClick={onStart}
+            className="font-bangers text-xl uppercase hover:text-[#FF6B35] transition-colors min-h-[44px] px-4 py-2 border-2 border-transparent hover:border-[#FFD700] rounded-lg text-white"
+            aria-label="Se connecter à mon compte"
+          >
+            Se Connecter
+          </button>
+          <ComicButton
+            onClick={onStart}
+            className="hidden sm:flex h-12 px-6 text-lg"
+            aria-label="Commencer à utiliser InkUp"
+          >
+            Commencer
+          </ComicButton>
         </div>
       </nav>
 
@@ -50,8 +58,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 <span className="text-[#FF6B35] block transform rotate-2">Auteurs & Lecteurs</span>
               </h1>
               <p className="text-xl text-white font-comic-neue max-w-2xl leading-relaxed">
-                Découvrez des bandes dessinées exclusives en haute définition et soutenez directement les créateurs.
-                Pas d'intermédiaires, juste de l'art pur.
+                Découvrez des bandes dessinées exclusives en haute définition et soutenez directement les créateurs. Pas
+                d&apos;intermédiaires, juste de l&apos;art pur.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <ComicButton onClick={onStart} className="h-14 px-8 text-xl font-bold">
@@ -127,9 +135,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-[#FFD700] border-4 border-[#FFD700] p-12 transform rotate-1">
             <div className="bg-black border-4 border-[#FFD700] p-8 transform -rotate-1">
-              <h2 className="font-bangers text-4xl mb-6 text-[#FFD700]">
-                Prêt à rejoindre l'aventure ?
-              </h2>
+              <h2 className="font-bangers text-4xl mb-6 text-[#FFD700]">Prêt à rejoindre l'aventure ?</h2>
               <p className="text-xl text-white mb-8 font-comic-neue">
                 Des milliers de BD vous attendent. Rejoignez la communauté la plus passionnée de lecteurs et créateurs.
               </p>
@@ -147,11 +153,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       </section>
 
       {/* Cookie Consent Banner - RGPD Compliance */}
-      <CookieConsent
-        onAccept={() => {}}
-        onRefuse={() => {}}
-        onCustomize={() => {}}
-      />
+      <CookieConsent onAccept={() => {}} onRefuse={() => {}} onCustomize={() => {}} />
 
       {/* Footer */}
       <Footer />

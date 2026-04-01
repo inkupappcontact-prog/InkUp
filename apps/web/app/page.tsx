@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import type { User } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
 import LoginScreen from '@/components/LoginScreen';
@@ -21,11 +20,12 @@ export default function HomePage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const getData = async () => {
-      const { data: { user: currentUser } } = await supabase.auth.getUser();
+      const {
+        data: { user: currentUser },
+      } = await supabase.auth.getUser();
       setUser(currentUser);
       if (currentUser) {
         const userRole = currentUser.user_metadata?.role || 'reader';
@@ -49,7 +49,8 @@ export default function HomePage() {
     setShowLogin(false);
   };
 
-  const handleRead = (_title: string) => {
+  const handleRead = (title: string) => {
+    void title;
     // TODO: implémenter la navigation vers le lecteur
   };
 
@@ -63,16 +64,10 @@ export default function HomePage() {
       email: user.email || '',
       role: profile.role,
       balance: DEFAULT_BALANCE,
-      plan: 'free' as const // Plan par défaut
+      plan: 'free' as const, // Plan par défaut
     };
 
-    return (
-      <Dashboard
-        user={dashboardUser}
-        onLogout={handleLogout}
-        onRead={handleRead}
-      />
-    );
+    return <Dashboard user={dashboardUser} onLogout={handleLogout} onRead={handleRead} />;
   }
 
   // Si l'utilisateur clique sur "Se connecter", afficher l'écran de login

@@ -1,7 +1,8 @@
 'use client';
+/* eslint-disable react/no-unescaped-entities */
 
-import React, { useState, useEffect } from 'react';
-import { X, Cookie, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { Cookie, Shield } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 
 interface CookieConsentProps {
@@ -17,21 +18,16 @@ interface CookiePreferences {
 }
 
 const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCustomize }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return !localStorage.getItem('cookie-consent');
+  });
   const [showCustomize, setShowCustomize] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
     essential: true, // Always required
     analytics: false,
     marketing: false,
   });
-
-  useEffect(() => {
-    // Check if consent was already given
-    const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      setIsVisible(true);
-    }
-  }, []);
 
   const handleAccept = () => {
     const fullPreferences = { ...preferences, analytics: true, marketing: true };
@@ -58,7 +54,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
 
   const handlePreferenceToggle = (key: keyof CookiePreferences) => {
     if (key === 'essential') return; // Essential cookies cannot be disabled
-    setPreferences(prev => ({ ...prev, [key]: !prev[key] }));
+    setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   if (!isVisible) return null;
@@ -81,8 +77,8 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
           {/* Message */}
           <div className="flex-1 text-sm text-gray-700">
             <p className="mb-2">
-              <strong>InkUp respecte votre vie privée !</strong> Nous utilisons des cookies pour améliorer
-              votre expérience, analyser le trafic et vous proposer des contenus adaptés.
+              <strong>InkUp respecte votre vie privée !</strong> Nous utilisons des cookies pour améliorer votre
+              expérience, analyser le trafic et vous proposer des contenus adaptés.
             </p>
             <p>
               Conformément au RGPD, vous avez le contrôle sur vos données.
@@ -103,10 +99,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
             >
               Refuser
             </ComicButton>
-            <ComicButton
-              onClick={handleAccept}
-              className="px-4 py-2 text-sm"
-            >
+            <ComicButton onClick={handleAccept} className="px-4 py-2 text-sm">
               Tout accepter
             </ComicButton>
           </div>
@@ -125,16 +118,11 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
               <div className="bg-white p-4 border-2 border-black rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <h5 className="font-bold">Cookies essentiels</h5>
-                  <input
-                    type="checkbox"
-                    checked={preferences.essential}
-                    disabled
-                    className="w-4 h-4"
-                  />
+                  <input type="checkbox" checked={preferences.essential} disabled className="w-4 h-4" />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Nécessaires au fonctionnement du site (authentification, panier, sécurité).
-                  Non désactivables conformément au RGPD.
+                  Nécessaires au fonctionnement du site (authentification, panier, sécurité). Non désactivables
+                  conformément au RGPD.
                 </p>
               </div>
 
@@ -150,8 +138,8 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Pour mesurer l'audience et améliorer nos services (Google Analytics anonymisé).
-                  Consentement requis selon le RGPD.
+                  Pour mesurer l'audience et améliorer nos services (Google Analytics anonymisé). Consentement requis
+                  selon le RGPD.
                 </p>
               </div>
 
@@ -167,17 +155,14 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
                   />
                 </div>
                 <p className="text-xs text-gray-600">
-                  Pour vous proposer des contenus personnalisés et des publicités pertinentes.
-                  Consentement requis selon le RGPD.
+                  Pour vous proposer des contenus personnalisés et des publicités pertinentes. Consentement requis selon
+                  le RGPD.
                 </p>
               </div>
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
-              <ComicButton
-                onClick={handleCustomize}
-                className="px-4 py-2 text-sm"
-              >
+              <ComicButton onClick={handleCustomize} className="px-4 py-2 text-sm">
                 Appliquer mes choix
               </ComicButton>
             </div>
@@ -187,9 +172,11 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onAccept, onRefuse, onCus
         {/* RGPD Compliance Notice */}
         <div className="mt-4 text-xs text-gray-500 border-t pt-4">
           <p>
-            <strong>Conformité RGPD :</strong> Vous disposez d'un droit d'accès, de rectification,
-            de suppression et de portabilité sur vos données.
-            Pour exercer ces droits : <a href="mailto:privacy@inkup.com" className="text-[#2563EB] underline">privacy@inkup.com</a>
+            <strong>Conformité RGPD :</strong> Vous disposez d&apos;un droit d&apos;accès, de rectification, de
+            suppression et de portabilité sur vos données. Pour exercer ces droits :{' '}
+            <a href="mailto:privacy@inkup.com" className="text-[#2563EB] underline">
+              privacy@inkup.com
+            </a>
           </p>
           <p className="mt-1">
             <strong>Durée de conservation :</strong> 13 mois maximum pour les cookies analytiques.

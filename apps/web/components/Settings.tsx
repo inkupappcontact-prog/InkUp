@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, Shield, Palette, CreditCard, HelpCircle, Save } from 'lucide-react';
+import { Bell, Shield, Palette, CreditCard, HelpCircle, Save, Settings as SettingsIcon } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
 import SettingsGeneral from './settings/SettingsGeneral';
 import SettingsNotifications from './settings/SettingsNotifications';
@@ -17,14 +17,20 @@ const Settings: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('inkup_lover');
   const [notifications, setNotifications] = useState<NotificationPrefs>({
-    email: true, push: false, marketing: true, updates: false,
+    email: true,
+    push: false,
+    marketing: true,
+    updates: false,
   });
   const [privacy, setPrivacy] = useState<PrivacyPrefs>({
-    profilePublic: true, showEmail: false, showStats: true, allowMessages: true,
+    profilePublic: true,
+    showEmail: false,
+    showStats: true,
+    allowMessages: true,
   });
 
   const sections = [
-    { id: 'general', label: 'Général', icon: Settings },
+    { id: 'general', label: 'Général', icon: SettingsIcon },
     { id: 'notifications', label: 'Notifications', icon: Bell },
     { id: 'privacy', label: 'Confidentialité', icon: Shield },
     { id: 'appearance', label: 'Apparence', icon: Palette },
@@ -37,11 +43,11 @@ const Settings: React.FC = () => {
   };
 
   const handleNotificationToggle = (key: keyof NotificationPrefs) => {
-    setNotifications(prev => ({ ...prev, [key]: !prev[key] }));
+    setNotifications((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const handlePrivacyToggle = (key: keyof PrivacyPrefs) => {
-    setPrivacy(prev => ({ ...prev, [key]: !prev[key] }));
+    setPrivacy((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   const renderContent = () => {
@@ -52,7 +58,7 @@ const Settings: React.FC = () => {
             username={username}
             onUsernameChange={(e) => setUsername(e.target.value)}
             showPassword={showPassword}
-            onTogglePassword={() => setShowPassword(prev => !prev)}
+            onTogglePassword={() => setShowPassword((prev) => !prev)}
           />
         );
       case 'notifications':
@@ -60,7 +66,7 @@ const Settings: React.FC = () => {
       case 'privacy':
         return <SettingsPrivacy privacy={privacy} onToggle={handlePrivacyToggle} />;
       case 'appearance':
-        return <SettingsAppearance isDarkMode={isDarkMode} onToggleDarkMode={() => setIsDarkMode(prev => !prev)} />;
+        return <SettingsAppearance isDarkMode={isDarkMode} onToggleDarkMode={() => setIsDarkMode((prev) => !prev)} />;
       case 'billing':
         return <SettingsBilling />;
       case 'help':
@@ -71,7 +77,7 @@ const Settings: React.FC = () => {
             username={username}
             onUsernameChange={(e) => setUsername(e.target.value)}
             showPassword={showPassword}
-            onTogglePassword={() => setShowPassword(prev => !prev)}
+            onTogglePassword={() => setShowPassword((prev) => !prev)}
           />
         );
     }
@@ -116,10 +122,7 @@ const Settings: React.FC = () => {
             <button className="flex-1 border-2 border-black px-4 py-3 font-bold hover:bg-gray-100 transition-colors">
               Annuler
             </button>
-            <ComicButton
-              onClick={handleSave}
-              className="flex-1 flex items-center justify-center gap-2"
-            >
+            <ComicButton onClick={handleSave} className="flex-1 flex items-center justify-center gap-2">
               <Save className="w-4 h-4" />
               Sauvegarder
             </ComicButton>

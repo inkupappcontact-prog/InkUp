@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogIn, UserPlus, BookOpen, PenTool, Sparkles } from 'lucide-react';
+import { BookOpen, PenTool } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import ParallelogramInput from '@/components/ui/ParallelogramInput';
@@ -20,6 +20,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const [artistName, setArtistName] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string; artistName?: string }>({});
   const [loading, setLoading] = useState(false);
+  const [stayConnected, setStayConnected] = useState(false);
+  const [alert, setAlert] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
 
   interface WelcomeEmailParams {
     userEmail: string;
@@ -64,9 +66,21 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
   const handleLogin = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Erreur de connexion:', error);
+      const status = (error as { status?: number }).status;
+      if (status === 400 || status === 401) {
+        setErrors((prev) => ({ ...prev, email: 'Identifiants invalides' }));
+        setAlert({ type: 'error', message: 'Identifiants invalides' });
+      } else {
+        setErrors((prev) => ({ ...prev, email: 'Erreur service. Réessayez.' }));
+        setAlert({ type: 'error', message: 'Erreur service. Réessayez.' });
+      }
+      return;
+    }
 
     if (data.user) {
+      setAlert({ type: 'success', message: 'Connexion réussie !' });
       const userRole = data.user.user_metadata?.role || 'reader';
       router.push(userRole === 'author' ? '/dashboard' : '/');
     }
@@ -89,7 +103,12 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
     if (data.user) {
       const userName = data.user.user_metadata?.full_name || email.split('@')[0];
-      await sendWelcomeEmail({ userEmail: email, userName, userRole: userType, artistName: userType === 'author' ? artistName : undefined });
+      await sendWelcomeEmail({
+        userEmail: email,
+        userName,
+        userRole: userType,
+        artistName: userType === 'author' ? artistName : undefined,
+      });
       const userRole = data.user.user_metadata?.role || 'reader';
       router.push(userRole === 'author' ? '/dashboard' : '/');
     }
@@ -115,23 +134,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
       }
     } catch (error) {
       console.error('❌ Erreur handleSubmit:', error);
-      setErrors({ email: "Erreur technique. Réessayez." });
+      setErrors({ email: 'Erreur technique. Réessayez.' });
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/dashboard`,
-        },
-      });
-      if (error) throw error;
-    } catch (err: unknown) {
-      console.error('Erreur Google:', err);
     }
   };
 
@@ -141,21 +146,33 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         <div className="bg-gradient-to-br from-gray-900 to-black border-4 border-[#FFD700] rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
             <InkUpLogo className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="font-bangers text-4xl mb-2 text-[#FFD700]">
-              {isLogin ? 'Connexion' : 'Inscription'}
-            </h1>
+            <h1 className="font-bangers text-4xl mb-2 text-[#FFD700]">{isLogin ? 'Connexion' : 'Inscription'}</h1>
             <p className="text-white font-comic-neue">
               {isLogin ? 'Bienvenue sur InkUp !' : 'Rejoignez la révolution de la BD !'}
             </p>
           </div>
 
-          <div className="flex mb-8 bg-gray-800 border-2 border-[#FFD700] rounded-lg p-1" role="tablist" aria-label="Type d'authentification">
+          {alert && (
+            <div
+              className={`fixed top-4 left-1/2 z-50 w-[90%] max-w-md -translate-x-1/2 rounded-lg border-2 p-3 text-center shadow-lg ${
+                alert.type === 'error'
+                  ? 'bg-[#FF5A5F] text-white border-red-800'
+                  : 'bg-[#16A34A] text-white border-green-800'
+              }`}
+            >
+              {alert.message}
+            </div>
+          )}
+
+          <div
+            className="flex mb-8 bg-gray-800 border-2 border-[#FFD700] rounded-lg p-1"
+            role="tablist"
+            aria-label="Type d'authentification"
+          >
             <button
               onClick={() => setIsLogin(true)}
               className={`flex-1 py-3 px-4 font-bold transition-all duration-200 rounded-md ${
-                isLogin
-                  ? 'bg-[#FFD700] text-black shadow-lg'
-                  : 'text-gray-400 hover:text-white'
+                isLogin ? 'bg-[#FFD700] text-black shadow-lg' : 'text-gray-400 hover:text-white'
               }`}
               role="tab"
               aria-selected={isLogin}
@@ -166,9 +183,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             <button
               onClick={() => setIsLogin(false)}
               className={`flex-1 py-3 px-4 font-bold transition-all duration-200 rounded-md ${
-                !isLogin
-                  ? 'bg-[#FFD700] text-black shadow-lg'
-                  : 'text-gray-400 hover:text-white'
+                !isLogin ? 'bg-[#FFD700] text-black shadow-lg' : 'text-gray-400 hover:text-white'
               }`}
               role="tab"
               aria-selected={!isLogin}
@@ -180,7 +195,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
 
           {!isLogin && (
             <div className="mb-8">
-              <label className="block text-sm font-bold mb-3 text-[#FFD700]" id="user-type-label">Je suis :</label>
+              <label className="block text-sm font-bold mb-3 text-[#FFD700]" id="user-type-label">
+                Je suis :
+              </label>
               <div className="grid grid-cols-2 gap-4" role="radiogroup" aria-labelledby="user-type-label">
                 <button
                   onClick={() => setUserType('reader')}
@@ -246,20 +263,41 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
             dark
           />
 
-          <div className="flex items-center justify-between py-2">
-             <label className="flex items-center space-x-3 cursor-pointer group">
-                <div className="w-5 h-5 border-2 border-white bg-transparent flex items-center justify-center transition-all group-hover:border-[#2563EB]">
-                   <input type="checkbox" className="peer appearance-none w-full h-full cursor-pointer" />
-                   <div className="hidden peer-checked:block w-2.5 h-2.5 bg-[#2563EB]"></div>
+          <div className="flex items-center justify-between py-2 bg-black rounded">
+            <label
+              htmlFor="stay-connected"
+              className="flex items-center space-x-3 cursor-pointer p-2 rounded hover:bg-yellow-900/30 transition-colors duration-200"
+            >
+              {/* Case à cocher personnalisée */}
+              <div className="relative w-5 h-5">
+                <input
+                  id="stay-connected"
+                  type="checkbox"
+                  checked={stayConnected}
+                  onChange={(e) => setStayConnected(e.target.checked)}
+                  className="absolute inset-0 w-full h-full cursor-pointer peer appearance-none"
+                />
+                {/* Fond et bordure */}
+                <div className="absolute inset-0 flex items-center justify-center border-2 border-yellow-400 rounded-sm transition-all duration-200 peer-checked:bg-yellow-400">
+                  {/* Coche (apparaît quand coché) */}
+                  <span className={`${stayConnected ? 'block' : 'hidden'} text-black font-bold text-xs`}>✓</span>
                 </div>
-                <span className="font-bold text-[10px] uppercase tracking-wider text-white/60 group-hover:text-white">Rester connecté</span>
-             </label>
+              </div>
 
-             {isLogin && (
-               <a href="#" className="font-bold text-[10px] uppercase tracking-wider text-[#2563EB] hover:text-[#2563EB]/80 transition-colors italic">
-                 Mot de passe oublié ?
-               </a>
-             )}
+              {/* Texte du label */}
+              <span className="font-bold text-xs uppercase tracking-wider text-white hover:text-yellow-400 transition-colors">
+                RESTER CONNECTÉ
+              </span>
+            </label>
+
+            {isLogin && (
+              <a
+                href="#"
+                className="font-bold text-[10px] uppercase tracking-wider text-yellow-400 hover:text-yellow-300 transition-colors italic"
+              >
+                Mot de passe oublié ?
+              </a>
+            )}
           </div>
 
           <ComicButton
@@ -276,11 +314,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ initialMode = 'login' }) => {
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
             {isLogin ? 'Pas encore de compte ?' : 'Déjà un compte ?'}
-            <button
-              onClick={() => setIsLogin(!isLogin)}
-              className="text-[#2563EB] font-bold hover:underline ml-1"
-            >
-              {isLogin ? 'S\'inscrire' : 'Se connecter'}
+            <button onClick={() => setIsLogin(!isLogin)} className="text-[#2563EB] font-bold hover:underline ml-1">
+              {isLogin ? "S'inscrire" : 'Se connecter'}
             </button>
           </p>
         </div>

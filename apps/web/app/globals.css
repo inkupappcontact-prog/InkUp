@@ -2,12 +2,12 @@
 
 /* Variables CSS pour design BD franco-belge */
 :root {
-  --color-primary: #2563EB; /* Bleu charte graphique */
-  --color-secondary: #FFFFFF; /* Texte blanc sur fond noir */
-  --color-accent: #FF6B35; /* Orange vif */
+  --color-primary: #FFFFFF; /* Blanc charte graphique */
+  --color-secondary:#000000; /* Noir charte graphique */
+  --color-accent:#2563EB; /* Bleu charte graphique */
   --color-success: #00FF00; /* Vert BD */
   --color-error: #FF0000; /* Rouge BD */
-  --color-warning: #2563EB; /* Bleu charte graphique */
+  --color-warning: #FF6B35; /* Orange vif */
   
   --font-primary: 'Comic Neue', cursive;
   --font-display: 'Bangers', cursive;
@@ -21,7 +21,7 @@
 /* Design BD franco-belge : fond noir, texte blanc */
 body {
   background-color: #000000;
-  color: #FFFFFF;
+  color: var(--color-primary);
   font-family: var(--font-primary);
   font-weight: 400;
   line-height: 1.6;
@@ -48,8 +48,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5em;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-shadow: 2px 2px 0px rgba(37, 99, 235, 0.2); /* Ombre bleue subtile */
+}
+
+h3 { /* the element was h3.font-['Bangers'].text-xl */
+  color:var(--color-primary);
 }
 
 h1 { font-size: 2.5rem; }
@@ -62,7 +66,7 @@ h6 { font-size: 1rem; }
 p {
   margin-bottom: 1rem;
   max-width: 65ch;
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 /* Styles pour les liens */
@@ -73,7 +77,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
@@ -99,7 +103,7 @@ button:hover {
 }
 
 button:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
@@ -118,7 +122,7 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-secondary);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
@@ -146,7 +150,7 @@ input:focus, textarea:focus, select:focus {
 /* Styles pour les cartes BD */
 .card {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border: var(--border-width) solid var(--color-primary);
+  border: var(--border-width) solid var(--color-secondary);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   padding: 1.5rem;
@@ -245,7 +249,7 @@ input:focus, textarea:focus, select:focus {
 .section {
   padding: 4rem 1rem;
   background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
-  border-bottom: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-secondary);
 }
 
 .section-header {
@@ -256,7 +260,7 @@ input:focus, textarea:focus, select:focus {
 .section-title {
   font-family: var(--font-display);
   font-size: 3rem;
-  color: var(--color-primary);
+  color: var(--color-secondary);
   margin-bottom: 1rem;
   text-shadow: 3px 3px 0px rgba(37, 99, 235, 0.3);
   transform: rotate(-2deg);

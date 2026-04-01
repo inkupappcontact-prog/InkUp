@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 import { X, Package, Truck, MapPin, CreditCard } from 'lucide-react';
 import ComicButton from './ui/ComicButton';
@@ -15,15 +16,12 @@ interface ShippingAddressFormProps {
   onCancel: () => void;
 }
 
-const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
-  onSubmit,
-  onCancel
-}) => {
+const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({ onSubmit, onCancel }) => {
   const [address, setAddress] = useState<Address>({
     street: '',
     city: '',
     postalCode: '',
-    country: 'France'
+    country: 'France',
   });
   const [isProcessing, setIsProcessing] = useState(false);
 
@@ -32,14 +30,14 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
     setIsProcessing(true);
 
     // Simuler un traitement
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
     onSubmit(address);
     setIsProcessing(false);
   };
 
   const handleInputChange = (field: keyof Address, value: string) => {
-    setAddress(prev => ({ ...prev, [field]: value }));
+    setAddress((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -57,10 +55,7 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
                 <p className="text-sm text-gray-600">Où souhaitez-vous recevoir votre commande ?</p>
               </div>
             </div>
-            <button
-              onClick={onCancel}
-              className="p-2 border-2 border-black hover:bg-gray-100"
-            >
+            <button onClick={onCancel} className="p-2 border-2 border-black hover:bg-gray-100">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -75,7 +70,7 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
               <ParallelogramInput
                 placeholder="123 rue de la BD"
                 value={address.street}
-                onChange={(value) => handleInputChange('street', value)}
+                onChange={(e) => handleInputChange('street', e.target.value)}
                 required
               />
             </div>
@@ -86,7 +81,7 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
                 <ParallelogramInput
                   placeholder="Paris"
                   value={address.city}
-                  onChange={(value) => handleInputChange('city', value)}
+                  onChange={(e) => handleInputChange('city', e.target.value)}
                   required
                 />
               </div>
@@ -95,7 +90,7 @@ const ShippingAddressForm: React.FC<ShippingAddressFormProps> = ({
                 <ParallelogramInput
                   placeholder="75001"
                   value={address.postalCode}
-                  onChange={(value) => handleInputChange('postalCode', value)}
+                  onChange={(e) => handleInputChange('postalCode', e.target.value)}
                   required
                 />
               </div>
