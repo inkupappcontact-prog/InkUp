@@ -149,7 +149,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Styles pour les cartes BD */
 .card {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: white !important;
   border: var(--border-width) solid var(--color-secondary);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -165,7 +165,7 @@ input:focus, textarea:focus, select:focus {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, var(--color-primary), var(--color-accent));
+  background: white;
   border-radius: var(--border-radius);
   z-index: -1;
 }
@@ -260,16 +260,16 @@ input:focus, textarea:focus, select:focus {
 .section-title {
   font-family: var(--font-display);
   font-size: 3rem;
-  color: var(--color-secondary);
+  color: white !important;
   margin-bottom: 1rem;
-  text-shadow: 3px 3px 0px rgba(37, 99, 235, 0.3);
+  text-shadow: none;
   transform: rotate(-2deg);
 }
 
 .section-subtitle {
   font-size: 1.25rem;
   color: var(--color-secondary);
-  max-width: 2xl;
+  max-width: 42rem; /* Correspond à max-w-2xl de Tailwind */
   margin: 0 auto;
   opacity: 0.9;
 }
@@ -322,7 +322,18 @@ input:focus, textarea:focus, select:focus {
   /* Styles pour mode sombre déjà appliqués */
 }
 
-/* Styles pour l'impression */
+/* Classes spécifiques pour les cartes LandingPage */
+.card-white-bg {
+  background: white !important;
+}
+
+.card-title-black {
+  color: #000000 !important;
+}
+
+.card-text-black {
+  color: #000000 !important;
+}
 @media print {
   body {
     background: white;
